@@ -1303,3 +1303,154 @@ body {
 .footer-links > li > a .fa{
 	padding-right: 8px;
 }
+
+/*Individual Worker*/
+.individual-section{
+	padding: 0px 0 0px 0;
+}
+.left-side{
+	border-right: 1px solid black;
+	padding-top: 20px;
+}
+.span-circle{
+	background: #000;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 25px;
+    color: #ffffff;
+    margin-right: 5px;
+}
+.des-title{
+	padding-right: 15px;
+}
+.input-group-addon{
+	border: 1px solid #eae3e3;
+	background: transparent;
+}
+.individual-form{
+	padding-left: 0; 
+}
+.individual-form .form-group .input-group{
+	height: 40px;
+}
+.individual-form .form-group .input-group .input-group-addon{
+    border-radius: 0;
+}
+.individual-form .form-group .form-control{
+	border-radius: 0;
+	height: 40px;
+}
+.nxt-btn{
+	padding-right: 0px;
+}
+.nxt-btn .btn{
+	font-size: 15px;
+}
+.nxt-btn .fa{
+	margin-top: 5px;
+	margin-right: 10px;
+
+}
+.right-side{
+	padding: 36px 0 46px 50px;
+	background: #E5E5E5;
+}
+.user-panel{
+	width: 50%;
+	text-align: center;
+}
+.arrow-up {
+  	position: absolute;
+  	width: 0;
+  	height: 0;
+  	border-left: 10px solid transparent;
+  	border-right: 10px solid transparent;
+  	border-bottom: 15px solid white;
+  	left: 31%;
+  	top: 13%
+}
+.user-section{
+	margin-top: 20px;
+	padding: 25px;
+	border-radius: 14px;
+	background: #fff;
+}
+.user-bg{
+	width: 25px;
+	height: 25px;
+	border-radius: 25px;
+	background: #EAEAEA;
+	display: inline-block;
+	text-align: center;
+	padding-top: 2px;
+}
+.user-info{
+	text-align: -webkit-center;
+}
+.user-img{
+	width: 145px;
+	height: 145px;
+	overflow: hidden;
+}
+.user-img img{
+	width: 100%;
+	border-radius: 29%;
+}
+.text-color{
+	color: #FE8F54;
+}
+.user-menu{
+	padding-top: 15px;
+	padding-left: 8px;
+	list-style: none;
+}
+.user-menu > li{
+	text-align: left;
+	padding: 5px 0;
+}
+.user-menu > li > a{
+	color: #8D8D8D;
+	font-size: 16px;
+}
+.user-menu > li > a .fa{
+	padding-right: 10px;
+}
+.save-btn{
+    background: #FF6D0B;
+    color: #fff;
+    padding: 10px 4px 10px 30px;
+}
+.save-btn .fa{
+	margin-left: 30px !important;
+}
+.finish-btn{
+	background: black;
+	color: white;
+	padding: 10px 4px 10px 30px;
+}
+.finish-btn .fa{
+	margin-left: 30px !important; 
+}
+#professional .col-md-9{
+	padding-right: 0;
+}
+.rate-selection{
+	background: transparent;
+	border: 0;
+}
+.rate-selection:focus{
+    outline-offset: 0px;
+	background: transparent;
+	border: 0;
+    outline: -webkit-focus-ring-color auto 0px;
+}
+.map-btn{
+	background: #E57314;
+	color: #fff;
+	padding: 9px 14px;
+	font-weight: 600;
+	border-radius: 0;
+}
