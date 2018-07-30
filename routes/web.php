@@ -17,10 +17,19 @@ Route::get('/welcome', function () {
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/login', function () {
-    return view('accounts.login');
+Route::get('/accounts/signup', function () {
+    return view('accounts.signup');
 });
 
-Route::get('/individual', function () {
+Route::get('/accounts/individual', function () {
     return view('accounts.individual');
+});
+Route::get('/accounts/serviceSignup', function () {
+    return view('accounts.serviceSignup');
+});
+Route::get('/accounts/login', function () {
+    return view('accounts.login');
+});
+Route::get('/accounts/frenchise', function () {
+    return view('accounts.frenchise');
 });
