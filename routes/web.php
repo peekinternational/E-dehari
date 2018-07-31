@@ -15,12 +15,26 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/', function () {
-    return view('home');
+    return view('index');
 });
-Route::get('/login', function () {
+Route::get('/accounts/signup', function () {
+    return view('accounts.signup');
+});
+
+Route::get('/accounts/individual', function () {
+    return view('accounts.individual');
+});
+Route::get('/accounts/serviceSignup', function () {
+    return view('accounts.serviceSignup');
+});
+Route::get('/accounts/login', function () {
     return view('accounts.login');
 });
 
-Route::get('/individual', function () {
-    return view('accounts.individual');
-});
+
+Route::post('create_User', 'frontend\Home@store');
+Route::post('login_User', 'frontend\Home@Login');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
