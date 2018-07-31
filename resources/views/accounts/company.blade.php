@@ -55,7 +55,7 @@
 					  	</div>
 					</div>
 
-					<div class="col-md-5 right-side" style="padding: 37px 0 86px 50px;">
+					<div class="col-md-5 right-side" style="padding: 37px 0 68px 50px;">
 						<div class="user-panel">
 								<span class="user-bg"><i class="fa fa-user"></i></span>
 							<div class="user-section">
@@ -143,7 +143,7 @@
 				  			<a data-toggle="pill" href="#location" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  		</div>	
 					</div>
-					<div class="col-md-5 right-side" style="padding: 33px 0 58px 50px;">
+					<div class="col-md-5 right-side" style="padding: 34px 0 44px 50px;">
 						<div class="user-panel">
 								<span class="user-bg"><i class="fa fa-user"></i></span>
 							<div class="user-section">
@@ -217,7 +217,7 @@
 				  			<a href="#" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  		</div>	
 					</div>
-					<div class="col-md-5 right-side" style="padding: 31px 0 42px 50px;">
+					<div class="col-md-5 right-side" style="padding: 33px 0 38px 50px;">
 						<div class="user-panel">
 								<span class="user-bg"><i class="fa fa-user"></i></span>
 							<div class="user-section">

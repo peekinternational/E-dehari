@@ -27,9 +27,16 @@
 							  		</div>
 							  	</div>
 							  	<div class="form-group">
+							  		<label>Mobile Number</label>
+							  		<div class="input-group">
+							  	  		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+							  	  		<input type="text"  id="mobileNumber" class="form-control" name="mobileNumber">
+							  		</div>
+							  	</div>
+							  	<div class="form-group">
 							  		<label>Nationality</label>
 							  		<div class="input-group">
-							    		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+							    		<span class="input-group-addon"><i class="fa fa-globe"></i></span>
 							    		<input type="text" id="nationality" class="form-control">
 							  		</div>
 							  	</div>
@@ -41,18 +48,21 @@
 							  		</div>
 							  	</div>
 							  	<div class="row">
-							  		<div class="form-group col-md-3" style="padding-right: 0;">
+							  		<div class="form-group col-md-4" style="padding-right: 0;">
 								  		<label>Gender</label>
 								  		<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-venus"></i></span>
-								    		<input type="text" id="gender" class="form-control">
+								    		<select class="form-control">
+								    			<option>Male</option>
+								    			<option>Female</option>
+								    		</select>
 								  		</div>
 							  		</div>
-								  	<div class="form-group col-md-9">
+								  	<div class="form-group col-md-8">
 								  		<label>Date of Birth(optional)</label>
 								  		<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								    		<input type="text" id="dob" class="form-control">
+								    		<input type="date" id="dob" class="form-control">
 								  		</div>
 								  	</div>
 							  	</div>
@@ -70,9 +80,15 @@
 							<div class="user-section">
 								<div class="arrow-up"></div>
 								<div class="user-info">
-									<div class="user-img">
-										<img src="{{'images/user.jpg'}}">
-									</div>
+									<div class="c100 p40">
+			                            <span class="user-img">
+			                            	<img src="{{'../images/userIcon.png'}}">
+			                            </span>
+			                            <div class="slice">
+			                                <div class="bar"></div>
+			                                <div class="fill"></div>
+			                            </div>
+			                        </div> 
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">40%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -146,19 +162,26 @@
 							  	<p>This is your estimating charging rate. You can always negitiate a different rate depending on the job.</p>
 							</form>
 						</div>
-						<div class="form-group col-md-offset-6 col-md-3 nxt-btn">
-				  			<a data-toggle="pill" href="#location" class="btn login-btn btn-block btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
+						<div class="form-group col-md-offset-5 col-md-5 nxt-btn" style="padding-left: 0;">
+							<a data-toggle="pill" href="#personal-info" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
+				  			<a data-toggle="pill" href="#location" class="btn save-btn btn-lg" style="padding: 10px 3px 10px 30px;">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  		</div>	
 					</div>
-					<div class="col-md-5 right-side" style="padding: 50px 0 186px 50px;">
+					<div class="col-md-5 right-side" style="padding: 57px 0 224px 50px;">
 						<div class="user-panel">
 								<span class="user-bg"><i class="fa fa-user"></i></span>
 							<div class="user-section">
 								<div class="arrow-up"></div>
 								<div class="user-info">
-									<div class="user-img">
-										<img src="{{'images/user.jpg'}}">
-									</div>
+									<div class="c100 p60">
+			                            <span class="user-img">
+			                            	<img src="{{'../images/userIcon.png'}}">
+			                            </span>
+			                            <div class="slice">
+			                                <div class="bar"></div>
+			                                <div class="fill"></div>
+			                            </div>
+			                        </div> 
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">60%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -202,20 +225,27 @@
 					  			</div>
 							</form>
 						</div>
-						<div class="form-group col-md-offset-4 col-md-5 nxt-btn">
+						<div class="form-group col-md-offset-2 col-md-8 nxt-btn">
+							<a data-toggle="pill" href="#professional" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
 							<a href="#" class="btn finish-btn btn-lg">Finish <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  			<a href="#" class="btn save-btn btn-lg">Save <i class="fa fa-floppy-o pull-right" aria-hidden="true"></i></a>
 				  		</div>	
 					</div>
-					<div class="col-md-5 right-side" style="padding: 52px 0 218px 50px;">
+					<div class="col-md-5 right-side" style="padding: 62px 0 251px 50px;">
 						<div class="user-panel">
 								<span class="user-bg"><i class="fa fa-user"></i></span>
 							<div class="user-section">
 								<div class="arrow-up"></div>
 								<div class="user-info">
-									<div class="user-img">
-										<img src="{{'images/user.jpg'}}">
-									</div>
+									<div class="c100 p70">
+			                            <span class="user-img">
+			                            	<img src="{{'../images/userIcon.png'}}">
+			                            </span>
+			                            <div class="slice">
+			                                <div class="bar"></div>
+			                                <div class="fill"></div>
+			                            </div>
+			                        </div> 
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">70%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>

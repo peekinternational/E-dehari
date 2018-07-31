@@ -1159,6 +1159,23 @@ body {
 
 
 /*Dehari*/
+
+@font-face {
+    font-family: dehariFont;
+    src: url(Fonts/HelveticaNeue.otf);
+    /*src: url(Fonts/HelveticaNeue-Bold.otf);
+    src: url(Fonts/HelveticaNeue-BoldItalic.otf);
+    src: url(Fonts/HelveticaNeue-CondensedBlack.otf);*/
+    /*src: url(Fonts/HelveticaNeue-Light.otf);
+    src: url(Fonts/MyriadPro-Cond.otf);*/
+    /*src: url(Fonts/HelveticaNeue-UltraLight.otf);*/
+}
+
+
+body{
+	font-family: dehariFont;
+}
+
 .navbar-custom .navbar-nav > .active > a, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover{
 	background: #F97E12;
 }
@@ -1210,7 +1227,7 @@ body {
 }
 .login-box .nav > li > a {
     font-size: 14px;
-    padding: 10px 32.5px;
+    padding: 10px 26.5px;
 }
 .login-box .nav > li > a:hover, .nav > li > a:focus{
 	background: #F97E12;
@@ -1359,10 +1376,9 @@ body {
 .nxt-btn .fa{
 	margin-top: 5px;
 	margin-right: 10px;
-
 }
 .right-side{
-	padding: 36px 0 46px 50px;
+    padding: 48px 0 134px 50px;
 	background: #E5E5E5;
 }
 .user-panel{
@@ -1403,7 +1419,7 @@ body {
 	overflow: hidden;
 }
 .user-img img{
-	width: 100%;
+	width: 94%;
 	border-radius: 29%;
 }
 .text-color{
@@ -1497,4 +1513,75 @@ body {
 }
 .frnchs-nxtbtn a:hover{
 	color: #fff;
+}
+.back-btn{
+	padding: 10px 30px 10px 23px;
+	background: black;
+    color: white;
+}
+.back-btn:hover{
+	color: white;
+}
+.back-btn .fa{
+	margin-left: -10px !important;
+	padding-right: 23px;
+}
+.form-group label{
+	font-weight: 400;
+}
+.c100{
+	background-color: #fff !important;
+
+}
+.pie, .c100 .bar, .c100.p51 .fill, .c100.p52 .fill, .c100.p53 .fill, .c100.p54 .fill, .c100.p55 .fill, .c100.p56 .fill, .c100.p57 .fill, .c100.p58 .fill, .c100.p59 .fill, .c100.p60 .fill, .c100.p61 .fill, .c100.p62 .fill, .c100.p63 .fill, .c100.p64 .fill, .c100.p65 .fill, .c100.p66 .fill, .c100.p67 .fill, .c100.p68 .fill, .c100.p69 .fill, .c100.p70 .fill, .c100.p71 .fill, .c100.p72 .fill, .c100.p73 .fill, .c100.p74 .fill, .c100.p75 .fill, .c100.p76 .fill, .c100.p77 .fill, .c100.p78 .fill, .c100.p79 .fill, .c100.p80 .fill, .c100.p81 .fill, .c100.p82 .fill, .c100.p83 .fill, .c100.p84 .fill, .c100.p85 .fill, .c100.p86 .fill, .c100.p87 .fill, .c100.p88 .fill, .c100.p89 .fill, .c100.p90 .fill, .c100.p91 .fill, .c100.p92 .fill, .c100.p93 .fill, .c100.p94 .fill, .c100.p95 .fill, .c100.p96 .fill, .c100.p97 .fill, .c100.p98 .fill, .c100.p99 .fill, .c100.p100 .fill{
+	border: 0.08em solid #FF6D0B;
+}
+.c100 > span{
+	left: 1px !important;
+	top: -3px;
+}
+
+/***************Hire Service*******************/
+
+.hireService-section{
+	box-shadow: 0px 1px 4px 2px lightgrey;
+    background: white;
+    margin: 25px 0;
+}
+.hireService-section h3, h4{
+	text-align: center;
+}
+.hireService-section .left-side{
+	border: 0;
+}
+.hireService-section .left-side form{
+	padding-top: 0;
+}
+.hireService-section .right-side{
+	background-color: #fff
+}
+.hireService-section .right-side .user-panel .user-section{
+	padding: 0;
+	margin-top: 0;
+}
+.currny-btn{
+	margin-top: 4px;
+    padding: 9px 15px;
+    border-radius: 0;
+    font-weight: 600;
+    color: black;
+    background: #FF6D0B;
+    margin-left: -7px;
+}
+.total-count{
+	padding: 9px 15px;
+    border-radius: 0;
+    font-weight: 600;
+    color: black;
+    background: #FF6D0B;
+    margin-left: 7px;
+}
+.nxt-bttn{
+	text-align: right;
+	margin-left: -8px;
 }

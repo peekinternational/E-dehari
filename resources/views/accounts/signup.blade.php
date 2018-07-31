@@ -14,7 +14,10 @@
 				    <div id="individual" class="tab-pane fade in active">
 				      <form  action="">
 				        <div class="form-group">
-				          <input type="email" class="form-control" id="email" placeholder="Mobile Number or Email">
+				          <input type="email" class="form-control" id="email" placeholder="Email">
+				        </div>
+				        <div class="form-group">
+				          <input type="text" class="form-control" id="mobile" placeholder="Mobile Number">
 				        </div>
 				        <div class="form-group">
 				          <input type="password" class="form-control" id="pwd" placeholder="Password">
@@ -31,7 +34,10 @@
 				    <div id="franchise" class="tab-pane fade">
 				      <form  action="">
 				        <div class="form-group">
-				          <input type="email" class="form-control" id="email" placeholder="Mobile Number or Email">
+				          <input type="email" class="form-control" id="email" placeholder="Email">
+				        </div>
+				        <div class="form-group">
+				          <input type="text" class="form-control" id="mobile" placeholder="Mobile Number">
 				        </div>
 				        <div class="form-group">
 				          <input type="password" class="form-control" id="pwd" placeholder="Password">
@@ -48,7 +54,10 @@
 				    <div id="company" class="tab-pane fade">
 				      	<form  action="">
 	  				        <div class="form-group">
-	  				          <input type="email" class="form-control" id="email" placeholder="Mobile Number or Email">
+	  				          <input type="email" class="form-control" id="email" placeholder="Email">
+	  				        </div>
+	  				        <div class="form-group">
+	  				          <input type="text" class="form-control" id="mobile" placeholder="Mobile Number">
 	  				        </div>
 	  				        <div class="form-group">
 	  				          <input type="password" class="form-control" id="pwd" placeholder="Password">
