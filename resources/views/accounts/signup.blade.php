@@ -14,10 +14,10 @@
 						<form  action="{{url('create_User')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" name="email_phone" placeholder="Email">
+								<input type="text" class="form-control" id="mobile" placeholder="Mobile Number" required="">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="mobile" placeholder="Mobile Number">
+								<input type="text" class="form-control" id="email" name="email_phone" placeholder="Email">
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
@@ -36,10 +36,10 @@
 						<form  action="{{url('create_User')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" name="email_phone" placeholder="Email">
+								<input type="text" class="form-control" id="mobile" placeholder="Mobile Number" required="">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="mobile" placeholder="Mobile Number">
+								<input type="text" class="form-control" id="email" name="email_phone" placeholder="Email">
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
@@ -58,10 +58,10 @@
 						<form  action="{{url('create_User')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" name="email_phone" placeholder="Email">
+								<input type="text" class="form-control" id="mobile" placeholder="Mobile Number" required="">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="mobile" placeholder="Mobile Number">
+								<input type="text" class="form-control" id="email" name="email_phone" placeholder="Email">
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
