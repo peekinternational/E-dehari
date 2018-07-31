@@ -217,7 +217,7 @@ public function Logout()
 {
   session()->flush();
   session()->forget('u_session');
-  return redirect('/accounts/login')->with('success', 'You are successfully logged out');
+  return redirect('/accounts/login');
 }
 
 }
