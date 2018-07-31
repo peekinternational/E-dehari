@@ -1,20 +1,22 @@
 @extends('layouts.app')
 @section('content')
-  
+
 <div class="main_content">
 	<div class="container">
-		<div class="row"> 
+    @include('includes.messages')
+		<div class="row">
 			<div class="col-md-offset-3 col-md-6 login-box text-center">
 				<div class="col-md-offset-2 col-md-8">
 					<h3 class="sigunp-title" style="text-align: center;">Login with your email</h3>
-			      	<form  action="">
+			      	<form  action="{{url('login_User')}}" method="post">
+								{{csrf_field()}}
 				        <div class="form-group">
-				          <input type="email" class="form-control" id="email" placeholder="Mobile Number or Email">
+				          <input type="email" name="email_phone" class="form-control" id="email" placeholder="Mobile Number or Email">
 				        </div>
 				        <div class="form-group">
-				          <input type="password" class="form-control" id="pwd" placeholder="Password">
+				          <input type="password" name="password" class="form-control" id="pwd" placeholder="Password">
 				        </div>
-				        <p><a href="" class="forgot">Forgot your password?</a></p>
+				        <p><a href="{{url('password/reset')}}" class="forgot">Forgot your password?</a></p>
 				        <div class="form-group">
 				        	<button type="submit" class="btn login-btn btn-block btn-lg">Log In</button>
 				        	<p class="text-center"><strong>Or</strong></p>

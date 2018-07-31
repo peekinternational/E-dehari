@@ -363,7 +363,7 @@ body {
 	width: 100%;
 }
 .technology_list1{
-	margin-top: 20px;	
+	margin-top: 20px;
 }
 .pagination > li > a, .pagination > li > span {
 	font-size: 16px;
@@ -397,7 +397,7 @@ body {
 }
 .blog_left h4 a{
 	margin:0 0 20px;
-	
+
 	display: block;
 	text-transform: capitalize;
 	font-size: 1.5em;
@@ -473,7 +473,7 @@ body {
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;	
+	transition: all 0.3s ease-in-out;
 }
 .social_network_likes li a p{
 	padding:10px 0 5px;
@@ -523,7 +523,7 @@ body {
 	width:45px;
 	height:45px;
 	display:block;
-	background:url(../images/social-icons.png) no-repeat;	
+	background:url(../images/social-icons.png) no-repeat;
 	margin:0 auto;
 }
 .social_network i.twitter-icon{
@@ -755,7 +755,7 @@ body {
 	}
 	.h_menu {
 		position: relative;
-	}	
+	}
 	.soc_icons {
 		position: absolute;
 		top: 0px;
@@ -854,7 +854,7 @@ body {
 		padding: 4px 4px;
 	}
 	.detail h2{
-		font-size: 2em;	
+		font-size: 2em;
 	}
 }
 @media only screen and (max-width: 320px) {
@@ -954,7 +954,7 @@ body {
 }
 .modal-header{
 	background: #3B3B3B;
-	text-align: center; 
+	text-align: center;
 	color: #fff;
 }
 .user-data{
@@ -1352,7 +1352,7 @@ body{
 	background: transparent;
 }
 .individual-form{
-	padding-left: 0; 
+	padding-left: 0;
 }
 .individual-form form{
 	padding-top: 20px;
@@ -1455,7 +1455,7 @@ body{
 	padding: 10px 4px 10px 30px;
 }
 .finish-btn .fa{
-	margin-left: 30px !important; 
+	margin-left: 30px !important;
 }
 #professional .col-md-9{
 	padding-right: 0;
@@ -1514,6 +1514,7 @@ body{
 .frnchs-nxtbtn a:hover{
 	color: #fff;
 }
+
 .back-btn{
 	padding: 10px 30px 10px 23px;
 	background: black;
@@ -1585,3 +1586,4 @@ body{
 	text-align: right;
 	margin-left: -8px;
 }
+
