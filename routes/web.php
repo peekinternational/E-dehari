@@ -39,3 +39,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/accounts/frenchise', function () {
     return view('accounts.frenchise');
 });
+
+Route::get('/accounts/workMarket', function () {
+    return view('accounts.workMarket');
+});
+Route::get('/accounts/hireService', function () {
+    return view('accounts.hireService');
+});
+Route::get('/accounts/company', function () {
+    return view('accounts.company');
+});
+

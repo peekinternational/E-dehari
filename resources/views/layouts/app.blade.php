@@ -14,6 +14,9 @@
         <link href="{{url('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
         <link href="{{url('css/bootstrap.min.css.map')}}" rel='stylesheet' type='text/css' />
 
+        <link href="{{url('css/circle.css')}}" rel='stylesheet' type='text/css' />
+        
+
         <link href="{{url('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
         <!-- start plugins -->
         <script type="text/javascript" src="{{url('js/jquery.min.js')}}"></script>
