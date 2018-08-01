@@ -1586,4 +1586,231 @@ body{
 	text-align: right;
 	margin-left: -8px;
 }
-
+/************DashBoard*****************/
+.sub-header{
+	background: #FF6D0B;
+}
+.sub-header h3{
+	color: #fff;
+	font-weight: 600;
+	margin: 10px 0;
+}
+.sub-header h4{
+	margin-bottom: 7px;
+	font-weight: bold;
+}
+.sub-header p{
+	color: #fff;
+}
+.sub-header .col-md-4:nth-Child(1){
+	padding-top: 5px;
+}
+.profile-complete{
+	text-align: center;
+	padding: 33px 15px;
+}
+.profile-complete h5{
+	margin-top: 17px;
+	margin-bottom: 4px;
+	font-weight: 600;
+	color: #fff;
+}
+.bg-black-btn{
+	color: #fff;
+	background: black;
+	padding:10px 12px;
+}
+.sub-header .col-md-4:nth-Child(3){
+	padding-right: 0;
+	text-align: right;
+}
+.email{
+	font-weight: 600;
+}
+.edution-detail{
+	padding: 10px 0;
+	display: -webkit-box;
+}
+.edution-detail .title{
+	font-weight: 600;
+	width: 12%;
+}
+.edution-detail .description{
+	width: 52%;
+}
+.edution-detail .edit-icon{
+	width: 10%;
+}
+.dashboard-section{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.profile-img{
+	height: 150px;
+	width: 150px;
+}
+.profile-img img{
+	width: 100%;
+}
+.profile-img .icon{
+    position: absolute;
+    top: 68%;
+    left: 0;
+    width: 96%;
+}
+.profile-img .icon label{
+	    padding-right: 84px;
+}
+.profile-img .icon .fa-check-circle{
+	color: green;
+}
+.update-btn{
+	padding-top: 15px;
+}
+.update-btn button{
+	background-color: #FF6D0B;
+	padding: 10px 30px;
+	color: white;
+}
+#edit-Img{
+	cursor: pointer;
+    opacity: 0;
+    display: none;
+}
+.view-profile-img .profile-img{
+	height: 149px;
+	width: 138px;
+}
+.view-profile-img .profile-img .icon{
+    width: 83%;
+    top: 54%;
+}
+.hire-btn{
+	background: #FF6D0B;
+    color: #fff;
+    padding: 8px 4px 8px 00px;
+    font-weight: 600;
+}
+.hire-btn:hover{
+	color: #fff;
+}
+.hire-btn .fa{
+	margin-left: 15px;
+	font-size: 20px;
+}
+.profile-title{
+	margin-top: 0;
+    margin-bottom: 33px;
+}
+.verifications p{
+	padding: 5px 0;
+}	
+.reveiw-section{
+	padding: 35px 0;
+}
+.reveiw-section .col-md-12:last-Child{
+	padding-top: 20px;
+}
+.reveiw-section .col-md-12:last-Child h5 a{
+	color: black;
+	text-decoration: none;
+}
+.user-dash-profile{
+	text-align: -webkit-right;
+}
+.user-dash-profile .profile-img .icon{
+	position: absolute;
+    top: 81%;
+    left: 0;
+    width: 90%;
+}
+.dashboard-tabs .col-md-4{
+	padding-left: 0;
+	padding-right: 0;
+}
+.dashboard-tabs .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+	background: #F97E12;
+	color: #000;
+}
+.dashboard-tabs .nav-pills > li{
+	background: #999999;
+	color: #fff;
+}
+.dashboard-tabs .nav-pills > li a{
+	color: #fff;
+}
+.welcome-title{
+	padding: 24px 15px;
+}
+.logo{
+	margin-top: 8px;
+}
+@media screen and (max-width: 768px) {
+	.main_content{
+		padding: 0;
+	}
+	.login-box{
+		padding: 15px;
+	}
+	.login-box .nav > li > a {
+	    font-size: 10px;
+	    padding: 10px 9.5px;
+	}
+	.edution-detail .title{
+	    width: 28%;		
+	}
+	.user-dash-profile{
+		text-align: -webkit-center;
+	}
+	.user-dash-profile .profile-img .icon {
+	    position: absolute;
+	    top: 81%;
+	    left: 26px;
+	    width: 62%;
+	}
+	.user-dash-profile .profile-img .icon label {
+    	padding-right: 0;
+	}
+	.update-btn {
+    	padding-top: 47px;
+	}
+	.dashboard-tabs .nav-pills{
+		padding-left: 11px;
+	}
+	.dashboard-tabs .nav > li > a {
+    	padding: 13px 13px;
+	}
+	.navbar-default .navbar-toggle {
+    	border-color: #F97E12;
+	}
+	.navbar-default .navbar-toggle .icon-bar{
+		border-color: #F97E12 !important;
+	}
+	.profile-complete{
+		padding: 5px 15px !important;
+	}
+	.welcome-title{
+		padding: 5px 15px;
+	}
+	.profile-complete h5{
+		margin-top: 0;
+	}
+	.dashboard-section .col-md-2{
+		text-align: -webkit-center !important;
+	}
+	.profile-img .icon {
+	    position: absolute;
+	    top: 68%;
+	    left: 25px;
+	    width: 64%;
+	}
+	.profile-img .icon label {
+    	padding-right: 0;
+	}
+	.footer-links{
+		text-align: center;
+	}
+	.footer-top .col-md-2 {
+    	width: 50%;
+	}
+}

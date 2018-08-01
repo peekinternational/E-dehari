@@ -49,4 +49,13 @@ Route::get('/accounts/hireService', function () {
 Route::get('/accounts/company', function () {
     return view('accounts.company');
 });
+Route::get('/accounts/individualDashboard', function () {
+    return view('accounts.individualDashboard');
+});
+Route::get('/accounts/individualProfile', function () {
+    return view('accounts.individualProfile');
+});
+Route::get('/accounts/userDashboard', function () {
+    return view('accounts.userDashboard');
+});
 
