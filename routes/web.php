@@ -17,36 +17,38 @@ Route::get('/welcome', function () {
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/accounts/signup', 'frontend\Home@create');
+Route::group(['prefix' => '/accounts'], function ()
+{
 
-Route::get('/accounts/individual', 'frontend\Home@individual_route');
-Route::get('/accounts/serviceSignup', function () {
+
+Route::get('/signup', 'frontend\Home@create');
+Route::get('/individual', 'frontend\Individual@individual_route');
+Route::get('/franchise', 'frontend\Franchise@franchise_route');
+Route::get('/company', 'frontend\Company@company_route');
+Route::get('/serviceSignup', function () {
     return view('accounts.serviceSignup');
 });
-Route::get('/accounts/login', 'frontend\Home@login_route');
-
+Route::get('/login', 'frontend\Home@login_route');
+Route::get('/workMarket', function () {
+    return view('accounts.workMarket');
+});
+Route::get('/hireService', function () {
+    return view('accounts.hireService');
+});
+});
 
 
 Route::post('create_User', 'frontend\Home@store');
-Route::post('add_worker', 'frontend\Home@create_worker');
 Route::post('login_User', 'frontend\Home@Login');
-Route::get('logout', 'frontend\Home@Logout');
+Route::get('logout', 'fornt\Home@Logout');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/accounts/frenchise', function () {
-    return view('accounts.frenchise');
-});
 
-Route::get('/accounts/workMarket', function () {
-    return view('accounts.workMarket');
-});
-Route::get('/accounts/hireService', function () {
-    return view('accounts.hireService');
-});
-Route::get('/accounts/company', function () {
-    return view('accounts.company');
-});
 
+
+
+Route::post('personal_info', 'frontend\Franchise@franchise_info');
+Route::post('add_worker', 'frontend\Franchise@create_worker');

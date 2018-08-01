@@ -1495,7 +1495,7 @@ body{
 }
 
 /************Frenchise*******/
-#fileBtn{
+#w_image{
 	cursor: pointer;
 	opacity: 0;
 	display: none;
@@ -1586,4 +1586,3 @@ body{
 	text-align: right;
 	margin-left: -8px;
 }
-

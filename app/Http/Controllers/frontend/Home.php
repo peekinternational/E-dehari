@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DhrUser;
 use App\Models\Worker;
+use App\Models\UserInfo;
+use DB;
+
 class Home extends Controller
 {
     /**
@@ -30,9 +33,9 @@ class Home extends Controller
         if ($userType->type == "individual") {
           return redirect('/accounts/individual');
         }elseif ($userType->type == "shop") {
-          return redirect('/accounts/frenchise');
+          return redirect('/accounts/franchise');
         }elseif ($userType->type == "company") {
-          return redirect('/accounts/frenchise');
+          return redirect('/accounts/company');
         }
       }else {
         return view('accounts.signup');
@@ -48,27 +51,12 @@ class Home extends Controller
         if ($userType->type == "individual") {
           return redirect('/accounts/individual');
         }elseif ($userType->type == "shop") {
-          return redirect('/accounts/frenchise');
+          return redirect('/accounts/franchise');
         }elseif ($userType->type == "company") {
-          return redirect('/accounts/frenchise');
+          return redirect('/accounts/company');
         }
       }else {
         return view('accounts.login');
-      }
-
-    }
-
-
-
-    public function individual_route(Request $request)
-    {
-      if($request->session()->has('u_session')){
-        return view('accounts.individual');
-
-
-      }else {
-
-        return redirect('/accounts/login');
       }
 
     }
@@ -83,12 +71,13 @@ class Home extends Controller
     {
 
       $validator =  $this->validate($request,[
-    'email_phone' => 'required|unique:dhr_users,email_phone',
+    'phone' => 'required|unique:dhr_users,phone',
     'password' => 'required|min:6'
   ]);
 
       $user = new DhrUser;
-      $user->email_phone = $request->input('email_phone');
+      $user->phone = $request->input('phone');
+      $user->email = $request->input('email');
       $user->password = md5($request->input('password'));
       $user->type = $request->input('type');
 
@@ -104,26 +93,7 @@ class Home extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create_worker(Request $request)
-    {
 
-      $validator =  $this->validate($request,[
-    'w_name' => 'required',
-    'w_designation' => 'required'
-  ]);
-        $userinfo= $request->session()->get('u_session');
-
-      $user = new Worker;
-      $user->w_name = $request->input('w_name');
-      $user->w_designation = $request->input('w_designation');
-      $user->w_mobile = $request->input('w_mobile');
-      $user->w_gender = $request->input('w_gender');
-      $user->w_image = $request->input('w_image');
-      $user->userId = $userinfo->userId;
-
-      $user->save();
-      return redirect('/accounts/frenchise')->with('success','You have added new worker successfully');
-    }
 
     /**
      * Display the specified resource.
@@ -173,13 +143,13 @@ class Home extends Controller
     // Login Function
 public function login(Request $request)
 {
-  $email_phone  = $request->input('email_phone');
+  $phone  = $request->input('phone');
   $password = md5($request->input('password'));
   // dd($request->all());
-  $user1 = DhrUser::whereemail_phone($email_phone)->first();
+  $user1 = DhrUser::wherephone($phone)->first();
 
-  if (!empty($user1->email_phone)) {
-    if ($email_phone == $user1->email_phone) {
+  if (!empty($user1->phone)) {
+    if ($phone == $user1->phone) {
       if ($password == ($user1->password)) {
         $request->session()->put('u_session', $user1);
         // $request->session()->put('type', $user1->type);
@@ -192,11 +162,11 @@ public function login(Request $request)
         if ($user->type == "individual") {
           return redirect('/accounts/individual');
         }elseif ($user->type == "shop") {
-          // return view('accounts.frenchise', compact('user'));
-          return redirect('/accounts/frenchise');
+          // return view('accounts.franchise', compact('user'));
+          return redirect('/accounts/franchise');
 
         }elseif ($user->type == "company") {
-          // return view('accounts.frenchise', compact('user'));
+          // return view('accounts.franchise', compact('user'));
           return redirect('/accounts/company');
 
         }
@@ -219,5 +189,7 @@ public function Logout()
   session()->forget('u_session');
   return redirect('/accounts/login');
 }
+
+
 
 }

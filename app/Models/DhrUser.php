@@ -8,6 +8,6 @@ class DhrUser extends Model
 {
   // use Notifiable;
     protected $primaryKey = 'userId';
-    public $fillable = ['email_phone', 'password', 'type', 'f_name'];
+    public $fillable = ['phone', 'email', 'password', 'type', 'f_name'];
 
 }

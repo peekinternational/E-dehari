@@ -15,12 +15,12 @@ class CreateWorkersTable extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
           $table->increments('w_id');
+          $table->integer('f_userId');
           $table->string('w_name');
           $table->string('w_designation');
           $table->string('w_mobile')->nullable();
           $table->string('w_gender')->nullable();;
           $table->string('w_image')->nullable();
-          $table->integer('userId');
           $table->timestamps();
         });
     }
