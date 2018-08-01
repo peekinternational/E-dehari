@@ -1495,7 +1495,7 @@ body{
 }
 
 /************Frenchise*******/
-#fileBtn{
+#w_image{
 	cursor: pointer;
 	opacity: 0;
 	display: none;
@@ -1586,6 +1586,7 @@ body{
 	text-align: right;
 	margin-left: -8px;
 }
+
 /************DashBoard*****************/
 .sub-header{
 	background: #FF6D0B;
@@ -1814,3 +1815,4 @@ body{
     	width: 50%;
 	}
 }
+

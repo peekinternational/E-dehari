@@ -3,15 +3,16 @@
 
 <div class="main_content">
 	<div class="container">
-    @include('includes.messages')
+
 		<div class="row">
 			<div class="col-md-offset-3 col-md-6 login-box text-center">
 				<div class="col-md-offset-2 col-md-8">
+					  @include('includes.messages')
 					<h3 class="sigunp-title" style="text-align: center;">Login with your email</h3>
 			      	<form  action="{{url('login_User')}}" method="post">
 								{{csrf_field()}}
 				        <div class="form-group">
-				          <input type="email" name="email_phone" class="form-control" id="email" placeholder="Mobile Number or Email">
+				          <input type="text" name="phone" class="form-control" id="email" placeholder="Mobile Number or Email">
 				        </div>
 				        <div class="form-group">
 				          <input type="password" name="password" class="form-control" id="pwd" placeholder="Password">

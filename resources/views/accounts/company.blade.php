@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-  
+
 <div class="individual-section">
 	<div class="container">
-		<div class="row"> 
-				
+		<div class="row">
+
 			<div class="tab-content">
 				<div id="personal-info" class="tab-pane fade in active">
 					<div class="col-md-7 left-side">
@@ -69,7 +69,7 @@
 			                                <div class="bar"></div>
 			                                <div class="fill"></div>
 			                            </div>
-			                        </div> 
+			                        </div>
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">40%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -80,7 +80,7 @@
 							</div>
 						</div>
 					</div>
-				</div> 
+				</div>
 				<div id="addworkers" class="tab-pane fade in">
 					<div class="col-md-7 left-side">
 						<h3>Help people to find the right person </h3>
@@ -93,55 +93,56 @@
 							<span class="des-title">Add Services & Prices</span>
 						</h4>
 						<div class="col-md-9 individual-form">
-							<form class="" style="padding-top: 20px;">
-							  	<div class="row">
-							  		<div class="form-group col-md-6" style="padding-right: 0;">
-								  		<label>Worker Name</label>
-								  		<div class="input-group">
-								  			<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-								    		<input type="text" id="WorkerName" class="form-control" placeholder="Worker Name">
-								  		</div>
-							  		</div>
-								  	<div class="form-group col-md-6">
-								  		<label>Worker Designation</label>
-								  		<div class="input-group">
-								    		<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-								    		<input type="text" id="designation" class="form-control" placeholder="Worker Designation">
-								  		</div>
-								  	</div>
-							  	</div>
-							  	<div class="form-group">
-							  		<label>Valid Mobile</label>
-							  		<div class="input-group">
-							    		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-							    		<input type="text" id="mobile" class="form-control" placeholder="Mobile">
-							  		</div>
-							  	</div>
-							  	<div class="row">
-							  		<div class="form-group col-md-4" style="padding-right: 0;">
-								  		<label>Gender</label>
-								  		<div class="input-group">
-								    		<span class="input-group-addon"><i class="fa fa-venus"></i></span>
-								    		<input type="text" id="gender" class="form-control">
-								  		</div>
-							  		</div>
-								  	<div class="form-group col-md-4">
-								  		<label>Worker Picture</label><br>
-								  		<label class="btn btn-file" for="fileBtn">Upload Picture
-								  			<input type="file" name="" id="fileBtn">
-								  		</label>
-								  	</div>
-							  	</div>
+              <form class="" action="{{url('add_worker')}}" method="post" style="padding-top: 20px;">
+                        {{csrf_field()}}
+                  <div class="row">
+                    <div class="form-group col-md-6" style="padding-right: 0;">
+                      <label>Worker Name</label>
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input type="text" name="w_name" id="WorkerName" class="form-control" placeholder="Worker Name">
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Worker Designation</label>
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input type="text" name="w_designation" id="designation" class="form-control" placeholder="Worker Designation">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Valid Mobile</label>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                      <input type="text" name="w_mobile" id="mobile" class="form-control" placeholder="Mobile">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-4" style="padding-right: 0;">
+                      <label>Gender</label>
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-venus"></i></span>
+                        <input type="text" name="w_gender" id="gender" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label>Worker Picture</label><br>
+                      <label class="btn btn-file" for="fileBtn">Upload Picture
+                        <input type="file" name="w_image" id="fileBtn">
+                      </label>
+                    </div>
+                  </div>
 
-						  		<div class="form-group col-md-4 nxt-btn" style="padding-left: 0;">
-						  			<button class="btn login-btn btn-block">Add New <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
-						  		</div>
-							</form>
+                  <div class="form-group col-md-4 nxt-btn" style="padding-left: 0;">
+                    <button type="submit" class="btn login-btn btn-block">Add New <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
+                  </div>
+              </form>
 						</div>
 						<div class="form-group col-md-offset-5 col-md-5 nxt-btn">
 							<a data-toggle="pill" href="#personal-info" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
 				  			<a data-toggle="pill" href="#location" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
-				  		</div>	
+				  		</div>
 					</div>
 					<div class="col-md-5 right-side" style="padding: 34px 0 44px 50px;">
 						<div class="user-panel">
@@ -157,7 +158,7 @@
 			                                <div class="bar"></div>
 			                                <div class="fill"></div>
 			                            </div>
-			                        </div> 
+			                        </div>
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">60%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -168,7 +169,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 				<div id="location" class="tab-pane fade in">
 					<div class="col-md-7 left-side" style="padding-bottom: 00px;">
 						<h3>Help people to find the right person </h3>
@@ -201,9 +202,9 @@
 				  		  	  		<div class="form-group col-md-3" style="padding-left: 0;">
 				  		  		  		<label>Rate</label>
 		  		  		  				<select class="form-control">
-		  		  		  					<option>AED</option>	
-		  		  		  					<option>USD</option>	
-		  		  		  					<option>PKR</option>	
+		  		  		  					<option>AED</option>
+		  		  		  					<option>USD</option>
+		  		  		  					<option>PKR</option>
 		  		  		  				</select>
 				  		  	  		</div>
 				  		  	  	</div>
@@ -215,7 +216,7 @@
 						<div class="form-group col-md-offset-6 col-md-5 nxt-btn frnchs-nxtbtn">
 							<a data-toggle="pill" href="#addworkers" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
 				  			<a href="#" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
-				  		</div>	
+				  		</div>
 					</div>
 					<div class="col-md-5 right-side" style="padding: 33px 0 38px 50px;">
 						<div class="user-panel">
@@ -231,7 +232,7 @@
 			                                <div class="bar"></div>
 			                                <div class="fill"></div>
 			                            </div>
-			                        </div> 
+			                        </div>
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">70%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -242,7 +243,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
 	</div>

@@ -14,9 +14,10 @@ class CreateDhrUsersTable extends Migration
     public function up()
     {
         Schema::create('dhr_users', function (Blueprint $table) {
-          
+
               $table->increments('userId');
-              $table->string('email_phone')->unique();
+              $table->string('phone')->unique();
+              $table->string('email')->unique()->nullable();
               $table->string('password');
               $table->string('type');
               $table->string('f_name')->nullable();
