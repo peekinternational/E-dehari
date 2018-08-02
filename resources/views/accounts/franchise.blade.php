@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
-
+<?php
+	$dob = '';
+	if ($user_get_info != null) {
+		$dob = $user_get_info->dob;
+	}else {
+		$dob= '';
+	}
+ ?>
 <div class="individual-section">
 	<div class="container">
 		<div class="row">
@@ -45,7 +52,7 @@
 							  		<label>Establish Date</label>
 							  		<div class="input-group">
 							    		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							    		<input type="date" id="dob" class="form-control" name="dob" value="{{$user_get_info->dob}}">
+							    		<input type="date" id="dob" class="form-control" name="dob" value="{{$dob}}">
 							  		</div>
 							  	</div>
 									<div class="form-group col-md-offset-8 col-md-3 nxt-btn">
@@ -95,6 +102,10 @@
 							<span class="des-title">Add Services & Prices</span>
 						</h4>
 						<div class="col-md-9 individual-form">
+							<div id="w_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
 							<form class="" action="#" method="" style="padding-top: 20px;">
                 				{{csrf_field()}}
 							  	<div class="row">
@@ -102,14 +113,14 @@
 								  		<label>Worker Name</label>
 								  		<div class="input-group">
 								  			<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-								    		<input type="text" name="w_name" id="w_name" class="form-control" placeholder="Worker Name">
+								    		<input type="text" name="w_name" id="w_name" class="form-control worker_input" placeholder="Worker Name">
 								  		</div>
 							  		</div>
 								  	<div class="form-group col-md-6">
 								  		<label>Worker Designation</label>
 								  		<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-								    		<input type="text" name="w_designation" id="w_designation" class="form-control" placeholder="Worker Designation">
+								    		<input type="text" name="w_designation" id="w_designation" class="form-control worker_input" placeholder="Worker Designation">
 								  		</div>
 								  	</div>
 							  	</div>
@@ -117,15 +128,18 @@
 							  		<label>Valid Mobile</label>
 							  		<div class="input-group">
 							    		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-							    		<input type="text" name="w_mobile" id="w_mobile" class="form-control" placeholder="Mobile">
+							    		<input type="text" name="w_mobile" id="w_mobile" class="form-control worker_input" placeholder="Mobile">
 							  		</div>
 							  	</div>
 							  	<div class="row">
 							  		<div class="form-group col-md-4" style="padding-right: 0;">
 								  		<label>Gender</label>
-								  		<div class="input-group">
+											<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-venus"></i></span>
-								    		<input type="text" name="w_gender" id="w_gender" class="form-control">
+								    		<select class="form-control" id="w_gender">
+					    			      <option value="Male">Male</option>
+								    			<option value="Female">Female</option>
+								    		</select>
 								  		</div>
 							  		</div>
 								  	<div class="form-group col-md-4">
@@ -186,34 +200,38 @@
 							<span class="des-title">Add Services & Prices</span>
 						</h4>
 						<div class="col-md-9 individual-form">
+							<div id="s_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
 							<form class="">
 							  	<div class="form-group">
 							  		<label>Select Service Categories</label>
-							  	  	<select class="form-control" id="service" name="service">
-							  	  		<option value="electrical" selected>Electrical Service</option>
-							  	  		<option value="car">Car Service</option>
+							  	  	<select class="form-control" id="srv_category" name="srv_category">
+							  	  		<option value="Electrical Service" selected>Electrical Service</option>
+							  	  		<option value="Car Service">Car Service</option>
 							  	  	</select>
 							  	</div>
 				  		  	  	<div class="row">
 				  		  		  	<div class="form-group col-md-5">
 				  		  		  		<label>How much we will charge</label>
-			  		  		    		<input type="text" id="amount" name="amount" class="form-control" placeholder="Charge Rate">
+			  		  		    		<input type="text" id="amount" name="amount" class="form-control service_input" placeholder="Charge Rate">
 				  		  		  	</div>
 				  		  		  	<div class="form-group col-md-4" style="padding-left: 0;">
 				  		  		  		<label>Hours/Days</label>
-			  		  		    		<input type="text" id="wages" name="wages" class="form-control" placeholder="Hours/Days">
+			  		  		    		<input type="text" id="wages" name="wages" class="form-control service_input" placeholder="Hours/Days">
 				  		  		  	</div>
 				  		  	  		<div class="form-group col-md-3" style="padding-left: 0;">
 				  		  		  		<label>Rate</label>
-		  		  		  				<select class="form-control">
-		  		  		  					<option>AED</option>
-		  		  		  					<option>USD</option>
-		  		  		  					<option>PKR</option>
+		  		  		  				<select class="form-control" name="currency_type" id="currency_type">
+		  		  		  					<option value="AED">AED</option>
+		  		  		  					<option value="USD">USD</option>
+		  		  		  					<option value="PKR">PKR</option>
 		  		  		  				</select>
 				  		  	  		</div>
 				  		  	  	</div>
 				  		  	  	<div class="form-group col-md-4 nxt-btn" style="padding-left: 0;">
-						  			<button class="btn login-btn btn-block">Add New </button>
+						  			<button type="submit" id="srv_btn" class="btn login-btn btn-block">Add New </button>
 						  		</div>
 							</form>
 						</div>
@@ -304,6 +322,13 @@ $('#w_btn').click(function (e) {
 	var w_mobile = $('#w_mobile').val();
 	var w_gender = $('#w_gender').val();
 	var w_image = $('#w_image')[0].files[0];
+	if (w_name == "" || w_designation =="" || w_mobile=="") {
+		$("#w_error").show();
+		setTimeout(function () {
+			$("#w_error").hide();
+		},3000);
+		return 0;
+	}
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -327,7 +352,53 @@ $('#w_btn').click(function (e) {
 		success: function (response) {
 			console.log(response);
 			if (response == "1") {
-			$('input').val('');
+			$('.worker_input').val('');
+
+			}
+		}
+	});
+});
+</script>
+
+
+<script>
+$('#srv_btn').click(function (e) {
+	e.preventDefault();
+	var srv_category = $('#srv_category').val();
+	var amount = $('#amount').val();
+	var wages = $('#wages').val();
+	var currency_type = $('#currency_type').val();
+	if (amount == "" || wages =="") {
+		$("#s_error").show();
+		setTimeout(function () {
+			$("#s_error").hide();
+		},3000);
+		return 0;
+	}
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	form = new FormData();
+	form.append('srv_category', srv_category);
+	form.append('amount', amount);
+	form.append('wages', wages);
+	form.append('w_mobile', w_mobile);
+	form.append('currency_type', currency_type);
+
+	$.ajax({
+		type: 'post',
+		data: form,
+		cache: false,
+		contentType: false,
+		processData: false,
+		url: "{{url('add_service')}}",
+		success: function (response) {
+			console.log(response);
+			if (response == "1") {
+			$('.service_input').val('');
 			}
 		}
 	});

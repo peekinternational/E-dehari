@@ -32,12 +32,14 @@
          @if(\Session::has('u_session'))
           <!-- {{Session('ses')}} -->
           <li id="logout_show"><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>
+          <li style="margin-top: 5px;"><button class="btn" style="background: black; color: white;">Place your Ads<i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="padding-left: 7px;"></i></button></li>
+
           @else
           <li id="login_show"><a href="{{url('/accounts/login')}}"><i class="fa fa-user"></i>Login</a></li>
+          <li id="signup_show"><a href="{{url('/accounts/signup')}}"><i class="fa fa-user-plus"></i>Sign Up</a></li>
 
           @endif
 
-        <li style="margin-top: 5px;"><button class="btn" style="background: black; color: white;">Place your Ads<i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="padding-left: 7px;"></i></button></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

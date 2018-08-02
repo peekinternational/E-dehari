@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DhrUser;
 use App\Models\Worker;
 use App\Models\UserInfo;
+use App\Models\Service;
 use DB;
 class Franchise extends Controller
 {
@@ -25,9 +26,12 @@ class Franchise extends Controller
     {
       if($request->session()->has('u_session')){
         $userinfo= $request->session()->get('u_session')->userId;
+        // dd($userinfo);
+
         $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
         $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
         // dd($user_get_info);
+
         return view('accounts.franchise',compact('user_get','user_get_info'));
 
 
@@ -56,6 +60,9 @@ class Franchise extends Controller
       $user->f_userId = $userinfo->userId;
       // $user->image =  $request->file('w_image');
       $image = $request->file('w_image');
+      if ($image !="") {
+
+
 
   $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
 
@@ -63,10 +70,32 @@ class Franchise extends Controller
   $image->move($destinationPath, $profilePicture);
 //  dd($profilePicture);
   $user->w_image=$profilePicture;
-
+}
     $worker =  $user->save();
       // dd($worker);
       if ($worker == true) {
+        echo "1";
+      }else {
+        echo "0";
+      }
+
+    }
+
+
+    public function create_service(Request $request)
+    {
+        $userinfo= $request->session()->get('u_session');
+
+      $user = new Service;
+      $user->service_category = $request->input('srv_category');
+      $user->amount = $request->input('amount');
+      $user->wages = $request->input('wages');
+      $user->currency_type = $request->input('currency_type');
+      $user->f_userId = $userinfo->userId;
+
+      $service =  $user->save();
+      // dd($worker);
+      if ($service == true) {
         echo "1";
       }else {
         echo "0";

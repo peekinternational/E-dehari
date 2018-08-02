@@ -40,7 +40,7 @@ Route::get('/hireService', function () {
 
 Route::post('create_User', 'frontend\Home@store');
 Route::post('login_User', 'frontend\Home@Login');
-Route::get('logout', 'fornt\Home@Logout');
+Route::get('logout', 'frontend\Home@Logout');
 
 Auth::routes();
 
@@ -50,5 +50,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::post('Ind_personal_info', 'frontend\Individual@individual_info');
+Route::post('Ind_professional_info', 'frontend\Individual@individual_Professional_info');
+Route::post('Ind_location_info', 'frontend\Individual@individual_location_info');
 Route::post('personal_info', 'frontend\Franchise@franchise_info');
+Route::post('personal_info', 'frontend\Company@company_info');
 Route::post('add_worker', 'frontend\Franchise@create_worker');
+Route::post('add_service', 'frontend\Franchise@create_service');
+Route::post('add_worker_company', 'frontend\Company@create_worker');
+Route::post('add_service_company', 'frontend\Company@create_service');

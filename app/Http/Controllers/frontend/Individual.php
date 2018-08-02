@@ -24,7 +24,14 @@ class Individual extends Controller
     public function individual_route(Request $request)
     {
       if($request->session()->has('u_session')){
-        return view('accounts.individual');
+        $userinfo= $request->session()->get('u_session')->userId;
+        // dd($userinfo);
+
+        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
+        // dd($user_get_info);
+
+        return view('accounts.individual',compact('user_get','user_get_info'));
 
 
       }else {
@@ -33,6 +40,107 @@ class Individual extends Controller
       }
 
     }
+
+
+
+    public function individual_info(Request $request)
+    {
+      // dd($request->all());
+      // $name = $request->get('name');
+      // $phone = $request->get('phone');
+      // $email = $request->get('email');
+      // $dob = $request->get('dob');
+      $usersession= $request->session()->get('u_session');
+      $nameinfo['f_name'] = $request->get('name');
+      $nameinfo['phone'] = $request->get('phone');
+      $nameinfo['email'] = $request->get('email');
+      $userinfo_tbl['dob'] = $request->get('dob');
+      $userinfo_tbl['dob'] = $request->get('dob');
+      $userinfo_tbl['gender'] = $request->get('gender');
+      $userinfo_tbl['nationality'] = $request->get('nationality');
+
+
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
+
+
+
+    public function individual_Professional_info(Request $request)
+    {
+
+      $usersession= $request->session()->get('u_session');
+      $userinfo_tbl['skill'] = $request->get('skill');
+      $userinfo_tbl['education'] = $request->get('education');
+      $userinfo_tbl['experience'] = $request->get('experience');
+      $userinfo_tbl['availability'] = $request->get('availability');
+      $userinfo_tbl['currency_type'] = $request->get('currency_type');
+      $userinfo_tbl['amount'] = $request->get('amount');
+      $userinfo_tbl['wages'] = $request->get('wages');
+
+
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
+
+
+
+    public function individual_location_info(Request $request)
+    {
+
+      $usersession= $request->session()->get('u_session');
+      $userinfo_tbl['location'] = $request->get('location');
+      
+
+
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
 
 
     /**
