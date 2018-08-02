@@ -48,6 +48,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::get('/accounts/workMarket', function () {
+    return view('accounts.workMarket');
+});
+Route::get('/accounts/hireService', function () {
+    return view('accounts.hireService');
+});
+Route::get('/accounts/company', function () {
+    return view('accounts.company');
+});
+Route::get('/accounts/individualDashboard', function () {
+    return view('accounts.individualDashboard');
+});
+Route::get('/accounts/individualProfile', function () {
+    return view('accounts.individualProfile');
+});
+Route::get('/accounts/userDashboard', function () {
+    return view('accounts.userDashboard');
+});
+
+
 
 
 Route::post('Ind_personal_info', 'frontend\Individual@individual_info');
