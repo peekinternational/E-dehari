@@ -476,8 +476,8 @@ $('#location_info').click(function (e) {
 		success: function (response) {
 			console.log(response);
 			if (response == "successfully") {
-				// window.location.href = "/";
-				window.location.href ="/accounts/individualDashboard";
+				window.location.href = "{{url('/accounts/individualDashboard')}}";
+
 			}
 		}
 	});
