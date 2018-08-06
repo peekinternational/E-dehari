@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DhrUser;
 use App\Models\Worker;
 use App\Models\UserInfo;
+use App\Models\Service;
 use DB;
 
 class Home extends Controller
@@ -174,11 +175,11 @@ public function login(Request $request)
         // return view('index', compact('user'));
 
       }else {
-        return redirect('/login')->with('red-alert', 'Incorrect Password');
+        return redirect('/accounts/login')->with('red-alert', 'Incorrect Password');
       }
     }
     }else {
-      return redirect('/login')->with('red-alert', 'Incorrect Phone');
+      return redirect('/accounts/login')->with('red-alert', 'Incorrect Phone');
   }
 }
 

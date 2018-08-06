@@ -6,8 +6,8 @@
 
 		<div class="row">
 			<div class="col-md-offset-3 col-md-6 login-box text-center">
+				@include('includes.messages')
 				<div class="col-md-offset-2 col-md-8">
-					  @include('includes.messages')
 					<h3 class="sigunp-title" style="text-align: center;">Login with your email</h3>
 			      	<form  action="{{url('login_User')}}" method="post">
 								{{csrf_field()}}
