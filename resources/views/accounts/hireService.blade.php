@@ -1,10 +1,48 @@
 @extends('layouts.app')
 @section('content')
-  
+<?php
+  $gender = '';
+  $dob = '';
+  $currency_type = '';
+	$amount = '';
+  $service_category = '';
+  $time = '';
+  $people = '';
+  $start_date = '';
+  $end_date = '';
+  $image = '';
+	$total = '';
+	if ($user_get_info != null) {
+		$gender = $user_get_info->gender;
+		$dob = $user_get_info->dob;
+		$currency_type = $user_get_info->currency_type;
+		$amount = $user_get_info->amount;
+		$service_category = $user_get_info->service_category;
+		$time = $user_get_info->time;
+		$people = $user_get_info->people;
+		$start_date = $user_get_info->start_date;
+		$end_date = $user_get_info->end_date;
+		$image = $user_get_info->image;
+		$total = $user_get_info->total;
+
+	}else {
+		$gender = '';
+	  $dob = '';
+		$currency_type = '';
+		$amount = '';
+	  $service_category = '';
+	  $time = '';
+	  $people = '';
+	  $start_date = '';
+	  $end_date = '';
+	  $image = '';
+		$total = '';
+	}
+ ?>
 <div class="individual-section" style="background-image: url('../images/login-bg.png');">
 	<div class="container">
-		<div class="row hireService-section"> 
-				
+		<div class="row hireService-section">
+
 			<div class="tab-content">
 				<div id="personal-info" class="tab-pane fade in active">
 					<h3><strong>Booking Form</strong></h3>
@@ -17,44 +55,50 @@
 						<span class="des-title">Payment</span>
 					</h4>
 					<div class="col-md-offset-1 col-md-6 left-side">
-						
+
 						<div class="col-md-10 individual-form" style="padding-right: 0;">
-							<form class="">
-								{{ csrf_field() }}
+              <div id="Individual_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
+              <form class="">
 							  	<div class="form-group">
 							  		<label>Full Name</label>
 							  		<div class="input-group">
 							  	  		<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-							  	  		<input type="text"  id="name" class="form-control" name="name">
+							  	  		<input type="text"  id="name" class="form-control" name="name" value="{{$user_get->f_name}}">
 							  		</div>
 							  	</div>
 							  	<div class="form-group">
-							  		<label>Valid Mobile</label>
+							  		<label>Mobile Number</label>
 							  		<div class="input-group">
-							    		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-							    		<input type="text" id="mobile" class="form-control">
+							  	  		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+							  	  		<input type="text"  id="phone" class="form-control" name="phone" value="{{$user_get->phone}}">
 							  		</div>
 							  	</div>
 							  	<div class="form-group">
 							  		<label>Email Address(optional)</label>
 							  		<div class="input-group">
 							    		<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-							    		<input type="text" id="nationality" class="form-control">
+							    		<input type="email" id="email" class="form-control" value="{{$user_get->email}}">
 							  		</div>
 							  	</div>
 							  	<div class="row">
-							  		<div class="form-group col-md-3" style="padding-right: 0;">
+							  		<div class="form-group col-md-4" style="padding-right: 0;">
 								  		<label>Gender</label>
 								  		<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-venus"></i></span>
-								    		<input type="text" id="gender" class="form-control">
+								    		<select class="form-control" id="gender">
+					    			      <option value="Male"  {{ $gender == 'Male' ? 'selected="selected"' : '' }}>Male</option>
+								    			<option value="Female" {{ $gender == 'Female' ? 'selected="selected"' : '' }}>Female</option>
+								    		</select>
 								  		</div>
 							  		</div>
-								  	<div class="form-group col-md-9">
+								  	<div class="form-group col-md-8">
 								  		<label>Date of Birth(optional)</label>
 								  		<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								    		<input type="text" id="dob" class="form-control">
+								    		<input type="date" id="dob" class="form-control" value="{{$dob}}">
 								  		</div>
 								  	</div>
 							  	</div>
@@ -62,7 +106,7 @@
 						</div>
 
 					  	<div class="form-group col-md-offset-7 col-md-3 nxt-btn">
-					  		<a data-toggle="pill" href="#addworkers" class="btn login-btn btn-block btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
+					  		<button type="submit" id="serviceUser_info" data-toggle="pill" class="btn login-btn btn-block btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
 					  	</div>
 					</div>
 
@@ -78,7 +122,7 @@
 			                                <div class="bar"></div>
 			                                <div class="fill"></div>
 			                            </div>
-			                        </div> 
+			                        </div>
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">40%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -89,7 +133,7 @@
 							</div>
 						</div>
 					</div>
-				</div> 
+				</div>
 				<div id="addworkers" class="tab-pane fade in">
 					<h3>Help people to find the right person </h3>
 					<h4>
@@ -101,38 +145,57 @@
 						<span class="des-title">Payment</span>
 					</h4>
 					<div class="col-md-offset-1 col-md-6 left-side">
-						
+
 						<div class="col-md-11 individual-form">
+							<div id="User_detail_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
 							<form class="">
 								{{ csrf_field() }}
 						  		<div class="row">
 							  		<div class="form-group col-md-4">
 				  		  		  		<label>Curreny</label>
-		  		  		  				<select class="form-control">
-		  		  		  					<option>AED</option>	
-		  		  		  					<option>USD</option>	
-		  		  		  					<option>PKR</option>	
+		  		  		  				<select class="form-control" id="currency_type" onchange="get_val();">
+														<option selected>Select Currency</option>
+														<option value="AED" {{ $currency_type == 'AED' ? 'selected="selected"' : '' }}>AED</option>
+								  					<option value="USD" {{ $currency_type == 'USD' ? 'selected="selected"' : '' }}>USD</option>
+								  					<option value="PKR" {{ $currency_type == 'PKR' ? 'selected="selected"' : '' }}>PKR</option>
+
+														<!-- <option value="AED">AED</option> -->
+					  			    			<!-- <option value="USD">USD</option> -->
+					  			    			<!-- <option value="PKR">PKR</option> -->
+
 		  		  		  				</select>
+				  		  	  		</div>
+							  		<div class="form-group col-md-4">
+				  		  		  		<label>Amount/Hour</label>
+                          <div class="input-group">
+                          <input type="text"  id="amount" class="form-control text-center" onchange="get_val();" name="amount" style="border-right: 0" value="{{$amount}}">
+                          <span class="input-group-addon" style="border-left: 0;"><i class="fa fa-money" style="font-size:20px"></i></span>
+                      </div>
 				  		  	  		</div>
 						  		</div>
 						  		<div class="row">
 				  			  		<div class="form-group col-md-10">
 				  				  		<label>What you looking for</label>
-				  			    		<select class="form-control">
-				  			    			<option>Electrical Service</option>
-				  			    			<option>Mechanical Service</option>
+				  			    		<select class="form-control" id="service_category">
+													<option value="Electrical Service" {{ $service_category == 'Electrical Service' ? 'selected="selected"' : '' }}>Electrical Service</option>
+													<option value="Mechanical Service" {{ $service_category == 'Mechanical Service' ? 'selected="selected"' : '' }}>Mechanical Service</option>
+				  			    			<!-- <option>Electrical Service</option> -->
+				  			    			<!-- <option>Mechanical Service</option> -->
 				  			    		</select>
 				  			  		</div>
 				  			  		<div class="form-group col-md-2" style="padding-left: 0;">
 				  			  			<label></label><br>
-				  			  			<button class="btn currny-btn">AED 20/hr</button>
+				  			  			<button type="submit" class="btn currny-btn" id="btn_amount" value="">AED 20/hr</button>
 				  			  		</div>
 						  		</div>
 						  		<div class="row">
 				  		  		  	<div class="form-group col-md-6">
 				  		  		  		<label>Please mention Booking time</label>
 			  		  		    		<div class="input-group">
-						  			  		<input type="number"  id="bookingTime" class="form-control text-center" name="bookingTime" min="0" style="border-right: 0">
+						  			  		<input type="time"  id="time" class="form-control text-center" name="time" min="0" style="border-right: 0" value="{{$time}}">
 						  			  		<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-clock-o"></i></span>
 						  				</div>
 				  		  		  	</div>
@@ -140,7 +203,7 @@
 				  		  		  		<label>How Many person</label>
 			  		  		    		<div class="input-group">
 			  		  		    			<span class="input-group-addon" style="border-right: 0;"><i class="fa fa-users"></i></span>
-						  			  		<input type="number"  id="name" class="form-control" name="name" min="0" style="border-left: 0">
+						  			  		<input type="number"  id="people" class="form-control" name="people" onchange="get_val();" min="0" style="border-left: 0" value="{{$people}}">
 						  				</div>
 				  		  		  	</div>
 						  		</div>
@@ -148,14 +211,14 @@
 				  		  		  	<div class="form-group col-md-6">
 				  		  		  		<label>Start Date</label>
 			  		  		    		<div class="input-group">
-						  			  		<input type="date"  id="bookingTime" class="form-control text-center" name="startDate" style="border-right: 0">
+						  			  		<input type="date"  id="start_date" class="form-control text-center" name="start_date" style="border-right: 0" value="{{$start_date}}">
 						  			  		<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-calendar"></i></span>
 						  				</div>
 				  		  		  	</div>
 				  		  		  	<div class="form-group col-md-5" style="padding-left: 0;">
 				  		  		  		<label>End Date</label>
 			  		  		    		<div class="input-group">
-						  			  		<input type="date" id="endDate" class="form-control" name="endDate" style="border-right: 0">
+						  			  		<input type="date" id="end_date" class="form-control" name="end_date" style="border-right: 0" value="{{$end_date}}">
 			  		  		    			<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-calendar"></i></span>
 						  				</div>
 				  		  		  	</div>
@@ -163,8 +226,8 @@
 							  	<dir class="row" style="padding-left: 0;">
 							  		<div class="form-group col-md-6">
 							  			<label>Upload Picture or Video(Optional)</label>
-							  			<label class="btn btn-file" for="fileBtn">Upload Picture
-							  				<input type="file" name="" id="fileBtn"><i class="fa fa-arrow-circle-o-up pull-right" aria-hidden="true" style="padding-top: 4px;"></i>
+							  			<label class="btn btn-file" for="w_image">Upload Picture
+							  				<input type="file" name="" id="w_image"><i class="fa fa-arrow-circle-o-up pull-right" aria-hidden="true" style="padding-top: 4px;"></i>
 							  			</label>
 							  		</div>
 							  	</dir>
@@ -172,13 +235,13 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-md-5 pull-left">
-								<p><strong>Total:</strong> <label class="total-count">AED 60/-</label></p>
+								<p><strong>Total:</strong> <input type="submit" class="total-count" id="total_show" value="{{$total}}" /></p>
 							</div>
 							<div class="form-group col-md-6 nxt-btn nxt-bttn">
 								<a data-toggle="pill" href="#personal-info" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
-					  			<a data-toggle="pill" href="#location" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
+					  			<a data-toggle="pill"  id="serviceUser_detail" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 					  		</div>
-						</div>	
+						</div>
 					</div>
 					<div class="col-md-5 right-side" style="padding: 31px 0 40px 50px;">
 						<div class="user-panel">
@@ -192,7 +255,7 @@
 			                                <div class="bar"></div>
 			                                <div class="fill"></div>
 			                            </div>
-			                        </div> 
+			                        </div>
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">60%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -203,7 +266,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 				<div id="location" class="tab-pane fade in">
 					<h3>Help people to find the right person </h3>
 						<h4>
@@ -215,14 +278,14 @@
 							<span class="des-title">Payment</span>
 						</h4>
 					<div class="col-md-offset-1 col-md-6 left-side" style="padding-bottom: 00px;">
-						
+
 						<div class="col-md-11 individual-form" style="padding: 50px 0;">
 							<h3 style="text-align: right;"><strong>Payment Option</strong></h3>
 						</div>
 						<div class="form-group col-md-offset-6 col-md-6 nxt-btn frnchs-nxtbtn">
 							<a data-toggle="pill" href="#addworkers" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
-				  			<a href="#" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
-				  		</div>	
+				  			<a href="{{url('/accounts/userDashboard')}}" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
+				  		</div>
 					</div>
 					<div class="col-md-5 right-side" style="padding: 10px 0 18px 50px;">
 						<div class="user-panel">
@@ -236,7 +299,7 @@
 			                                <div class="bar"></div>
 			                                <div class="fill"></div>
 			                            </div>
-			                        </div> 
+			                        </div>
 									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">70%</span> Complete</h4>
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
@@ -247,9 +310,149 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	var get_val =  function () {
+		var curr_val = $("#currency_type").val();
+		var amount_val =	$('#amount').val();
+		var people = $('#people').val();
+		var total_amount = amount_val * people;
+		$('#btn_amount').html(curr_val+" "+amount_val+"/hr");
+		if (total_amount == 0) {
+			$('#total_show').html(curr_val+" "+amount_val+"/-");
+		}else {
+
+			$('#total_show').val(curr_val+" "+total_amount+"/-");
+		}
+	}
+</script>
+
+<script>
+$('#serviceUser_info').click(function (e) {
+	e.preventDefault();
+	// var form_value = $(this).serialize();
+	var name = $('#name').val();
+	var phone = $('#phone').val();
+	var email = $('#email').val();
+	var dob = $('#dob').val();
+	var gender = $('#gender').val();
+	console.log(email, dob);
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	form = new FormData();
+	form.append('name', name);
+	form.append('phone', phone);
+	form.append('email', email);
+	form.append('dob', dob);
+	form.append('gender', gender);
+  if (name == "" || phone=="") {
+    $("#Individual_error").show();
+
+    setTimeout(function () {
+      $("#Individual_error").hide();
+      $('#personal-info').addClass('active');
+    },3000);
+    return 0;
+  }
+
+	$.ajax({
+		type: 'post',
+		data: form,
+		cache: false,
+		contentType: false,
+		processData: false,
+		url: "{{ url('serviceUser_personal_info') }}",
+		success: function (response) {
+			console.log(response);
+			if (response == "successfully") {
+				$('#personal-info').removeClass('active');
+				$('#addworkers').addClass('active');
+				if ($currency_type !="" && $amount !="") {
+					var currency_data = '<?php echo json_encode($currency_type); ?>';
+					var amount_data = '<?php echo json_encode($amount); ?>';
+					var js_obj_data = JSON.parse(currency_data );
+					var js_obj_data1 = JSON.parse(amount_data );
+					// alert(js_obj_data1);
+					$('#btn_amount').html(js_obj_data+" "+js_obj_data1+"/hr");
+				}
+
+
+			}
+		}
+	});
+});
+</script>
+
+
+
+<script>
+$('#serviceUser_detail').click(function (e) {
+	e.preventDefault();
+	// var form_value = $(this).serialize();
+	var currency_type = $('#currency_type').val();
+	var amount = $('#amount').val();
+	var service_category = $('#service_category').val();
+	var time = $('#time').val();
+	var people = $('#people').val();
+	var start_date = $('#start_date').val();
+	var end_date = $('#end_date').val();
+	var image = $('#w_image')[0].files[0];
+	var total = $('#total_show').val();
+	// console.log();
+	// alert(total);
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	form = new FormData();
+	form.append('currency_type', currency_type);
+	form.append('amount', amount);
+	form.append('service_category', service_category);
+	form.append('time', time);
+	form.append('people', people);
+	form.append('start_date', start_date);
+	form.append('end_date', end_date);
+	form.append('image', image);
+	form.append('total', total);
+  if (amount == "" || time=="" || people=="" || start_date=="" || end_date=="") {
+    $("#User_detail_error").show();
+
+    setTimeout(function () {
+      $("#User_detail_error").hide();
+      $('#addworkers').addClass('active');
+
+    },3000);
+    return 0;
+  }
+
+	$.ajax({
+		type: 'post',
+		data: form,
+		cache: false,
+		contentType: false,
+		processData: false,
+		url: "{{ url('serviceUser_detail_info') }}",
+		success: function (response) {
+			console.log(response);
+			if (response == "successfully") {
+				$('#addworkers').removeClass('active');
+				$('#location').addClass('active');
+
+			}
+		}
+	});
+});
+</script>
+
 @endsection

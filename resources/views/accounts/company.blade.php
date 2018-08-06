@@ -83,7 +83,7 @@
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
 										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 									</ul>
 								</div>
 							</div>
@@ -102,6 +102,10 @@
 							<span class="des-title">Add Services & Prices</span>
 						</h4>
 						<div class="col-md-9 individual-form">
+							<div id="w_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
 							<form class="" action="#" method="" style="padding-top: 20px;">
                 				{{csrf_field()}}
 							  	<div class="row">
@@ -130,9 +134,12 @@
 							  	<div class="row">
 							  		<div class="form-group col-md-4" style="padding-right: 0;">
 								  		<label>Gender</label>
-								  		<div class="input-group">
+											<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-venus"></i></span>
-								    		<input type="text" name="w_gender" id="w_gender" class="form-control worker_input">
+								    		<select class="form-control" id="w_gender">
+					    			      <option value="Male">Male</option>
+								    			<option value="Female">Female</option>
+								    		</select>
 								  		</div>
 							  		</div>
 								  	<div class="form-group col-md-4">
@@ -174,7 +181,7 @@
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
 										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 									</ul>
 								</div>
 							</div>
@@ -193,6 +200,10 @@
 							<span class="des-title">Add Services & Prices</span>
 						</h4>
 						<div class="col-md-9 individual-form">
+							<div id="s_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
 							<form class="">
 							  	<div class="form-group">
 							  		<label>Select Service Categories</label>
@@ -250,7 +261,7 @@
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
 										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 									</ul>
 								</div>
 							</div>
@@ -311,6 +322,13 @@ $('#w_btn').click(function (e) {
 	var w_mobile = $('#w_mobile').val();
 	var w_gender = $('#w_gender').val();
 	var w_image = $('#w_image')[0].files[0];
+	if (w_name == "" || w_designation =="" || w_mobile=="") {
+		$("#w_error").show();
+		setTimeout(function () {
+			$("#w_error").hide();
+		},3000);
+		return 0;
+	}
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -330,7 +348,7 @@ $('#w_btn').click(function (e) {
 		cache: false,
 		contentType: false,
 		processData: false,
-		url: "{{url('add_worker_company')}}",
+		url: "{{url('add_worker')}}",
 		success: function (response) {
 			console.log(response);
 			if (response == "1") {
@@ -350,6 +368,13 @@ $('#srv_btn').click(function (e) {
 	var amount = $('#amount').val();
 	var wages = $('#wages').val();
 	var currency_type = $('#currency_type').val();
+	if (amount == "" || wages =="") {
+		$("#s_error").show();
+		setTimeout(function () {
+			$("#s_error").hide();
+		},3000);
+		return 0;
+	}
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -369,7 +394,7 @@ $('#srv_btn').click(function (e) {
 		cache: false,
 		contentType: false,
 		processData: false,
-		url: "{{url('add_service_company')}}",
+		url: "{{url('add_service')}}",
 		success: function (response) {
 			console.log(response);
 			if (response == "1") {

@@ -20,6 +20,122 @@ class ServiceUser extends Controller
         //
     }
 
+    public function hireService_route(Request $request)
+    {
+      if($request->session()->has('u_session')){
+        $userinfo= $request->session()->get('u_session')->userId;
+        // dd($userinfo);
+
+        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get_info=DB::table('service_user_infos')->where('f_userId',$userinfo)->first();
+        // dd($user_get_info);
+
+        return view('accounts.hireService',compact('user_get','user_get_info'));
+
+
+      }else {
+
+        return redirect('/accounts/login');
+      }
+
+    }
+
+
+    public function serviceUser_dashboard_route(Request $request)
+    {
+      if($request->session()->has('u_session')){
+        $userinfo= $request->session()->get('u_session')->userId;
+        // dd($userinfo);
+
+        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get_info=DB::table('service_user_infos')->where('f_userId',$userinfo)->first();
+        // dd($user_get_info);
+
+        return view('accounts.userDashboard',compact('user_get','user_get_info'));
+
+
+      }else {
+
+        return redirect('/accounts/login');
+      }
+
+    }
+
+
+    public function service_personal_info(Request $request)
+    {
+      // dd($request->all());
+      $usersession= $request->session()->get('u_session');
+      $nameinfo['f_name'] = $request->get('name');
+      $nameinfo['phone'] = $request->get('phone');
+      $nameinfo['email'] = $request->get('email');
+      $userinfo_tbl['dob'] = $request->get('dob');
+      $userinfo_tbl['gender'] = $request->get('gender');
+
+
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
+
+    public function service_detail_info(Request $request)
+    {
+      // dd($request->all());
+      $usersession= $request->session()->get('u_session');
+      $userinfo_tbl['currency_type'] = $request->get('currency_type');
+      $userinfo_tbl['amount'] = $request->get('amount');
+      $userinfo_tbl['service_category'] = $request->get('service_category');
+      $userinfo_tbl['time'] = $request->get('time');
+      $userinfo_tbl['people'] = $request->get('people');
+      $userinfo_tbl['start_date'] = $request->get('start_date');
+      $userinfo_tbl['end_date'] = $request->get('end_date');
+      $userinfo_tbl['total'] = $request->get('total');
+      $image = $request->file('image');
+      if ($image !="") {
+
+
+
+  $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+
+  $destinationPath = public_path('img/serviceUser_profile');
+  $image->move($destinationPath, $profilePicture);
+ // dd($profilePicture);
+  $userinfo_tbl['image']=$profilePicture;
+}
+
+
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,10 +152,25 @@ class ServiceUser extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+     public function store(Request $request)
+     {
+
+       $validator =  $this->validate($request,[
+     'phone' => 'required|unique:dhr_users,phone',
+     'password' => 'required|min:6'
+   ]);
+
+       $user = new DhrUser;
+       $user->f_name = $request->input('f_name');
+       $user->phone = $request->input('phone');
+       $user->email = $request->input('email');
+       $user->password = md5($request->input('password'));
+       $user->type = $request->input('type');
+
+       $user->save();
+       return redirect('/accounts/login')->with('success','You are successfully Registered');
+     }
+
 
     /**
      * Display the specified resource.

@@ -27,11 +27,13 @@ class Company extends Controller
         $userinfo= $request->session()->get('u_session')->userId;
         // dd($userinfo);
 
-        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get=DB::table('dhr_users')->where('userId',2)->first();
+      ///  dd($user_get);
+
         $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
         // dd($user_get_info);
 
-        return view('accounts.company',compact('user_get','user_get_info'));
+      return view('accounts.company',compact('user_get','user_get_info'));
 
 
       }else {
@@ -40,7 +42,6 @@ class Company extends Controller
       }
 
     }
-
 
     public function create_worker(Request $request)
     {

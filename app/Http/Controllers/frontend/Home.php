@@ -37,6 +37,8 @@ class Home extends Controller
           return redirect('/accounts/franchise');
         }elseif ($userType->type == "company") {
           return redirect('/accounts/company');
+        }elseif ($userType->type == "serviceUser") {
+          return redirect('/accounts/hireService');
         }
       }else {
         return view('accounts.signup');
@@ -55,6 +57,8 @@ class Home extends Controller
           return redirect('/accounts/franchise');
         }elseif ($userType->type == "company") {
           return redirect('/accounts/company');
+        }elseif ($userType->type == "serviceUser") {
+          return redirect('/accounts/hireService');
         }
       }else {
         return view('accounts.login');
@@ -153,26 +157,21 @@ public function login(Request $request)
     if ($phone == $user1->phone) {
       if ($password == ($user1->password)) {
         $request->session()->put('u_session', $user1);
-        // $request->session()->put('type', $user1->type);
-        // $request->session()->put('name', $user1->name);
         $val = $request->session()->get('u_session');
 
         $user = DhrUser::find($val->userId);
-        // $message = "you are successfully logged in";
-        // $request->session()->put('success', "you are successfully logged in");
         if ($user->type == "individual") {
           return redirect('/accounts/individual');
         }elseif ($user->type == "shop") {
-          // return view('accounts.franchise', compact('user'));
           return redirect('/accounts/franchise');
 
         }elseif ($user->type == "company") {
-          // return view('accounts.franchise', compact('user'));
           return redirect('/accounts/company');
 
-        }
+        }elseif ($user->type == "serviceUser") {
+          return redirect('/accounts/hireService');
 
-        // return view('index', compact('user'));
+        }
 
       }else {
         return redirect('/accounts/login')->with('red-alert', 'Incorrect Password');

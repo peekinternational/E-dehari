@@ -83,7 +83,7 @@
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
 										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 									</ul>
 								</div>
 							</div>
@@ -105,6 +105,10 @@
 							<div id="w_error" class="alert alert-danger alert-dismissible" style="display: none;">
 							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 							  <span>Please fill all the fields</span>
+							</div>
+							<div id="worker_success" class="alert alert-success alert-dismissible" style="display: none;">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<span>New Worker Added Successfully</span>
 							</div>
 							<form class="" action="#" method="" style="padding-top: 20px;">
                 				{{csrf_field()}}
@@ -181,7 +185,7 @@
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
 										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 									</ul>
 								</div>
 							</div>
@@ -203,6 +207,10 @@
 							<div id="s_error" class="alert alert-danger alert-dismissible" style="display: none;">
 							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 							  <span>Please fill all the fields</span>
+							</div>
+							<div id="service_success" class="alert alert-success alert-dismissible" style="display: none;">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<span>New Service Added Successfully</span>
 							</div>
 							<form class="">
 							  	<div class="form-group">
@@ -261,7 +269,7 @@
 									<ul class="user-menu">
 										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
 										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 									</ul>
 								</div>
 							</div>
@@ -353,6 +361,10 @@ $('#w_btn').click(function (e) {
 			console.log(response);
 			if (response == "1") {
 			$('.worker_input').val('');
+				$("#worker_success").show();
+				setTimeout(function () {
+		      $("#worker_success").hide();
+		    },3000);
 
 			}
 		}
@@ -399,6 +411,10 @@ $('#srv_btn').click(function (e) {
 			console.log(response);
 			if (response == "1") {
 			$('.service_input').val('');
+			$("#service_success").show();
+			setTimeout(function () {
+				$("#service_success").hide();
+			},3000);
 			}
 		}
 	});

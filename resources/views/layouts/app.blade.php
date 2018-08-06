@@ -30,7 +30,7 @@
 
 
         <!-- Owl Carousel Assets -->
-        <link href="css/owl.carousel.css" rel="stylesheet">
+        <link href="{{url('css/owl.carousel.css')}}" rel="stylesheet">
 
 
 

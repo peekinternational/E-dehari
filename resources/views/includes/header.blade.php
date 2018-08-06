@@ -31,9 +31,24 @@
 
          @if(\Session::has('u_session'))
           <!-- {{Session('ses')}} -->
-          <li id="logout_show"><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>
+          <!-- <li id="logout_show"><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li> -->
           <li style="margin-top: 5px;"><button class="btn" style="background: black; color: white;">Place your Ads<i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="padding-left: 7px;"></i></button></li>
-
+          <li class="dropdown main-dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-angle-down"></span>  {{session()->get('u_session')->f_name}}
+            </a>
+            <ul class="dropdown-menu">
+              @if(\Session::get('u_session')->type == 'individual')
+                <li class="dropdown-submenu"><a href="{{url('/accounts/individual')}}"><i class="fa fa-cog"></i> setting</a></li>
+                @elseif(\Session::get('u_session')->type == 'company')
+                <li class="dropdown-submenu"><a href="{{url('/accounts/company')}}"><i class="fa fa-cog"></i> setting</a></li>
+                @elseif(\Session::get('u_session')->type == 'shop')
+                <li class="dropdown-submenu"><a href="{{url('/accounts/franchise')}}"><i class="fa fa-cog"></i> setting</a></li>
+                @elseif(\Session::get('u_session')->type == 'serviceUser')
+                <li class="dropdown-submenu"><a href="{{url('/accounts/hireService')}}"><i class="fa fa-cog"></i> setting</a></li>
+                @endif
+                <li class="dropdown-submenu"><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>  Logout</a></li>
+            </ul>
+        </li>
           @else
           <li id="login_show"><a href="{{url('/accounts/login')}}"><i class="fa fa-user"></i>Login</a></li>
           <li id="signup_show"><a href="{{url('/accounts/signup')}}"><i class="fa fa-user-plus"></i>Sign Up</a></li>

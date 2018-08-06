@@ -27,6 +27,7 @@
 								<button type="submit" class="btn login-btn btn-block btn-lg">Sign Up</button>
 								<br>
 								<p class="text-center"><strong>Or</strong></p>
+								<a class="btn btn-lg btn-block" href="{{url('/accounts/serviceSignup')}}"><i class="pull-left" aria-hidden="true"></i>Service User<i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 								<button class="btn btn-fb btn-lg btn-block"><i class="fa fa-facebook-square pull-left" aria-hidden="true"></i>Continue with Facebook<i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
 								<button class="btn btn-gmail btn-lg btn-block"><i class="fa fa-google-plus pull-left" aria-hidden="true"></i>Continue with Gmail<i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
 							</div>

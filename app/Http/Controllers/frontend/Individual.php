@@ -43,13 +43,31 @@ class Individual extends Controller
 
 
 
+    public function ind_dashboard_route(Request $request)
+    {
+      if($request->session()->has('u_session')){
+        $userinfo= $request->session()->get('u_session')->userId;
+        // dd($userinfo);
+
+        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
+        // dd($user_get_info);
+
+        return view('accounts.individualDashboard',compact('user_get','user_get_info'));
+
+
+      }else {
+
+        return redirect('/accounts/login');
+      }
+
+    }
+
+
+
     public function individual_info(Request $request)
     {
       // dd($request->all());
-      // $name = $request->get('name');
-      // $phone = $request->get('phone');
-      // $email = $request->get('email');
-      // $dob = $request->get('dob');
       $usersession= $request->session()->get('u_session');
       $nameinfo['f_name'] = $request->get('name');
       $nameinfo['phone'] = $request->get('phone');
@@ -120,7 +138,7 @@ class Individual extends Controller
 
       $usersession= $request->session()->get('u_session');
       $userinfo_tbl['location'] = $request->get('location');
-      
+
 
 
     // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
@@ -138,6 +156,71 @@ class Individual extends Controller
     //dd($user_info);
 
       echo "successfully";
+    }
+
+
+
+    public function individual_dashbord(Request $request)
+    {
+      // dd($request->all());
+      $usersession= $request->session()->get('u_session');
+
+      $nameinfo['f_name'] = $request->get('name');
+      // dd($nameinfo['f_name']);
+      $nameinfo['email'] = $request->get('email');
+      $userinfo_tbl['education'] = $request->get('education');
+      $userinfo_tbl['experience'] = $request->get('experience');
+      $userinfo_tbl['skill'] = $request->get('skill');
+      $userinfo_tbl['availability'] = $request->get('availability');
+      $userinfo_tbl['currency_type'] = $request->get('currency_type');
+      $userinfo_tbl['amount'] = $request->get('amount');
+      $userinfo_tbl['wages'] = $request->get('wages');
+      $userinfo_tbl['location'] = $request->get('location');
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
+    public function individual_image(Request $request)
+    {
+      // dd($request->all());
+      $usersession= $request->session()->get('u_session');
+      // $userinfo_tbl['location'] = $request->get('location');
+      $image = $request->file('image');
+      $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+
+      $destinationPath = public_path('img/Individual_Profile');
+      $image->move($destinationPath, $profilePicture);
+    //  dd($profilePicture);
+      $userinfo_tbl['image']=$profilePicture;
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo $profilePicture;
     }
 
 
