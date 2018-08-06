@@ -66,6 +66,9 @@ Route::get('/accounts/individualProfile', function () {
 Route::get('/accounts/userDashboard', function () {
     return view('accounts.userDashboard');
 });
+Route::get('/accounts/workerDashboard', function () {
+    return view('accounts.workerDashboard');
+});
 
 
 
