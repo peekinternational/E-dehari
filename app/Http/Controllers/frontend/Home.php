@@ -76,9 +76,9 @@ class Home extends Controller
     {
 
       $validator =  $this->validate($request,[
-    'phone' => 'required|unique:dhr_users,phone',
-    'password' => 'required|min:6'
-  ]);
+        'phone' => 'required|unique:dhr_users,phone',
+        'password' => 'required|min:6'
+      ]);
 
       $user = new DhrUser;
       $user->phone = $request->input('phone');

@@ -43,6 +43,32 @@ class Franchise extends Controller
     }
 
 
+
+    public function franchise_dashboard_route(Request $request)
+    {
+      if($request->session()->has('u_session')){
+        $userinfo= $request->session()->get('u_session')->userId;
+        // dd($userinfo);
+        $userdata=DB::table('dhr_users')
+        ->join('workers','workers.f_userId', '=','dhr_users.userId')
+        ->where('dhr_users.userId',$userinfo)
+        ->get();
+      //  dd($userdata);
+        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
+        // dd($user_get_info);
+
+        return view('accounts.workerDashboard',compact('userdata'));
+
+
+      }else {
+
+        return redirect('/accounts/login');
+      }
+
+    }
+
+
     public function create_worker(Request $request)
     {
       // dd($request->all());

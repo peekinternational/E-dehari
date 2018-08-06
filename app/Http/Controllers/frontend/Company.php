@@ -27,7 +27,7 @@ class Company extends Controller
         $userinfo= $request->session()->get('u_session')->userId;
         // dd($userinfo);
 
-        $user_get=DB::table('dhr_users')->where('userId',2)->first();
+        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
       ///  dd($user_get);
 
         $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();

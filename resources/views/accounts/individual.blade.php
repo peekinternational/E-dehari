@@ -222,20 +222,11 @@
                       type="text"></input>
 											<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-search"></i></span>
                     </div>
-						  				<!-- <div class="input-group" style="width: 65%;">
-						  			  		<input type="text" class="form-control" name="location_input" style="border-right: 0" id="location_input" value="{{$location}}">
-						  			  		<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-search"></i></span>
-
-						  				</div> -->
 						  				<button class="btn map-btn"><i class="fa fa-map-marker"></i></button>
 							  		</div>
 							  	</div>
 							  	<p>You can add upto three different locations. You must define a preferred location for work.Search result are Prioritized on preferred locations.</p>
-							  	<!-- <div class="main">
-					  				<iframe width="90%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="font-family: 'Open Sans', sans-serif;color:#555555;text-shadow:0 1px 0 #ffffff; text-align:left;font-size:12px;padding: 5px;">View Larger Map</a></small>
-					  			</div> -->
 									<div id="map">
-
 									</div><br>
 							</form>
 						</div>
@@ -256,7 +247,6 @@
 							<?php
 							$re=0;
 								/*count whole resume record is percentage */
-// echo $user_get->email;
 								if($user_get->f_name != ''){
 								$re += 7.6666;
 								}

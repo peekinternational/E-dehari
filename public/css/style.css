@@ -1755,6 +1755,23 @@ body{
 .logo{
 	margin-top: 8px;
 }
+.worker-img img{
+	width: 100%;
+}
+.bottom-btn{
+	background: #EDEDED;
+}
+.bottom-btn p{
+	padding: 0px 0 2px 4px;
+}
+.bottom-btn .btn{
+	padding: 1px 12px;
+    background-color: #FF6D0B;
+    color: white;
+}
+.worker-detail{
+	padding: 45px 0;
+}
 @media screen and (max-width: 768px) {
 	.main_content{
 		padding: 0;

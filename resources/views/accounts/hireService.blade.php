@@ -109,30 +109,6 @@
 					  		<button type="submit" id="serviceUser_info" data-toggle="pill" class="btn login-btn btn-block btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
 					  	</div>
 					</div>
-
-					<div class="col-md-5 right-side" style="padding: 20px 0 65px 50px;">
-						<div class="user-panel">
-							<div class="user-section">
-								<div class="user-info">
-									<div class="c100 p40">
-			                            <span class="user-img">
-			                            	<img src="{{'../images/userIcon.png'}}">
-			                            </span>
-			                            <div class="slice">
-			                                <div class="bar"></div>
-			                                <div class="fill"></div>
-			                            </div>
-			                        </div>
-									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">40%</span> Complete</h4>
-									<ul class="user-menu">
-										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
-										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div id="addworkers" class="tab-pane fade in">
 					<h3>Help people to find the right person </h3>
@@ -243,29 +219,7 @@
 					  		</div>
 						</div>
 					</div>
-					<div class="col-md-5 right-side" style="padding: 31px 0 40px 50px;">
-						<div class="user-panel">
-							<div class="user-section">
-								<div class="user-info">
-									<div class="c100 p60">
-			                            <span class="user-img">
-			                            	<img src="{{'../images/userIcon.png'}}">
-			                            </span>
-			                            <div class="slice">
-			                                <div class="bar"></div>
-			                                <div class="fill"></div>
-			                            </div>
-			                        </div>
-									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">60%</span> Complete</h4>
-									<ul class="user-menu">
-										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
-										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+
 				</div>
 				<div id="location" class="tab-pane fade in">
 					<h3>Help people to find the right person </h3>
@@ -287,27 +241,78 @@
 				  			<a href="{{url('/accounts/userDashboard')}}" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  		</div>
 					</div>
-					<div class="col-md-5 right-side" style="padding: 10px 0 18px 50px;">
-						<div class="user-panel">
-							<div class="user-section">
-								<div class="user-info">
-									<div class="c100 p70">
-			                            <span class="user-img">
-			                            	<img src="{{'../images/userIcon.png'}}">
-			                            </span>
-			                            <div class="slice">
-			                                <div class="bar"></div>
-			                                <div class="fill"></div>
-			                            </div>
-			                        </div>
-									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">70%</span> Complete</h4>
-									<ul class="user-menu">
-										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
-										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
-									</ul>
-								</div>
-							</div>
+				</div>
+			</div>
+			<div class="col-md-5 right-side" style="padding: 31px 0 40px 50px;">
+				<div class="user-panel">
+					<div class="user-section">
+						<div class="user-info">
+							<?php
+							$re=0;
+								/*count whole resume record is percentage */
+								if($user_get->f_name != ''){
+								$re += 10;
+								}
+								if($user_get->email != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($user_get->phone != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($dob != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($amount != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($time != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($people != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($start_date != ''){
+								$re += 10;
+								// echo $re;
+								}
+								if($end_date != ''){
+								$re += 10;
+								// echo $re;
+								}
+
+								if($image != ''){
+								$re += 10;
+								// echo $re;
+								}
+
+								$width = round($re);
+								?>
+							<div class="c100 p<?php echo $width; ?>">
+								<span class="user-img">
+									<?php if (!empty($image)): ?>
+										<img src="{{url('img/serviceUser_profile/'.$image)}}" class="" alt="{{$image}}">
+										<?php else: ?>
+											<img src="{{url('/images/userIcon.png')}}" class="">
+									<?php endif; ?>
+									<!-- <img src="{{'../images/userIcon.png'}}"> -->
+								</span>
+															<div class="slice">
+																	<div class="bar"></div>
+																	<div class="fill"></div>
+															</div>
+													</div>
+							<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color"><?php echo $width; ?>%</span> Complete</h4>
+							<ul class="user-menu">
+								<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
+								<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
+								<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>

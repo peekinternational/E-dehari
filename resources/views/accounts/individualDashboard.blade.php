@@ -86,6 +86,16 @@
 					</div>
 					&nbsp;<span> <i class="fa fa-edit" id="edit-email"></i></span>
 				</div>
+				<!-- <div class="edution-detail">
+					<div class="title">
+						<span>Phone: </span>
+					</div>
+					<div class="description">
+						<span id="phone-des"><strong>{{$user_get->phone}}</strong></span>
+						<input type="text" name="phone" id="edit-phonebox" class="form-control" style="display: none;" value="{{$user_get->phone}}">
+					</div>
+					&nbsp;<span> <i class="fa fa-edit" id="edit-phonebox"></i></span>
+				</div> -->
 				<div class="edution-detail">
 					<div class="title">
 						<span>Education: </span>

@@ -2,10 +2,13 @@
 @section('content')
 <?php
 	$dob = '';
+	$image = '';
 	if ($user_get_info != null) {
 		$dob = $user_get_info->dob;
+		$image = $user_get_info->image;
 	}else {
 		$dob= '';
+		$image = '';
 	}
  ?>
 <div class="individual-section">
@@ -25,6 +28,10 @@
 							<span class="des-title">Add Services & Prices</span>
 						</h4>
 						<div class="col-md-8 individual-form">
+							<div id="franchise_error" class="alert alert-danger alert-dismissible" style="display: none;">
+							  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  <span>Please fill all the fields</span>
+							</div>
 							<form class="" action="#">
 								{{csrf_field()}}
 							  	<div class="form-group">
@@ -56,37 +63,9 @@
 							  		</div>
 							  	</div>
 									<div class="form-group col-md-offset-8 col-md-3 nxt-btn">
-							  		<button type="submit" id="franchise_info" data-toggle="pill" href="#addworkers" class="btn login-btn btn-block btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
+							  		<button type="submit" id="franchise_info" data-toggle="pill" class="btn login-btn btn-block btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
 							  	</div>
 							</form>
-						</div>
-
-
-					</div>
-
-					<div class="col-md-5 right-side" style="padding: 37px 0 86px 50px;">
-						<div class="user-panel">
-								<span class="user-bg"><i class="fa fa-user"></i></span>
-							<div class="user-section">
-								<div class="arrow-up"></div>
-								<div class="user-info">
-									<div class="c100 p40">
-			                            <span class="user-img">
-			                            	<img src="{{'../images/userIcon.png'}}">
-			                            </span>
-			                            <div class="slice">
-			                                <div class="bar"></div>
-			                                <div class="fill"></div>
-			                            </div>
-			                        </div>
-									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">40%</span> Complete</h4>
-									<ul class="user-menu">
-										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
-										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
-									</ul>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -164,32 +143,6 @@
 							<a data-toggle="pill" href="#personal-info" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
 				  			<a data-toggle="pill" href="#location" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  		</div>
-
-					</div>
-					<div class="col-md-5 right-side" style="padding: 33px 0 58px 50px;">
-						<div class="user-panel">
-								<span class="user-bg"><i class="fa fa-user"></i></span>
-							<div class="user-section">
-								<div class="arrow-up"></div>
-								<div class="user-info">
-									<div class="c100 p60">
-			                            <span class="user-img">
-			                            	<img src="{{'../images/userIcon.png'}}">
-			                            </span>
-			                            <div class="slice">
-			                                <div class="bar"></div>
-			                                <div class="fill"></div>
-			                            </div>
-			                        </div>
-									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">60%</span> Complete</h4>
-									<ul class="user-menu">
-										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
-										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div id="location" class="tab-pane fade in">
@@ -246,32 +199,64 @@
 
 						<div class="form-group col-md-offset-6 col-md-5 nxt-btn frnchs-nxtbtn">
 							<a data-toggle="pill" href="#addworkers" class="btn back-btn btn-lg"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
-				  			<a href="#" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
+				  			<a href="{{url('/accounts/workerDashboard')}}" class="btn save-btn btn-lg">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
 				  		</div>
 
 					</div>
-					<div class="col-md-5 right-side" style="padding: 31px 0 42px 50px;">
-						<div class="user-panel">
-								<span class="user-bg"><i class="fa fa-user"></i></span>
-							<div class="user-section">
-								<div class="arrow-up"></div>
-								<div class="user-info">
-									<div class="c100 p70">
-			                            <span class="user-img">
-			                            	<img src="{{'../images/userIcon.png'}}">
-			                            </span>
-			                            <div class="slice">
-			                                <div class="bar"></div>
-			                                <div class="fill"></div>
-			                            </div>
-			                        </div>
-									<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color">70%</span> Complete</h4>
-									<ul class="user-menu">
-										<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
-										<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-										<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
-									</ul>
-								</div>
+
+				</div>
+				<div class="col-md-5 right-side" style="padding: 31px 0 42px 50px;">
+					<div class="user-panel">
+							<span class="user-bg"><i class="fa fa-user"></i></span>
+						<div class="user-section">
+							<div class="arrow-up"></div>
+							<div class="user-info">
+								<?php
+								$re=0;
+									/*count whole resume record is percentage */
+									if($user_get->f_name != ''){
+									$re += 19.6666;
+									}
+									if($user_get->email != ''){
+									$re += 19.6666;
+									// echo $re;
+									}
+									if($user_get->phone != ''){
+									$re += 19.6666;
+									// echo $re;
+									}
+									if($dob != ''){
+									$re += 19.6666;
+									// echo $re;
+									}
+
+									if($image != ''){
+									$re += 19.6666;
+									// echo $re;
+									}
+
+									$width = round($re);
+									?>
+								<div class="c100 p<?php echo $width; ?>">
+									<span class="user-img">
+										<?php if (!empty($image)): ?>
+											<img src="{{url('img/franchise_profile/'.$image)}}" class="" alt="{{$image}}">
+											<?php else: ?>
+												<img src="{{url('/images/userIcon.png')}}" class="">
+										<?php endif; ?>
+										<!-- <img src="{{'../images/userIcon.png'}}"> -->
+									</span>
+																<div class="slice">
+																		<div class="bar"></div>
+																		<div class="fill"></div>
+																</div>
+														</div>
+								<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color"><?php echo $width; ?>%</span> Complete</h4>
+								<ul class="user-menu">
+									<li><a href="{{url('/accounts/workerDashboard')}}"><i class="fa fa-cog"></i>Account Settings</a></li>
+									<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
+									<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -302,6 +287,15 @@ $('#franchise_info').click(function (e) {
 	form.append('phone', phone);
 	form.append('email', email);
 	form.append('dob', dob);
+	if (name == "" || phone =="" || dob=="") {
+    $("#franchise_error").show();
+
+    setTimeout(function () {
+      $("#franchise_error").hide();
+      $('#Professional').addClass('active');
+    },3000);
+    return 0;
+  }
 
 	$.ajax({
 		type: 'post',
