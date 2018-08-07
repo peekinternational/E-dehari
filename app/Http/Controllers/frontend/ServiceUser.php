@@ -30,7 +30,7 @@ class ServiceUser extends Controller
         $user_get_info=DB::table('service_user_infos')->where('f_userId',$userinfo)->first();
         // dd($user_get_info);
 
-        return view('accounts.hireService',compact('user_get','user_get_info'));
+        return view('accounts.hireService',compact('user_get','user_get_info', '$user_get_info1'));
 
 
       }else {
@@ -71,6 +71,8 @@ class ServiceUser extends Controller
       $nameinfo['email'] = $request->get('email');
       $userinfo_tbl['dob'] = $request->get('dob');
       $userinfo_tbl['gender'] = $request->get('gender');
+      $userinfo_tbl['location'] = $request->get('location');
+      $userinfo_tbl['address'] = $request->get('address');
 
 
     // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
@@ -100,6 +102,7 @@ class ServiceUser extends Controller
       $userinfo_tbl['amount'] = $request->get('amount');
       $userinfo_tbl['service_category'] = $request->get('service_category');
       $userinfo_tbl['time'] = $request->get('time');
+      $userinfo_tbl['end_time'] = $request->get('end_time');
       $userinfo_tbl['people'] = $request->get('people');
       $userinfo_tbl['start_date'] = $request->get('start_date');
       $userinfo_tbl['end_date'] = $request->get('end_date');
@@ -117,8 +120,6 @@ class ServiceUser extends Controller
   $userinfo_tbl['image']=$profilePicture;
 }
 
-
-    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
     // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
     //dd($getuser);
     $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->first();
@@ -134,6 +135,73 @@ class ServiceUser extends Controller
 
       echo "successfully";
     }
+
+
+
+
+    public function service_dashboard_info(Request $request)
+    {
+      // dd($request->all());
+      $usersession= $request->session()->get('u_session');
+      $nameinfo['f_name'] = $request->get('name');
+      $nameinfo['email'] = $request->get('email');
+      $userinfo_tbl['time'] = $request->get('time');
+      $userinfo_tbl['end_time'] = $request->get('end_time');
+      $userinfo_tbl['start_date'] = $request->get('start_date');
+      $userinfo_tbl['end_date'] = $request->get('end_date');
+      $userinfo_tbl['amount'] = $request->get('amount');
+      $userinfo_tbl['location'] = $request->get('location');
+      $userinfo_tbl['address'] = $request->get('address');
+      // $userinfo_tbl['total'] = $request->get('total');
+
+
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo "successfully";
+    }
+
+
+    public function service_dashboard_image(Request $request)
+    {
+      // dd($request->all());
+      $usersession= $request->session()->get('u_session');
+      // $userinfo_tbl['location'] = $request->get('location');
+      $image = $request->file('image');
+      $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+
+      $destinationPath = public_path('img/serviceUser_profile');
+      $image->move($destinationPath, $profilePicture);
+    //  dd($profilePicture);
+      $userinfo_tbl['image']=$profilePicture;
+    // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
+    // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+    //dd($getuser);
+    $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->first();
+
+    if($user_info != Null || $user_info != "" ){
+      $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->update($userinfo_tbl);
+    }
+    else{
+      $userinfo_tbl['f_userId']=$usersession->userId;
+        $user_info=DB::table('service_user_infos')->where('f_userId',$usersession->userId)->insert($userinfo_tbl);
+    }
+    //dd($user_info);
+
+      echo $profilePicture;
+    }
+
 
 
     /**

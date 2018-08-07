@@ -268,6 +268,13 @@
 
 <!-- Ajax for Franchise  -->
 <script>
+var url = window.location.href;
+    // alert(url);
+    var id = url.substring(url.lastIndexOf('?') + 1);
+		if (id == 'worker') {
+			$('#personal-info').removeClass('active');
+			$('#addworkers').addClass('active');
+		}
 $('#franchise_info').click(function (e) {
 	e.preventDefault();
 	// var form_value = $(this).serialize();

@@ -18,19 +18,19 @@
 					</div>
 					<div class="bottom-btn">
 						<p><span>{!! $value->w_name!!}</span>
-						<a href="{{url('account/franchise/'.$value->w_id)}}" class="btn btn-xs pull-right">Edit</a></p>
+						<a href="{{url('accounts/editWorker/'.$value->w_id)}}" class="btn btn-xs pull-right">Edit</a></p>
 					</div>
 				</div>
-
-
 			@endforeach
-
-
-			<!-- <img src="{{'../images/worker.jpg'}}"> -->
 		</div>
+
 		<div class="row">
 			<div class="col-md-3 update-btn">
-				<button class="btn btn-md">Add New</button>
+				@if(\Session::get('u_session')->type == 'shop')
+				<a  class="btn btn-md" style="background: #FF6D0B;color: #fff;" href="{{url('accounts/franchise?worker')}}" class="btn btn-md">Add New</a>
+				@elseif(\Session::get('u_session')->type == 'company')
+				<a  class="btn btn-md" style="background: #FF6D0B;color: #fff;" href="{{url('accounts/company?worker')}}" class="btn btn-md">Add New</a>
+				@endif
 			</div>
 			<div class="col-md-offset-2 col-md-3 update-btn">
 				<button class="btn btn-md save-btn" style="padding: 10px 10px 10px 30px;">Next <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true" style="margin-top: 5px;"></i></button>

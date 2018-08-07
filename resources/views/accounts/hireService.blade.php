@@ -3,10 +3,13 @@
 <?php
   $gender = '';
   $dob = '';
+  $location = '';
+  $address = '';
   $currency_type = '';
 	$amount = '';
   $service_category = '';
   $time = '';
+  $end_time = '';
   $people = '';
   $start_date = '';
   $end_date = '';
@@ -15,10 +18,13 @@
 	if ($user_get_info != null) {
 		$gender = $user_get_info->gender;
 		$dob = $user_get_info->dob;
+    $location = $user_get_info->location;
+    $address = $user_get_info->address;
 		$currency_type = $user_get_info->currency_type;
 		$amount = $user_get_info->amount;
 		$service_category = $user_get_info->service_category;
 		$time = $user_get_info->time;
+    $end_time = $user_get_info->end_time;
 		$people = $user_get_info->people;
 		$start_date = $user_get_info->start_date;
 		$end_date = $user_get_info->end_date;
@@ -28,10 +34,13 @@
 	}else {
 		$gender = '';
 	  $dob = '';
+    $location = '';
+    $address = '';
 		$currency_type = '';
 		$amount = '';
 	  $service_category = '';
 	  $time = '';
+    $end_time = '';
 	  $people = '';
 	  $start_date = '';
 	  $end_date = '';
@@ -102,6 +111,22 @@
 								  		</div>
 								  	</div>
 							  	</div>
+
+							  		<div class="form-group" style="padding-right: 0;">
+								  		<label>Location</label>
+								  		<div class="input-group">
+								    		<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+								    		<input type="text" id="locality1" class="form-control" value="{{$location}}">
+								  		</div>
+							  		</div>
+								  	<div class="form-group">
+								  		<label>Address</label>
+								  		<div class="input-group">
+								    		<span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+								    		<input type="text" id="address" class="form-control" value="{{$address}}">
+								  		</div>
+								  	</div>
+
 							</form>
 						</div>
 
@@ -169,19 +194,20 @@
 						  		</div>
 						  		<div class="row">
 				  		  		  	<div class="form-group col-md-6">
-				  		  		  		<label>Please mention Booking time</label>
+				  		  		  		<label>Starting Time</label>
 			  		  		    		<div class="input-group">
 						  			  		<input type="time"  id="time" class="form-control text-center" name="time" min="0" style="border-right: 0" value="{{$time}}">
 						  			  		<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-clock-o"></i></span>
 						  				</div>
 				  		  		  	</div>
-				  		  		  	<div class="form-group col-md-5" style="padding-left: 0; padding-right: 0;">
-				  		  		  		<label>How Many person</label>
+                        <div class="form-group col-md-6">
+				  		  		  		<label>Ending Time</label>
 			  		  		    		<div class="input-group">
-			  		  		    			<span class="input-group-addon" style="border-right: 0;"><i class="fa fa-users"></i></span>
-						  			  		<input type="number"  id="people" class="form-control" name="people" onchange="get_val();" min="0" style="border-left: 0" value="{{$people}}">
+						  			  		<input type="time"  id="end_time" class="form-control text-center" name="end_time" min="0" style="border-right: 0" value="{{$end_time}}">
+						  			  		<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-clock-o"></i></span>
 						  				</div>
 				  		  		  	</div>
+
 						  		</div>
 						  		<div class="row">
 				  		  		  	<div class="form-group col-md-6">
@@ -200,6 +226,13 @@
 				  		  		  	</div>
 						  		</div>
 							  	<dir class="row" style="padding-left: 0;">
+                    <div class="form-group col-md-5" style="padding-left: 0; padding-right: 0;">
+                      <label>How Many person</label>
+                      <div class="input-group">
+                        <span class="input-group-addon" style="border-right: 0;"><i class="fa fa-users"></i></span>
+                      <input type="number"  id="people" class="form-control" name="people" onchange="get_val();" min="0" style="border-left: 0" value="{{$people}}">
+                  </div>
+                    </div>
 							  		<div class="form-group col-md-6">
 							  			<label>Upload Picture or Video(Optional)</label>
 							  			<label class="btn btn-file" for="w_image">Upload Picture
@@ -309,9 +342,9 @@
 													</div>
 							<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color"><?php echo $width; ?>%</span> Complete</h4>
 							<ul class="user-menu">
-								<li><a href=""><i class="fa fa-cog"></i>Account Settings</a></li>
+								<li><a href="{{url('/accounts/userDashboard')}}"><i class="fa fa-cog"></i>Account Settings</a></li>
 								<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
-								<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+								<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -346,6 +379,8 @@ $('#serviceUser_info').click(function (e) {
 	var email = $('#email').val();
 	var dob = $('#dob').val();
 	var gender = $('#gender').val();
+	var location = $('#locality1').val();
+	var address = $('#address').val();
 	console.log(email, dob);
 	$.ajaxSetup({
 		headers: {
@@ -359,7 +394,9 @@ $('#serviceUser_info').click(function (e) {
 	form.append('email', email);
 	form.append('dob', dob);
 	form.append('gender', gender);
-  if (name == "" || phone=="") {
+	form.append('location', location);
+	form.append('address', address);
+  if (name == "" || phone=="" || location=="" || address=="") {
     $("#Individual_error").show();
 
     setTimeout(function () {
@@ -407,6 +444,7 @@ $('#serviceUser_detail').click(function (e) {
 	var amount = $('#amount').val();
 	var service_category = $('#service_category').val();
 	var time = $('#time').val();
+	var end_time = $('#end_time').val();
 	var people = $('#people').val();
 	var start_date = $('#start_date').val();
 	var end_date = $('#end_date').val();
@@ -425,12 +463,13 @@ $('#serviceUser_detail').click(function (e) {
 	form.append('amount', amount);
 	form.append('service_category', service_category);
 	form.append('time', time);
+	form.append('end_time', end_time);
 	form.append('people', people);
 	form.append('start_date', start_date);
 	form.append('end_date', end_date);
 	form.append('image', image);
 	form.append('total', total);
-  if (amount == "" || time=="" || people=="" || start_date=="" || end_date=="") {
+  if (amount == "" || time=="" || end_time=="" || people=="" || start_date=="" || end_date=="") {
     $("#User_detail_error").show();
 
     setTimeout(function () {
@@ -459,5 +498,43 @@ $('#serviceUser_detail').click(function (e) {
 	});
 });
 </script>
+
+<script>
+function initializeAutocomplete(){
+  var input = document.getElementById('locality1');
+  // var options = {
+  //   types: ['(regions)'],
+  //   componentRestrictions: {country: "IN"}
+  // };
+  var options = {}
+
+  var autocomplete = new google.maps.places.Autocomplete(input,options);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+    // to set city name, using the locality param
+    var componentForm = {
+      locality1: 'short_name'
+      // administrative_area_level_1: 'short_name',
+      // country: 'long_name',
+      // locality: 'long_name'
+    };
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
+      }
+    }
+    // document.getElementById("latitude").value = lat;
+    // document.getElementById("longitude").value = lng;
+
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
+async defer></script>
 
 @endsection

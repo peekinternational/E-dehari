@@ -166,7 +166,6 @@ class Individual extends Controller
       $usersession= $request->session()->get('u_session');
 
       $nameinfo['f_name'] = $request->get('name');
-      // dd($nameinfo['f_name']);
       $nameinfo['email'] = $request->get('email');
       $userinfo_tbl['education'] = $request->get('education');
       $userinfo_tbl['experience'] = $request->get('experience');

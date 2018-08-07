@@ -24,6 +24,7 @@ Route::group(['prefix' => '/accounts'], function ()
 Route::get('/signup', 'frontend\Home@create');
 Route::get('/individual', 'frontend\Individual@individual_route');
 Route::get('/franchise', 'frontend\Franchise@franchise_route');
+// Route::get('/franchise/{w_id}', 'frontend\Franchise@franchise_worker_route');
 Route::get('/company', 'frontend\Company@company_route');
 Route::get('/hireService', 'frontend\ServiceUser@hireService_route');
 Route::get('/individualDashboard', 'frontend\Individual@ind_dashboard_route');
@@ -36,7 +37,10 @@ Route::get('/login', 'frontend\Home@login_route');
 Route::get('/workMarket', function () {
     return view('accounts.workMarket');
   });
-
+// Route::get('/editWorker', function () {
+//     return view('accounts.editWorker');
+//   });
+Route::get('/editWorker/{w_id}', 'frontend\Franchise@franchise_worker_route');
 });
 
 
@@ -71,3 +75,5 @@ Route::post('add_worker_company', 'frontend\Company@create_worker');
 Route::post('add_service_company', 'frontend\Company@create_service');
 Route::post('serviceUser_personal_info', 'frontend\ServiceUser@service_personal_info');
 Route::post('serviceUser_detail_info', 'frontend\ServiceUser@service_detail_info');
+Route::post('srvUser_dashboard_info', 'frontend\ServiceUser@service_dashboard_info');
+Route::post('SrvUser_dashboard_img', 'frontend\ServiceUser@service_dashboard_image');
