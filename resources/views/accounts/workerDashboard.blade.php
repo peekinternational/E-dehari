@@ -11,7 +11,7 @@
 				<div class="col-md-2">
 					<div class="worker-img">
 					<?php if (!empty($value->image)): ?>
-						<a href="{{url('/accounts/individualProfile/'.$value->info_id)}}"><img src="{{ url('img/workers_profile/'.$value->image)}}"></a>
+						<a href="{{url('/accounts/individualProfile/'.$value->info_id)}}"><img src="{{ url('img/individual_profile/'.$value->image)}}"></a>
 							<?php else: ?>
 								<img src="{{'../images/worker.jpg'}}">
 						<?php endif; ?>
