@@ -10,15 +10,15 @@
 			@foreach ($userdata as  $value)
 				<div class="col-md-2">
 					<div class="worker-img">
-					<?php if (!empty($value->w_image)): ?>
-						<img src="{{ url('img/workers_profile/'.$value->w_image)}}">
+					<?php if (!empty($value->image)): ?>
+						<a href="{{url('/accounts/individualProfile/'.$value->info_id)}}"><img src="{{ url('img/workers_profile/'.$value->image)}}"></a>
 							<?php else: ?>
 								<img src="{{'../images/worker.jpg'}}">
 						<?php endif; ?>
 					</div>
 					<div class="bottom-btn">
 						<p><span>{!! $value->w_name!!}</span>
-						<a href="{{url('accounts/editWorker/'.$value->w_id)}}" class="btn btn-xs pull-right">Edit</a></p>
+						<a href="{{url('accounts/editWorker/'.$value->info_id)}}" class="btn btn-xs pull-right">Edit</a></p>
 					</div>
 				</div>
 			@endforeach

@@ -120,6 +120,10 @@
 					</div>
 					<div class="description">
 						<span id="rate-des"></span>
+            <!-- Image Loader -->
+            <div id="loaderIcon" class="loaderIcon" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+            </div>
+            <!-- Image Loader Ends -->
 						<div class="row">
 						<div class="col-md-5">
 							<input type="date" name="" id="edit-ratebox" class="form-control" style="display: none;" value="{{$start_date}}">
@@ -137,7 +141,7 @@
 					</div>
 					<div class="description">
 						<span id="location-des">{{$location}}</span>
-						<input type="" name="" class="form-control" id="edit-loctbox" style="display: none;" value="{{$location}}">
+						<input type="" name="" class="form-control" id="location" style="display: none;" value="{{$location}}">
 					</div>
 					<div class="edit-icon">
 						<span> <i class="fa fa-edit" id="edit-location"></i></span>
@@ -222,7 +226,7 @@
 
         $("#edit-location").click(function(){
         	$("#location-des").css({'display':'none'});
-        	$("#edit-loctbox").css({'display':'block'});
+        	$("#location").css({'display':'block'});
         });
 
         $("#edit-address").click(function(){
@@ -242,7 +246,7 @@ $('#user_update_btn').click(function (e) {
 	var end_time = $('#edit-hourbox2').val();
 	var start_date = $('#edit-ratebox').val();
 	var end_date = $('#edit-ratebox2').val();
-	var location = $('#edit-loctbox').val();
+	var location = $('#location').val();
 	var address = $('#edit-addrsbox').val();
 	// console.log(email, dob);
 	$.ajaxSetup({
@@ -311,6 +315,7 @@ $('#user_update_btn').click(function (e) {
 <script>
 $(document).on('change','#edit-Img',function(e){
 	e.preventDefault();
+  $('#loaderIcon').show()
 	if ($('#edit-Img').val()) {
 var image = $('.change_profile')[0].files[0];
 
@@ -334,10 +339,11 @@ var image = $('.change_profile')[0].files[0];
 		success: function (response) {
 			console.log(response);
 			if (response) {
+        $('#loaderIcon').hide()
 				$('.eo-c-logo').attr('src','<?= url('img/serviceUser_profile')?>/'+response);
-				$("#Individual_success").show();
+				$("#serviceUser_success").show();
 				setTimeout(function () {
-		      $("#Individual_success").hide();
+		      $("#serviceUser_success").hide();
 		    },3000);
 
 			}
@@ -346,5 +352,44 @@ var image = $('.change_profile')[0].files[0];
 }
 });
 </script>
+
+
+<script>
+function initializeAutocomplete(){
+  var input = document.getElementById('location');
+  // var options = {
+  //   types: ['(regions)'],
+  //   componentRestrictions: {country: "IN"}
+  // };
+  var options = {}
+
+  var autocomplete = new google.maps.places.Autocomplete(input,options);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+    // to set city name, using the locality param
+    var componentForm = {
+      location: 'short_name'
+      // administrative_area_level_1: 'short_name',
+      // country: 'long_name',
+      // locality: 'long_name'
+    };
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
+      }
+    }
+    // document.getElementById("latitude").value = lat;
+    // document.getElementById("longitude").value = lng;
+
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
+async defer></script>
 
 @endsection

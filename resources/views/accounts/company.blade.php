@@ -5,7 +5,7 @@
 	$image = '';
 	if ($user_get_info != null) {
 		$dob = $user_get_info->dob;
-		$image = $user_get_info->image;
+		$image = $user_get->image;
 	}else {
 		$dob= '';
 		$image = '';
@@ -59,7 +59,7 @@
 							  		<label>Establish Date</label>
 							  		<div class="input-group">
 							    		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							    		<input type="date" id="dob" class="form-control" name="dob" value="{{$dob}}">
+							    		<input type="date" id="dob" class="form-control" name="dob" value="{{$user_get->dob}}">
 							  		</div>
 							  	</div>
 									<div class="form-group col-md-offset-8 col-md-3 nxt-btn">
@@ -99,13 +99,19 @@
 								    		<input type="text" name="w_name" id="w_name" class="form-control worker_input" placeholder="Worker Name">
 								  		</div>
 							  		</div>
-								  	<div class="form-group col-md-6">
+										<div class="form-group col-md-6" style="padding-right: 0;">
 								  		<label>Worker Designation</label>
-								  		<div class="input-group">
-								    		<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-								    		<input type="text" name="w_designation" id="w_designation" class="form-control worker_input" placeholder="Worker Designation">
+											<div class="input-group">
+								    		<span class="input-group-addon"><i class="fa fa-th-large"></i></span>
+								    		<select class="form-control" id="w_designation">
+													<?php foreach ($user_skill_info as $value): ?>
+														<option value="{{$value->skill_name}}">{{$value->skill_name}}</option>
+													<?php endforeach; ?>
+					    			      <!-- <option value="Electician">Electician</option> -->
+								    			<!-- <option value="Plumber">Plumber</option> -->
+								    		</select>
 								  		</div>
-								  	</div>
+							  		</div>
 							  	</div>
 							  	<div class="form-group">
 							  		<label>Valid Mobile</label>
@@ -113,8 +119,35 @@
 							    		<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
 							    		<input type="text" name="w_mobile" id="w_mobile" class="form-control worker_input" placeholder="Mobile">
 							  		</div>
+										<!-- Image Loader -->
+										<div id="loaderIcon" class="loaderIcon_franchise" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+										</div>
+										<!-- Image Loader Ends -->
 							  	</div>
-							  	<div class="row">
+							  	<div class="form-group" style="padding-right: 0;" >
+							  		<label>Email</label>
+							  		<div class="input-group">
+							    		<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+							    		<input type="email" name="w_email" id="w_email" class="form-control worker_input" placeholder="Email">
+							  		</div>
+							  	</div>
+									<div class="row">
+									<div class="form-group col-md-6">
+										<label>Date of Birth(optional)</label>
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+											<input type="date" id="dob_w" class="form-control worker_input">
+										</div>
+									</div>
+								  	<div class="form-group col-md-4">
+								  		<label>Experience</label><br>
+											<div class="input-group">
+								    		<span class="input-group-addon"><i class="fa fa-flask"></i></span>
+								    		<input type="text" name="experience" id="experience" class="form-control worker_input" placeholder="experience">
+								  		</div>
+								  	</div>
+							  	</div>
+									<div class="row">
 							  		<div class="form-group col-md-4" style="padding-right: 0;">
 								  		<label>Gender</label>
 											<div class="input-group">
@@ -132,11 +165,17 @@
 								  		</label>
 								  	</div>
 							  	</div>
+									<div class="form-group" style="padding-right: 0;">
+										<label>Location</label>
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+											<input type="text" id="locality1" class="form-control worker_input">
+										</div>
+									</div>
 
-						  		<div class="form-group col-md-4 nxt-btn" style="padding-left: 0;">
-						  			<button type="submit" id="w_btn" class="btn login-btn btn-block">Add New <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
-						  		</div>
-							</form>
+									<div class="form-group col-md-4 nxt-btn" style="padding-left: 0;">
+										<button type="submit" id="w_btn" class="btn login-btn btn-block">Add New <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
+									</div>
 						</div>
 
 						<div class="form-group col-md-offset-5 col-md-5 nxt-btn">
@@ -330,14 +369,22 @@ $('#w_btn').click(function (e) {
 	var w_designation = $('#w_designation').val();
 	var w_mobile = $('#w_mobile').val();
 	var w_gender = $('#w_gender').val();
+	var w_email = $('#w_email').val();
+	var dob = $('#dob_w').val();
+	var experience = $('#experience').val();
+	var location = $('#locality1').val();
 	var w_image = $('#w_image')[0].files[0];
-	if (w_name == "" || w_designation =="" || w_mobile=="") {
+	if (w_name == "" || w_designation =="" || w_mobile=="" || dob=="" || experience=="" || location=="") {
 		$("#w_error").show();
 		setTimeout(function () {
 			$("#w_error").hide();
 		},3000);
 		return 0;
 	}
+	if (w_image != "") {
+		$('#loaderIcon').show();
+	}
+
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -346,10 +393,16 @@ $('#w_btn').click(function (e) {
 
 	form = new FormData();
 	form.append('w_name', w_name);
-	form.append('w_designation', w_designation);
 	form.append('w_mobile', w_mobile);
+	form.append('w_designation', w_designation);
 	form.append('w_gender', w_gender);
+	form.append('w_email', w_email);
+	form.append('dob',dob);
+	form.append('experience',experience);
+	form.append('location',location);
 	form.append('w_image',w_image);
+
+		$('#loaderIcon').css({'display':'block'});
 
 	$.ajax({
 		type: 'post',
@@ -361,6 +414,7 @@ $('#w_btn').click(function (e) {
 		success: function (response) {
 			console.log(response);
 			if (response == "1") {
+				  $('#loaderIcon').hide();
 			$('.worker_input').val('');
 				$("#worker_success").show();
 				setTimeout(function () {
@@ -421,4 +475,42 @@ $('#srv_btn').click(function (e) {
 	});
 });
 </script>
+
+<script>
+function initializeAutocomplete(){
+  var input = document.getElementById('locality1');
+  // var options = {
+  //   types: ['(regions)'],
+  //   componentRestrictions: {country: "IN"}
+  // };
+  var options = {}
+
+  var autocomplete = new google.maps.places.Autocomplete(input,options);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+    // to set city name, using the locality param
+    var componentForm = {
+      locality1: 'short_name'
+      // administrative_area_level_1: 'short_name',
+      // country: 'long_name',
+      // locality: 'long_name'
+    };
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
+      }
+    }
+    // document.getElementById("latitude").value = lat;
+    // document.getElementById("longitude").value = lng;
+
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
+async defer></script>
 @endsection

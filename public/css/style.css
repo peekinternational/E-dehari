@@ -1654,17 +1654,33 @@ body{
 }
 .profile-img{
   overflow: hidden;
-	height: 150px;
-	width: 150px;
+	height: 148px;
+	width: 181px;
 }
 .profile-img img{
 	width: 100%;
 }
 .profile-img .icon{
     position: absolute;
-    top: 68%;
-    left: 0;
+    top: 72%;
+    left: -40px;
     width: 96%;
+}
+.loaderIcon {
+  position: absolute;
+  top: 10%;
+  left: 60%;
+}
+.loaderIcon_franchise {
+  position: absolute;
+  top: 10%;
+  left: 90%;
+}
+.loaderIcon_serviceUser {
+  position: absolute;
+  top: 10%;
+  left: 81%;
+  overflow: hidden;
 }
 .profile-img .icon label{
   font-size: 13px;

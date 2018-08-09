@@ -107,7 +107,7 @@
 								  		<label>Date of Birth(optional)</label>
 								  		<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								    		<input type="date" id="dob" class="form-control" value="{{$dob}}">
+								    		<input type="date" id="dob" class="form-control" value="{{$user_get->dob}}">
 								  		</div>
 								  	</div>
 							  	</div>
@@ -142,8 +142,9 @@
 							  	<div class="form-group">
 							  		<label>Skills</label>
 							  	  	<select class="form-control" id="skill">
-							  	  		<option value="Accountancy" {{ $skill == 'Accountancy' ? 'selected="selected"' : '' }}>Accountancy</option>
-							  	  		<option value="Entrepreneurship" {{ $skill == 'Entrepreneurship' ? 'selected="selected"' : '' }}>Entrepreneurship</option>
+												<?php foreach ($user_skill_info as $value): ?>
+													<option value="{{$value->skill_name}}" {{ $value->skill_name == $skill ? 'selected="selected"' : '' }}>{{$value->skill_name}}</option>
+												<?php endforeach; ?>
 							  	  	</select>
 							  	</div>
 							  	<div class="form-group">
@@ -400,7 +401,7 @@ $('#professional_info').click(function (e) {
 
 		setTimeout(function () {
 			$("#professional_error").hide();
-      $('#location').addClass('active');
+      $('#professional').addClass('active');
 		},3000);
 		return 0;
 	}

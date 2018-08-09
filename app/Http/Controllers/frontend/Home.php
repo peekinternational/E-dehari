@@ -17,9 +17,18 @@ class Home extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_route(Request $request)
     {
-        //
+        $user_skill_info=DB::table('skills')->get();
+        return view('index',compact('user_skill_info'));
+    }
+
+
+    public function skill_route(Request $request, $skill)
+    {
+        $userdata=DB::table('user_infos')->where('skill',$skill)->get();
+        // dd($userdata);
+        return view('accounts.skill_search',compact('userdata'));
     }
 
     /**

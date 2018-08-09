@@ -207,8 +207,8 @@
 						  			  		<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-clock-o"></i></span>
 						  				</div>
 				  		  		  	</div>
-
 						  		</div>
+
 						  		<div class="row">
 				  		  		  	<div class="form-group col-md-6">
 				  		  		  		<label>Start Date</label>
@@ -224,6 +224,10 @@
 			  		  		    			<span class="input-group-addon" style="border-left: 0;"><i class="fa fa-calendar"></i></span>
 						  				</div>
 				  		  		  	</div>
+                        <!-- Image Loader -->
+                        <div id="loaderIcon" class="loaderIcon_serviceUser" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+                        </div>
+                        <!-- Image Loader Ends -->
 						  		</div>
 							  	<dir class="row" style="padding-left: 0;">
                     <div class="form-group col-md-5" style="padding-left: 0; padding-right: 0;">
@@ -418,7 +422,7 @@ $('#serviceUser_info').click(function (e) {
 			if (response == "successfully") {
 				$('#personal-info').removeClass('active');
 				$('#addworkers').addClass('active');
-				if ($currency_type !="" && $amount !="") {
+				if (currency_type !="" && amount !="") {
 					var currency_data = '<?php echo json_encode($currency_type); ?>';
 					var amount_data = '<?php echo json_encode($amount); ?>';
 					var js_obj_data = JSON.parse(currency_data );
@@ -450,6 +454,7 @@ $('#serviceUser_detail').click(function (e) {
 	var end_date = $('#end_date').val();
 	var image = $('#w_image')[0].files[0];
 	var total = $('#total_show').val();
+
 	// console.log();
 	// alert(total);
 	$.ajaxSetup({
@@ -479,6 +484,9 @@ $('#serviceUser_detail').click(function (e) {
     },3000);
     return 0;
   }
+  if (image != "") {
+    $('#loaderIcon').show();
+  }
 
 	$.ajax({
 		type: 'post',
@@ -490,6 +498,7 @@ $('#serviceUser_detail').click(function (e) {
 		success: function (response) {
 			console.log(response);
 			if (response == "successfully") {
+        $('#loaderIcon').hide();
 				$('#addworkers').removeClass('active');
 				$('#location').addClass('active');
 

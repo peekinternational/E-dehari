@@ -32,7 +32,7 @@
          @if(\Session::has('u_session'))
           <!-- {{Session('ses')}} -->
           <!-- <li id="logout_show"><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li> -->
-          <li style="margin-top: 5px;"><button class="btn" style="background: black; color: white;">Place your Ads<i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="padding-left: 7px;"></i></button></li>
+          <!-- <li style="margin-top: 5px;"><button class="btn" style="background: black; color: white;">Place your Ads<i class="fa fa-arrow-circle-o-right" aria-hidden="true" style="padding-left: 7px;"></i></button></li> -->
           <li class="dropdown main-dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-angle-down"></span>  {{session()->get('u_session')->f_name}}
             </a>

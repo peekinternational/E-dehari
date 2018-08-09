@@ -41,7 +41,63 @@
     $location = '';
     $image = '';
 	}
- ?>
+
+	$re=0;
+		/*count whole resume record is percentage */
+		if($user_get->f_name != ''){
+		$re += 7.6666;
+		}
+		if($user_get->email != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($user_get->phone != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($dob != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($nationality != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($skill != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($education != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($experience != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($availability != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($amount != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($wages != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($location != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+		if($image != ''){
+		$re += 7.6666;
+		// echo $re;
+		}
+
+		$width = round($re);
+		?>
 <div class="sub-header">
 	<div class="container">
 		<div class="row">
@@ -55,7 +111,7 @@
 				<p>Id: 2018-05-001</p>
 			</div>
 			<div class="col-md-4 profile-complete">
-				<h5>Profile Completion 70%</h5>
+				<h5>Profile Completion <?php echo $width; ?>%</h5>
 			</div>
 			<div class="col-md-4 profile-complete">
 				<button class="btn bg-black-btn"><i class="fa fa-edit"></i> Complete your verifications</button>
@@ -119,6 +175,10 @@
 					<div class="edit-icon">
 						&nbsp;<span> <i class="fa fa-edit" id="edit-experience"></i></span>
 					</div>
+					<!-- Image Loader -->
+					<div id="loaderIcon" class="loaderIcon" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+					</div>
+					<!-- Image Loader Ends -->
 				</div>
 				<div class="edution-detail">
 					<div class="title">
@@ -333,6 +393,7 @@ $('#ind_update_btn').click(function (e) {
 <script>
 $(document).on('change','#edit-Img',function(e){
 	e.preventDefault();
+	$('#loaderIcon').show();
 	if ($('#edit-Img').val()) {
 var image = $('.change_profile')[0].files[0];
 
@@ -356,6 +417,7 @@ var image = $('.change_profile')[0].files[0];
 		success: function (response) {
 			console.log(response);
 			if (response) {
+				$('#loaderIcon').hide();
 				$('.eo-c-logo').attr('src','<?= url('img/Individual_Profile')?>/'+response);
 				$("#Individual_success").show();
 				setTimeout(function () {

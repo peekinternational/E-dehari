@@ -29,9 +29,10 @@ class Individual extends Controller
 
         $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
         $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
+        $user_skill_info=DB::table('skills')->get();
         // dd($user_get_info);
 
-        return view('accounts.individual',compact('user_get','user_get_info'));
+        return view('accounts.individual',compact('user_get','user_get_info', 'user_skill_info'));
 
 
       }else {
@@ -72,8 +73,10 @@ class Individual extends Controller
       $nameinfo['f_name'] = $request->get('name');
       $nameinfo['phone'] = $request->get('phone');
       $nameinfo['email'] = $request->get('email');
-      $userinfo_tbl['dob'] = $request->get('dob');
-      $userinfo_tbl['dob'] = $request->get('dob');
+      $nameinfo['dob'] = $request->get('dob');
+      $userinfo_tbl['w_name'] = $request->get('name');
+      $userinfo_tbl['w_phone'] = $request->get('phone');
+      $userinfo_tbl['w_email'] = $request->get('email');
       $userinfo_tbl['gender'] = $request->get('gender');
       $userinfo_tbl['nationality'] = $request->get('nationality');
 
@@ -205,8 +208,9 @@ class Individual extends Controller
       $image->move($destinationPath, $profilePicture);
     //  dd($profilePicture);
       $userinfo_tbl['image']=$profilePicture;
+      $nameinfo['image']=$profilePicture;
     // $nameinfo = array('f_name'=> $name, 'phone' => $phone, 'email' => $email );
-    // $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
+  $getuser=DB::table('dhr_users')->where('userId',$usersession->userId)->update($nameinfo);
     //dd($getuser);
     $user_info=DB::table('user_infos')->where('f_userId',$usersession->userId)->first();
 

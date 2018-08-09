@@ -14,9 +14,10 @@
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+ Route::get('/', 'frontend\Home@index_route');
 Route::group(['prefix' => '/accounts'], function ()
 {
 
@@ -24,7 +25,6 @@ Route::group(['prefix' => '/accounts'], function ()
 Route::get('/signup', 'frontend\Home@create');
 Route::get('/individual', 'frontend\Individual@individual_route');
 Route::get('/franchise', 'frontend\Franchise@franchise_route');
-// Route::get('/franchise/{w_id}', 'frontend\Franchise@franchise_worker_route');
 Route::get('/company', 'frontend\Company@company_route');
 Route::get('/hireService', 'frontend\ServiceUser@hireService_route');
 Route::get('/individualDashboard', 'frontend\Individual@ind_dashboard_route');
@@ -34,6 +34,7 @@ Route::get('/serviceSignup', function () {
     return view('accounts.serviceSignup');
 });
 Route::get('/login', 'frontend\Home@login_route');
+Route::get('/skill_search/{skill}', 'frontend\Home@skill_route');
 Route::get('/workMarket', function () {
     return view('accounts.workMarket');
   });
@@ -41,6 +42,7 @@ Route::get('/workMarket', function () {
 //     return view('accounts.editWorker');
 //   });
 Route::get('/editWorker/{w_id}', 'frontend\Franchise@franchise_worker_route');
+Route::get('/individualProfile/{w_id}', 'frontend\Franchise@worker_profile_route');
 });
 
 
@@ -53,9 +55,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/accounts/individualProfile', function () {
-    return view('accounts.individualProfile');
-});
+// Route::get('/accounts/individualProfile', function () {
+//     return view('accounts.individualProfile');
+// });
 
 
 
