@@ -10,17 +10,19 @@
 					<li><a data-toggle="pill" href="#company">Company or Contractor</a></li>
 				</ul>
 				<div class="tab-content">
+					@include('includes.messages')
 					<div id="individual" class="tab-pane fade in active">
 						<form  action="{{url('create_User')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
-								<input type="text" class="form-control" id="mobile" name="phone"  placeholder="Mobile Number" required="">
+								<input type="number" class="form-control" id="mobile" name="phone" onkeyup='checklen();' onblur="sendphone(this.value)"  placeholder="Mobile Number Example (+9713131234567)" required="">
 							</div>
+							<span id="phone_error"></span>
 							<div class="form-group">
 								<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
+								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password" required="">
 							</div>
 							<input type="hidden" name="type" value="individual">
 							<div class="form-group col-md-offset-2 col-md-8">
@@ -37,13 +39,13 @@
 						<form  action="{{url('create_User')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
-								<input type="text" class="form-control" id="mobile" name="phone" placeholder="Mobile Number" required="">
+								<input type="text" class="form-control" id="mobile" name="phone" placeholder="Mobile Number Example (+9713131234567)" required="">
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
+								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password" required="">
 							</div>
 							<input type="hidden" name="type" value="shop">
 							<div class="form-group col-md-offset-2 col-md-8">
@@ -60,13 +62,13 @@
 						<form  action="{{url('create_User')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
-								<input type="text" class="form-control" id="mobile" name="phone" placeholder="Mobile Number" required="">
+								<input type="text" class="form-control" id="mobile" name="phone" placeholder="Mobile Number Example (+9713131234567)" required="">
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
+								<input type="password" class="form-control" name="password" id="pwd" placeholder="Password" required="">
 							</div>
 							<input type="hidden" name="type" value="company">
 							<div class="form-group col-md-offset-2 col-md-8">
@@ -84,4 +86,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var checklen = function()
+	{
+
+	}
+</script>
 @endsection

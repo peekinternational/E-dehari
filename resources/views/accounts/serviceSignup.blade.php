@@ -6,13 +6,14 @@
 		<div class="col-md-12 login-box">
 			<div class="col-md-offset-4 col-md-4">
 				<h3 class="sigunp-title">Sign up to E-dehari</h3>
+				@include('includes.messages')
 				<form  action="{{url('create_serviceUser')}}" method="post">
           {{csrf_field()}}
 					<div class="form-group">
 			          <input type="text" class="form-control" name="f_name" id="f_name" placeholder="First Name" required="">
 			        </div>
 			        <div class="form-group">
-			          <input type="text" class="form-control" name="phone" id="phone" placeholder="Mobile Number*" required="">
+			          <input type="number" class="form-control" name="phone" id="phone" placeholder="Mobile Number Example (+9713131234567)" required="">
 			        </div>
 			        <div class="form-group">
 			          <input type="email" class="form-control" name="email" id="email" placeholder="Email">

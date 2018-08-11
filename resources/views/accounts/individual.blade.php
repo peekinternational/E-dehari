@@ -154,9 +154,15 @@
 							  		</div>
 							  	</div>
 							  	<div class="form-group">
-							  		<label>Experience-500 character left</label>
+							  		<label>Experience</label>
 							  		<div class="form-group">
-							  			<textarea id="experience" class="form-control">{{$experience}}</textarea>
+											<select class="form-control" id="experience">
+												<option value="1 year"  {{ $experience == '1 year' ? 'selected="selected"' : '' }}>1 year</option>
+												<option value="2 years" {{ $experience == '2 years' ? 'selected="selected"' : '' }}>2 years</option>
+												<option value="3 years" {{ $experience == '3 years' ? 'selected="selected"' : '' }}>3 years</option>
+												<option value="5 years" {{ $experience == '5 years' ? 'selected="selected"' : '' }}>5 years</option>
+												<option value="10 years" {{ $experience == '10 years' ? 'selected="selected"' : '' }}>10 years</option>
+											</select>
 							  		</div>
 							  	</div>
 						  		<div class="form-group">
@@ -320,7 +326,7 @@
 							<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color"><?php echo $width; ?>%</span> Complete</h4>
 							<ul class="user-menu">
 								<li><a href="{{url('/accounts/individualDashboard')}}"><i class="fa fa-cog"></i>Account Settings</a></li>
-								<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
+								<li><a href="{{url('/accounts/change_password')}}"><i class="fa fa-lock"></i>Change Password</a></li>
 								<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 							</ul>
 						</div>

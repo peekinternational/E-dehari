@@ -34,6 +34,7 @@ Route::get('/serviceSignup', function () {
     return view('accounts.serviceSignup');
 });
 Route::get('/login', 'frontend\Home@login_route');
+Route::get('/change_password', 'frontend\Home@password_route');
 Route::get('/skill_search/{skill}', 'frontend\Home@skill_route');
 Route::get('/workMarket', function () {
     return view('accounts.workMarket');
@@ -47,9 +48,11 @@ Route::get('/individualProfile/{w_id}', 'frontend\Franchise@worker_profile_route
 
 
 Route::post('create_User', 'frontend\Home@store');
+Route::post('search', 'frontend\Home@searching');
 Route::post('create_serviceUser', 'frontend\ServiceUser@store');
 Route::post('login_User', 'frontend\Home@Login');
 Route::get('logout', 'frontend\Home@Logout');
+Route::post('change_pwd', 'frontend\Home@PasswordChange');
 
 Auth::routes();
 

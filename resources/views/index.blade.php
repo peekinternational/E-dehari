@@ -5,8 +5,11 @@
 		<div class="col-md-offset-2 col-md-4 serch-box">
 			<h3>Find the <span style="color:orange">right person</span></h3>
 			<div class="serch-section">
-				<input type="search" class="form-control">
-				<button class="btn serch-btn">Search<i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
+				<form class="" action="{{url('search')}}" method="post">
+					{{csrf_field()}}
+				<input type="search" name="skill"  class="form-control">
+				<button type="submit" class="btn serch-btn">Search<i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -37,18 +40,17 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+		<!-- <div class="row">
 			<h3 class="text-center"><strong>Service Categories</strong></h3>
 			<div class="slider-1 col-md-12 col-xs-10">
 				<div id="1" class="carousel slide" data-ride="carousel">
-					<!-- Wrapper for slides -->
 
 					<div class="carousel-inner">
       @foreach($user_skill_info->chunk(3) as $key => $chunk)
 						<div id="c{{$key}}" class="item active{{$key}}">
 
 							<div class="row mobile-slider1">
-								<?php foreach ($chunk as $value): ?>
+								 @foreach ($chunk as $value)
 
 								<div class="col-sm-4 col-xs-4">
 									<div class="col-item box-shadow">
@@ -58,7 +60,7 @@
 										</div>
 									</div>
 								</div>
-									<?php endforeach; ?>
+									 @endforeach
 
 							</div>
 
@@ -75,6 +77,29 @@
 					</div>
 				</div>
 			</div>
+		</div> -->
+		<div class="row">
+			<h3 class="text-center"><strong>Service Categories</strong></h3>
+			@foreach($user_skill_info->chunk(3) as $key => $chunk)
+						<div id="c{{$key}}" class="item active{{$key}}">
+
+							<div class="row mobile-slider1">
+								 @foreach ($chunk as $value)
+
+								<div class="col-sm-4 col-xs-4">
+									<div class="col-item box-shadow">
+										<div class="photo">
+											<img src="{{('images/skill_images/'.$value->skill_image)}}" class="img-responsive" alt="a" />
+											<a href="{{url('/accounts/skill_search/'.$value->skill_name)}}"> <span class="service-heading">{{$value->skill_name}}</span></a>
+										</div>
+									</div>
+								</div>
+									 @endforeach
+							</div>
+							<br>
+						</div>
+          @endforeach
+
 		</div>
 		<div class="row">
 			<h3 class="text-center"><strong>Work Categories</strong></h3>

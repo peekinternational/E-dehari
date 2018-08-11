@@ -4,9 +4,26 @@
 <div class="dashboard-section">
 	<div class="container">
 		<div class="">
-			<h3>All work Dashboard <span class="pull-right"><i class="fa fa-user"></i></span></h3>
+			<?php
+			$key='';
+			$message='';
+			if ($keyword !=''){
+				$key = $keyword;
+			}
+			else {
+				$key= $sk;
+			}
+			if (count($userdata) == 0) {
+				// $message='';
+				$message='No Record Found';
+			}
+// echo $userdata; die;
+		?>
+
+			<h3>Your search result "{{$key}}" <span class="pull-right"><i class="fa fa-user"></i></span></h3>
 		</div>
 		<div class="row worker-detail">
+			<h3>{{$message}}</h3>
 			@foreach ($userdata as  $value)
 			<?php $image ='';
 				if ($value->image ) {
@@ -19,12 +36,9 @@
 					<div class="worker-img">
 
 						<a href="{{url('/accounts/individualProfile/'.$value->info_id)}}"><img src="{{$image}}"></a>
-
-
-
 					</div>
 					<div class="bottom-btn">
-						<p><span>{!! $value->w_name!!} &nbsp; &nbsp; {!! $value->skill!!}</span>
+						<p><span>{!! $value->w_name!!}</span>
 						<a href="{{url('/accounts/individualProfile/'.$value->info_id)}}" class="btn btn-xs pull-right">View</a></p>
 					</div>
 				</div>

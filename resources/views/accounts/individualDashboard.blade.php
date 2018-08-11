@@ -170,7 +170,14 @@
 					</div>
 					<div class="description">
 						<span id="expernce-des">{{$experience}}</span>
-						<input type="text" name="" id="edit-expbox" class="form-control" style="display: none;" value="{{$experience}}">
+						<select class="form-control" style="display: none;" id="edit-expbox">
+							<option value="1 year"  {{ $experience == '1 year' ? 'selected="selected"' : '' }}>1 year</option>
+							<option value="2 years" {{ $experience == '2 years' ? 'selected="selected"' : '' }}>2 years</option>
+							<option value="3 years" {{ $experience == '3 years' ? 'selected="selected"' : '' }}>3 years</option>
+							<option value="5 years" {{ $experience == '5 years' ? 'selected="selected"' : '' }}>5 years</option>
+							<option value="10 years" {{ $experience == '10 years' ? 'selected="selected"' : '' }}>10 years</option>
+						</select>
+						<!-- <input type="text" name="" id="edit-expbox" class="form-control" style="display: none;" value="{{$experience}}"> -->
 					</div>
 					<div class="edit-icon">
 						&nbsp;<span> <i class="fa fa-edit" id="edit-experience"></i></span>

@@ -101,7 +101,14 @@
 								  		<label>Experience</label><br>
 											<div class="input-group">
 								    		<span class="input-group-addon"><i class="fa fa-flask"></i></span>
-								    		<input type="text" name="experience" id="experience" class="form-control worker_input" placeholder="experience" value="{{$experience}}">
+												<select class="form-control" id="experience">
+													<option value="1 year"  {{ $experience == '1 year' ? 'selected="selected"' : '' }}>1 year</option>
+													<option value="2 years" {{ $experience == '2 years' ? 'selected="selected"' : '' }}>2 years</option>
+													<option value="3 years" {{ $experience == '3 years' ? 'selected="selected"' : '' }}>3 years</option>
+													<option value="5 years" {{ $experience == '5 years' ? 'selected="selected"' : '' }}>5 years</option>
+													<option value="10 years" {{ $experience == '10 years' ? 'selected="selected"' : '' }}>10 years</option>
+												</select>
+								    		<!-- <input type="text" name="experience" id="experience" class="form-control worker_input" placeholder="experience" value="{{$experience}}"> -->
 								  		</div>
 								  	</div>
 							  	</div>

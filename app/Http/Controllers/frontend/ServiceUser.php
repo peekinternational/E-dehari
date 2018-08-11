@@ -224,7 +224,7 @@ class ServiceUser extends Controller
      {
 
        $validator =  $this->validate($request,[
-     'phone' => 'required|unique:dhr_users,phone',
+     'phone' => 'required|unique:dhr_users,phone|min:11|max:15',
      'password' => 'required|min:6'
    ]);
 

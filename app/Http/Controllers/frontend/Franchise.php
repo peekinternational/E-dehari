@@ -68,22 +68,22 @@ class Franchise extends Controller
 
     public function worker_profile_route(Request $request, $id)
     {
-      if($request->session()->has('u_session')){
-        $userinfo= $request->session()->get('u_session')->userId;
+      // if($request->session()->has('u_session')){
+        // $userinfo= $request->session()->get('u_session')->userId;
         // dd($userinfo);
-        $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
-        $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
-        $user_worker_info=DB::table('workers')->where('w_id',$id)->first();
+        // $user_get=DB::table('dhr_users')->where('userId',$userinfo)->first();
+        $user_get_info=DB::table('user_infos')->where('info_id',$id)->first();
+        // $user_worker_info=DB::table('workers')->where('w_id',$id)->first();
 
         // dd($user_get_info);
 
-        return view('accounts.individualProfile',compact('user_get','user_get_info','user_worker_info'));
+        return view('accounts.individualProfile',compact('user_get','user_get_info'));
 
 
-      }else {
-
-        return redirect('/accounts/login');
-      }
+      // }else {
+      //
+      //   return redirect('/accounts/login');
+      // }
 
     }
 

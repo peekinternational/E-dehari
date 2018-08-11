@@ -347,7 +347,7 @@
 							<h4 class="text-muted" style="padding-top: 17px;">Profile <span class="text-color"><?php echo $width; ?>%</span> Complete</h4>
 							<ul class="user-menu">
 								<li><a href="{{url('/accounts/userDashboard')}}"><i class="fa fa-cog"></i>Account Settings</a></li>
-								<li><a href=""><i class="fa fa-lock"></i>Change Password</a></li>
+								<li><a href="{{url('/accounts/change_password')}}"><i class="fa fa-lock"></i>Change Password</a></li>
 								<li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
 							</ul>
 						</div>
