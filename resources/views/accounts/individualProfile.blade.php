@@ -39,7 +39,7 @@
 					<div class="col-md-3 view-profile-img">
 						<div class="profile-img">
 							<?php if (!empty($image)): ?>
-								<img src="{{url('img/Individual_profile/'.$image)}}" class="eo-c-logo" alt="{{$image}}">
+								<img src="{{url('img/individual_profile/'.$image)}}" class="eo-c-logo" alt="{{$image}}">
 								<?php else: ?>
 									<img src="{{url('/images/profile.jpeg')}}" class="eo-c-logo">
 							<?php endif; ?>
