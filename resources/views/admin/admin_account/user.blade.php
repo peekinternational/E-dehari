@@ -9,7 +9,7 @@
                     <div class="header">
                         <h4 class="title">All Users</h4>
                         <div class="col-md-2 col-md-offset-10">
-                          <a href="/admin/creatUser" class="btn btn-success" type="button" name="button" style="Background: #87CB16; color: white; margin-top: -45px;">Add New</a>
+                          <a href="{{url('/admin/creatUser')}}" class="btn btn-success" type="button" name="button" style="Background: #87CB16; color: white; margin-top: -45px;">Add New</a>
                         </div>
                         <!-- <p class="category">Here is a subtitle for this table</p> -->
                     </div>
