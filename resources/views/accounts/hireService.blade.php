@@ -288,43 +288,55 @@
 							$re=0;
 								/*count whole resume record is percentage */
 								if($user_get->f_name != ''){
-								$re += 10;
+								$re += 7.666;
 								}
 								if($user_get->email != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 								if($user_get->phone != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 								if($dob != ''){
-								$re += 10;
+								$re += 7.666;
+								// echo $re;
+								}
+								if($location != ''){
+								$re += 7.666;
+								// echo $re;
+								}
+								if($address != ''){
+								$re += 7.666;
 								// echo $re;
 								}
 								if($amount != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 								if($time != ''){
-								$re += 10;
+								$re += 7.666;
+								// echo $re;
+								}
+								if($end_time != ''){
+								$re += 7.666;
 								// echo $re;
 								}
 								if($people != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 								if($start_date != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 								if($end_date != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 
 								if($image != ''){
-								$re += 10;
+								$re += 7.666;
 								// echo $re;
 								}
 

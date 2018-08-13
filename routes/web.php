@@ -30,6 +30,7 @@ Route::get('/hireService', 'frontend\ServiceUser@hireService_route');
 Route::get('/individualDashboard', 'frontend\Individual@ind_dashboard_route');
 Route::get('/userDashboard', 'frontend\ServiceUser@serviceUser_dashboard_route');
 Route::get('/workerDashboard', 'frontend\Franchise@franchise_dashboard_route');
+
 Route::get('/serviceSignup', function () {
     return view('accounts.serviceSignup');
 });
@@ -82,3 +83,26 @@ Route::post('serviceUser_personal_info', 'frontend\ServiceUser@service_personal_
 Route::post('serviceUser_detail_info', 'frontend\ServiceUser@service_detail_info');
 Route::post('srvUser_dashboard_info', 'frontend\ServiceUser@service_dashboard_info');
 Route::post('SrvUser_dashboard_img', 'frontend\ServiceUser@service_dashboard_image');
+
+
+// Admin
+
+Route::get('/admin/user', 'frontend\Admin@show_user');
+
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.admin_account.dashboard');
+});
+
+Route::get('/admin/table', function () {
+    return view('admin.admin_account.table');
+});
+Route::get('/admin/typography', function () {
+    return view('admin.admin_account.typography');
+});
+Route::get('/admin/notification', function () {
+    return view('admin.admin_account.notification');
+});
+Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
+Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');
+Route::post('edit_user', 'frontend\Admin@admin_edit_user');

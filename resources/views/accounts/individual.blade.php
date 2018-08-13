@@ -255,54 +255,54 @@
 							$re=0;
 								/*count whole resume record is percentage */
 								if($user_get->f_name != ''){
-								$re += 7.6666;
+								$re += 8.444;
 								}
 								if($user_get->email != ''){
-								$re += 7.6666;
+								$re += 8.444;
 								// echo $re;
 								}
 								if($user_get->phone != ''){
-								$re += 7.6666;
+								$re += 8.444;
 								// echo $re;
 								}
 								if($dob != ''){
-								$re += 7.6666;
+								$re += 8.444;
 								// echo $re;
 								}
 								if($nationality != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($skill != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($education != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($experience != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($availability != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($amount != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($wages != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($location != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 								if($image != ''){
-								$re += 7.6666;
+								$re += 8.333;
 								// echo $re;
 								}
 
