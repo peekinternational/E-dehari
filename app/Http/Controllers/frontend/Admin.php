@@ -122,11 +122,12 @@ class Admin extends Controller
          $nameinfo['created_at'] = $mytime;
 
        $user_info=DB::table('dhr_users')->insert($nameinfo);
-       Mail::raw('mail',function ($message)
+       Mail::send('mail.sendmail',$nameinfo,function ($message) use ($nameinfo)
        {
-         $message->to('mwaqas.arid@gmail.com');
-         $message->from('mwaqas.arid@gmail.com');
+
          $message->subject('E-dehari.com - Account Sign in');
+         $message->from($nameinfo['email']);
+         $message->to('nabeelirbab@gmail.com', 'Job Call Me');
        });
        if ($user_info == true) {
          echo "1";
