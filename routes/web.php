@@ -106,3 +106,13 @@ Route::get('/admin/notification', function () {
 Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
 Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');
+Route::get('delete_user/{userId}', 'frontend\Admin@admin_delete_user');
+
+Route::get('send_test_email', function(){
+ Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+ {
+  $message->subject('Mailgun and Laravel are awesome!');
+  $message->from('nabeelirbab@gmail.com', 'Job Call Me');
+  $message->to('nabeelirbab@gmail.com');
+ });
+});

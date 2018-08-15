@@ -8,6 +8,8 @@ use App\Models\DhrUser;
 use App\Models\Worker;
 use App\Models\UserInfo;
 // use App\Models\Service;
+use Mail;
+use Carbon;
 use DB;
 class Admin extends Controller
 {
@@ -64,13 +66,6 @@ class Admin extends Controller
 
        if($request->session()->has('u_session')){
          $userinfo= $request->session()->get('u_session')->userId;
-         // dd($userinfo);
-         // $user_get=DB::table('dhr_users')->where('userId',$id)->first();
-         // $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
-         // $user_worker_info=DB::table('user_infos')->where('info_id',$id)->first();
-         // $user_skill_info=DB::table('skills')->get();
-         // dd($user_skill_info);
-         // dd($user_get_info);
 
          return view('admin.admin_account.create_user');
 
@@ -99,6 +94,11 @@ class Admin extends Controller
        // dd($nameinfo['f_name']);
        $nameinfo['phone'] = $request->input('phone');
        $nameinfo['email'] = $request->input('email');
+       $mytime = Carbon\Carbon::now();
+       $mytime->toDateTimeString();
+       // dd($mytime);
+       $nameinfo['updated_at'] = $mytime;
+
        // dd($nameinfo['email']);
        // ->f_userId = $userinfo->userId;
        // $user->image =  $request->file('w_image');
@@ -119,8 +119,15 @@ class Admin extends Controller
        else {
          // $nameinfo['f_userId']=$userinfo->userId;
          $nameinfo['type'] = $request->input('type');
-         
+         $nameinfo['created_at'] = $mytime;
+
        $user_info=DB::table('dhr_users')->insert($nameinfo);
+       Mail::raw('mail',function ($message)
+       {
+         $message->to('mwaqas.arid@gmail.com');
+         $message->from('mwaqas.arid@gmail.com');
+         $message->subject('E-dehari.com - Account Sign in');
+       });
        if ($user_info == true) {
          echo "1";
        }else {
@@ -131,6 +138,22 @@ class Admin extends Controller
        // dd($worker);
 
      }
+
+
+     public function admin_delete_user(Request $request, $id)
+     {
+
+
+         // dd($id);
+         $user_get=DB::table('dhr_users')->where('userId',$id)->delete();
+
+
+        // dd($user_get);
+        echo $user_get;
+
+       }
+
+
 
 
 

@@ -60,7 +60,7 @@
              </li>
      <!-- <li class="active-pro"> -->
      <li class="">
-                 <a href="upgrade.html">
+                 <a href="{{url('logout')}}">
                      <i class="fa fa-power-off"></i>
                      <p>Logout</p>
                  </a>

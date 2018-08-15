@@ -101,6 +101,8 @@ class Home extends Controller
           return redirect('/accounts/company');
         }elseif ($userType->type == "serviceUser") {
           return redirect('/accounts/hireService');
+        }elseif ($userType->type == "admin") {
+          return redirect('/admin/dashboard');
         }
       }else {
         return view('accounts.signup');
@@ -121,6 +123,8 @@ class Home extends Controller
           return redirect('/accounts/company');
         }elseif ($userType->type == "serviceUser") {
           return redirect('/accounts/hireService');
+        }elseif ($userType->type == "admin") {
+          return redirect('/admin/dashboard');
         }
       }else {
         return view('accounts.login');
@@ -258,6 +262,9 @@ public function login(Request $request)
         }elseif ($user->type == "serviceUser") {
           return redirect('/accounts/hireService');
 
+        }elseif ($user->type == "admin") {
+          return redirect('/admin/dashboard');
+
         }
 
       }else {
@@ -283,6 +290,9 @@ public function login(Request $request)
 
         }elseif ($user->type == "serviceUser") {
           return redirect('/accounts/hireService');
+
+        }elseif ($user->type == "admin") {
+          return redirect('/admin/dashboard');
 
         }
 

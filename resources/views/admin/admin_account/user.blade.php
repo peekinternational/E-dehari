@@ -26,14 +26,14 @@
                             <tbody>
                               @if(count($user_get)>0)
                               @foreach($user_get as $user)
-                                <tr>
+                                <tr id="tbl_show{{$user->userId}}">
                                   <td>{{$user->userId}}</td>
                                   <td>{{$user->f_name}}</td>
                                   <td>{{$user->phone}}</td>
                                   <td>{{$user->type}}</td>
                                   <td>{{$user->created_at}}</td>
                                   <td><a href="{{url('/admin/editUser/'.$user->userId)}}"><span class='fa fa-edit'></td>
-                                  <td><a href=""><span class='fa fa-remove' style="color: red;"></td>
+                                  <td><a data-toggle="modal"  onclick="delete_user('{{$user->userId}}');"><span class='fa fa-remove' style="color: red;"></td>
                                 </tr>
                                 @endforeach
                                 @endif
@@ -47,4 +47,24 @@
     </div>
 </div>
 </div>
+
+<script>
+  function delete_user(userId) {
+    // alert(userId);
+    if (confirm('Are you sure want to delete this user')) {
+      	$.ajax({
+      		url: "{{url('delete_user')}}/"+userId,
+      		success: function (response) {
+      			console.log(response);
+      			if (response == "1") {
+              $('#tbl_show'+userId).remove();
+
+      			}
+      		}
+      	});
+    }
+  }
+</script>
+
+
 @endsection
