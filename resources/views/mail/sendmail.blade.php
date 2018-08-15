@@ -1,3 +1,3 @@
 <?php
-{{$nameinfo}}
+echo $nameinfo;
  ?>
