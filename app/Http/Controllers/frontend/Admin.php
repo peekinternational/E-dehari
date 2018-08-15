@@ -126,8 +126,8 @@ class Admin extends Controller
        {
 
          $message->subject('E-dehari.com - Account Sign in');
-         $message->from($nameinfo['email']);
-         $message->to('nabeelirbab@gmail.com', 'Job Call Me');
+         $message->from('nabeelirbab@gmail.com', 'Job Call Me');
+         $message->to($nameinfo['email']);
        });
        if ($user_info == true) {
          echo "1";
