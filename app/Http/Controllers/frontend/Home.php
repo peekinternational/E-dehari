@@ -197,9 +197,16 @@ class Home extends Controller
       // dd($token);
       // $token = $request->_token;
       $user['status'] = 'Y';
-      $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
+      $get_token=DB::table('dhr_users')->where('token',$token)->first();
 
-      return redirect('/accounts/login')->with('success','Your account has been verified');
+      if ($get_token > 0) {
+        $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
+        return redirect('/accounts/login')->with('success','Your account has been verified');
+      }else {
+        return redirect('/accounts/login')->with('red-alert','Your account is not created');
+
+      }
+
     }
 
 
