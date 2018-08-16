@@ -147,6 +147,7 @@ class Home extends Controller
         'password' => 'required|min:6'
       ]);
 
+    $email['email'] = $request->input('email');
       $user = new DhrUser;
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
@@ -160,7 +161,7 @@ class Home extends Controller
 
         $message->subject('E-dehari.com - Account Verifaction');
         $message->from('nabeelirbab@gmail.com', 'E-dehari');
-        $message->to($request->input('email'));
+        $message->to($email['email']);
       });
       return redirect('/accounts/login')->with('success','Please verify you account');
     }
