@@ -132,7 +132,7 @@ class Admin extends Controller
        $nameinfo['password'] = md5($randomString);
       // dd($random);
        $user_info=DB::table('dhr_users')->insert($nameinfo);
-       Mail::send('mail.sendmail',['user' => $nameinfo]
+       Mail::send('mail.sendmail',['user' => $nameinfo],
        function ($message) use ($nameinfo)
        {
 
