@@ -154,7 +154,6 @@ class Home extends Controller
       $user->password = md5($request->input('password'));
       $user->type = $request->input('type');
       $user->token = $request->_token;
-      $user->save();
       Mail::send('mail.verify',['token' =>$request->_token],
       function ($message) use ($user)
       {
@@ -163,6 +162,8 @@ class Home extends Controller
         $message->from('nabeelirbab@gmail.com', 'E-dehari');
         $message->to(['email' => $request->input('email')]);
       });
+      $user->save();
+      
       return redirect('/accounts/login')->with('success','Please verify your account');
     }
 
