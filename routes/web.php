@@ -49,6 +49,7 @@ Route::get('/individualProfile/{w_id}', 'frontend\Franchise@worker_profile_route
 
 
 Route::post('create_User', 'frontend\Home@store');
+Route::post('verify_account/{token}', 'frontend\Home@change_status');
 Route::post('search', 'frontend\Home@searching');
 Route::post('create_serviceUser', 'frontend\ServiceUser@store');
 Route::post('login_User', 'frontend\Home@Login');

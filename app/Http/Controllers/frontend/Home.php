@@ -140,7 +140,7 @@ class Home extends Controller
      */
     public function store(Request $request)
     {
-
+      // dd($request->_token);
       $validator =  $this->validate($request,[
         'phone' => 'required|unique:dhr_users,phone|min:10|max:15',
         'password' => 'required|min:6'
@@ -151,9 +151,17 @@ class Home extends Controller
       $user->email = $request->input('email');
       $user->password = md5($request->input('password'));
       $user->type = $request->input('type');
-
+      $user->token = $request->_token;
       $user->save();
-      return redirect('/accounts/login')->with('success','You are successfully Registered');
+      Mail::send('mail.verify',['token' =>$request->_token],
+      function ($message) use ($user)
+      {
+
+        $message->subject('E-dehari.com - Account Verifaction');
+        $message->from('nabeelirbab@gmail.com', 'E-dehari');
+        $message->to($request->input('email'));
+      });
+      return redirect('/accounts/login')->with('success','Please verify you account');
     }
 
 
@@ -178,6 +186,17 @@ class Home extends Controller
       return view('accounts.skill_search', compact('userdata', 'keyword', 'sk'));
     }
 
+
+    public function change_status(Request $request, $token)
+    {
+      $token =trim($request->segment(2));
+      dd($token);
+      // $token = $request->_token;
+      $user['status'] = 'Y';
+      $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
+
+      return redirect('/accounts/login')->with('success','Your account has been verified');
+    }
 
 
 

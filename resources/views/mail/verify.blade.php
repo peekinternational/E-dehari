@@ -28,13 +28,10 @@
 <td align="center" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
             <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box"><tbody><tr>
 <td align="center" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
-  <tr><td>Name:  {{$u_name}}</td></tr>
-  <tr><td>Email:  {{$u_email}}</td></tr>
-  <tr><td>Phone:  {{$u_phone}}</td></tr>
-  <tr><td>Password:  {{$u_password}}</td></tr><br>
+
                         <table border="0" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box"><tbody><tr>
 <td style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
-                                    <a href="{{ url('/accounts/login')}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Click To Login</a>
+                                    <a href="{{ url('/verify_account')}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Click To Verify</a>
                                 </td>
                             </tr></tbody></table>
 </td>
