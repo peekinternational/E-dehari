@@ -81,6 +81,8 @@ class Admin extends Controller
 
      public function admin_edit_user(Request $request)
      {
+        // $random =  rand(000000,9999999);
+
         // dd($request->all());
        $validator =  $this->validate($request,[
      'f_name' => 'required',
@@ -120,13 +122,21 @@ class Admin extends Controller
          // $nameinfo['f_userId']=$userinfo->userId;
          $nameinfo['type'] = $request->input('type');
          $nameinfo['created_at'] = $mytime;
-
+         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      $charactersLength = strlen($characters);
+      $randomString = '';
+      for ($i = 0; $i < 6; $i++) {
+          $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+       echo $randomString;
+       $nameinfo['password'] = md5($randomString);
+      // dd($random);
        $user_info=DB::table('dhr_users')->insert($nameinfo);
        Mail::send('mail.sendmail',$nameinfo,function ($message) use ($nameinfo)
        {
 
          $message->subject('E-dehari.com - Account Sign in');
-         $message->from('nabeelirbab@gmail.com', 'Job Call Me');
+         $message->from('nabeelirbab@gmail.com', 'E-dehari');
          $message->to($nameinfo['email']);
        });
        if ($user_info == true) {
