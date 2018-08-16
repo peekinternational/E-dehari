@@ -8,6 +8,7 @@ use App\Models\DhrUser;
 use App\Models\Worker;
 use App\Models\UserInfo;
 use App\Models\Service;
+use Mail;
 use DB;
 
 class Home extends Controller
