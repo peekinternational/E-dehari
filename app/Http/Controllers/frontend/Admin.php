@@ -132,7 +132,8 @@ class Admin extends Controller
        $nameinfo['password'] = md5($randomString);
       // dd($random);
        $user_info=DB::table('dhr_users')->insert($nameinfo);
-       Mail::send('mail.sendmail',['u_name' => $request->input('f_name')],function ($message) use ($nameinfo)
+       Mail::send('mail.sendmail',['u_name' => $request->input('f_name')],['u_email' => $request->input('email')],
+       function ($message) use ($nameinfo)
        {
 
          $message->subject('E-dehari.com - Account Sign in');
