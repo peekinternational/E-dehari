@@ -161,9 +161,9 @@ class Home extends Controller
 
         $message->subject('E-dehari.com - Account Verifaction');
         $message->from('nabeelirbab@gmail.com', 'E-dehari');
-        $message->to($email['email']);
+        $message->to(['email' => $request->input('email')]);
       });
-      return redirect('/accounts/login')->with('success','Please verify you account');
+      return redirect('/accounts/login')->with('success','Please verify your account');
     }
 
 
