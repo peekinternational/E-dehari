@@ -194,7 +194,7 @@ class Home extends Controller
     public function change_status(Request $request, $token)
     {
       $token =trim($request->segment(2));
-      dd($token);
+      // dd($token);
       // $token = $request->_token;
       $user['status'] = 'Y';
       $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
