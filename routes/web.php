@@ -112,7 +112,7 @@ Route::get('send_test_email', function(){
  Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
  {
   $message->subject('Mailgun and Laravel are awesome!');
-  $message->from('nabeelirbab@gmail.com', 'Job Call Me');
+  $message->from('nabeelirbab@gmail.com', 'E-dehari');
   $message->to('nabeelirbab@gmail.com');
  });
 });
