@@ -1,8 +1,8 @@
 <?php
 echo 'Your account details <br>';
-echo'Name:'.$name.'<br>';
-echo'email:'.$email.'<br>';
-echo'phone:'.$phone.'<br>';
-echo'password:'.$password.'<br>';
+echo'Name:'.$u_name.'<br>';
+echo'email:'.$u_email.'<br>';
+echo'phone:'.$u_phone.'<br>';
+echo'password:'.$u_$password.'<br>';
 
  ?>
