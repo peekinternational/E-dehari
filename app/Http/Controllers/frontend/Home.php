@@ -199,7 +199,7 @@ class Home extends Controller
       $user['status'] = 'Y';
       $get_token=DB::table('dhr_users')->where('token',$token)->first();
 
-      if ($get_token > 0) {
+      if (count($get_token)>0) {
         $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
         return redirect('/accounts/login')->with('success','Your account has been verified');
       }else {
