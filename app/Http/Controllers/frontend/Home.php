@@ -148,6 +148,7 @@ class Home extends Controller
       ]);
 
     $email['email'] = $request->input('email');
+    $toemail =$email['email'];
       $user = new DhrUser;
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
@@ -155,15 +156,15 @@ class Home extends Controller
       $user->type = $request->input('type');
       $user->token = $request->_token;
       Mail::send('mail.verify',['token' =>$request->_token],
-      function ($message) use ($user)
+      function ($message) use ($toemail)
       {
 
         $message->subject('E-dehari.com - Account Verifaction');
         $message->from('nabeelirbab@gmail.com', 'E-dehari');
-        $message->to(['email' => $request->input('email')]);
+        $message->to($toemail);
       });
       $user->save();
-      
+
       return redirect('/accounts/login')->with('success','Please verify your account');
     }
 
