@@ -34,7 +34,7 @@
   <tr><td>Password:  {{$u_password}}</td></tr><br>
                         <table border="0" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box"><tbody><tr>
 <td style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
-                                    <a href="{{ url('/accounts/login')}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Click To Login</a>
+                                    <a href="{{ url('/admin_verify_account/'.$token)}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Click To Login</a>
                                 </td>
                             </tr></tbody></table>
 </td>
@@ -53,7 +53,7 @@
 <td style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
         <table class="m_1888394735623576276footer" align="center" width="570" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;margin:0 auto;padding:0;text-align:center;width:570px"><tbody><tr>
 <td class="m_1888394735623576276content-cell" align="center" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;padding:35px">
-                    <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;line-height:1.5em;margin-top:0;color:#aeaeae;font-size:12px;text-align:center">© 2018 JobCallMe Co.,Ltd. All rights reserved.</p>
+                    <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;line-height:1.5em;margin-top:0;color:#aeaeae;font-size:12px;text-align:center">© 2018 E-dehari Co.,Ltd. All rights reserved.</p>
                 </td>
             </tr></tbody></table>
 </td>

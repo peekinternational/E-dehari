@@ -120,7 +120,8 @@ class Admin extends Controller
 
        else {
          // $nameinfo['f_userId']=$userinfo->userId;
-         $nameinfo['token'] = $request->input('_token');
+         $nameinfo['token'] = $request->_token;
+         // dd($nameinfo['token']);
          $nameinfo['type'] = $request->input('type');
          $nameinfo['created_at'] = $mytime;
          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -133,7 +134,7 @@ class Admin extends Controller
        $nameinfo['password'] = md5($randomString);
       // dd($random);
        $user_info=DB::table('dhr_users')->insert($nameinfo);
-       Mail::send('mail.sendmail',['u_name' =>$request->input('f_name'), 'u_email' =>$request->input('email'),'u_phone' =>$request->input('phone'),'u_password' =>$randomString],
+       Mail::send('mail.sendmail',['u_name' =>$request->input('f_name'), 'u_email' =>$request->input('email'),'u_phone' =>$request->input('phone'),'token' =>$request->_token,'u_password' =>$randomString],
        function ($message) use ($nameinfo)
        {
 
@@ -149,6 +150,25 @@ class Admin extends Controller
        }
 
        // dd($worker);
+
+     }
+
+
+     public function change_status_admin(Request $request, $token)
+     {
+       $token =trim($request->segment(2));
+       // dd($token);
+       // $token = $request->_token;
+       $user['status'] = 'Y';
+       $get_token=DB::table('dhr_users')->where('token',$token)->first();
+
+       if (count($get_token)>0) {
+         $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
+         return redirect('/accounts/login')->with('success','Your account has been verified');
+       }else {
+         return redirect('/accounts/login')->with('red-alert','Your account is not created');
+
+       }
 
      }
 
