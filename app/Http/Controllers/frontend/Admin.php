@@ -36,14 +36,18 @@ class Admin extends Controller
        return view('admin.admin_account.user',compact('user_get'));
      }
 
-     public function admin_dashboard_route()
+     public function admin_dashboard_route(Request $request)
      {
-
+       if($request->session()->has('u_session')){
        $user_get=DhrUser::get()->count();
        $active_user=DB::table('dhr_users')->where('active_status','1')->count();
        // dd($active_user);
        return view('admin.admin_account.dashboard',compact('user_get','active_user'));
+     }else {
+
+       return redirect('/accounts/login');
      }
+   }
 
      public function admin_edit_route(Request $request, $id)
      {
@@ -52,17 +56,8 @@ class Admin extends Controller
          $userinfo= $request->session()->get('u_session')->userId;
          // dd($userinfo);
          $user_get=DB::table('dhr_users')->where('userId',$id)->first();
-         // $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
-         // $user_worker_info=DB::table('user_infos')->where('info_id',$id)->first();
-         // $user_skill_info=DB::table('skills')->get();
-         // dd($user_skill_info);
-         // dd($user_get_info);
-
          return view('admin.admin_account.editUser',compact('user_get'));
-
-
        }else {
-
          return redirect('/accounts/login');
        }
 
@@ -75,12 +70,8 @@ class Admin extends Controller
 
        if($request->session()->has('u_session')){
          $userinfo= $request->session()->get('u_session')->userId;
-
          return view('admin.admin_account.create_user');
-
-
        }else {
-
          return redirect('/accounts/login');
        }
 
@@ -90,9 +81,6 @@ class Admin extends Controller
 
      public function admin_edit_user(Request $request)
      {
-        // $random =  rand(000000,9999999);
-
-        // dd($request->all());
        $validator =  $this->validate($request,[
      'f_name' => 'required',
      'phone' => 'required|min:10|max:15'
@@ -184,14 +172,35 @@ class Admin extends Controller
 
      public function admin_delete_user(Request $request, $id)
      {
-
-
          // dd($id);
          $user_get=DB::table('dhr_users')->where('userId',$id)->delete();
-
-
         // dd($user_get);
         echo $user_get;
+
+       }
+
+
+       public function create_category(Request $request)
+       {
+            // dd($request->all());
+           $nameinfo['skill_name']=$request->input('skill_name');
+           // dd($nameinfo['skill_name']);
+          $image = $request->file('skill_image');
+          // dd($image);
+          if ($image !="") {
+          $profilePicture = 'category-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+          $destinationPath = public_path('images/skill_images/');
+          $image->move($destinationPath, $profilePicture);
+        //  dd($profilePicture);
+          $nameinfo['skill_image']=$profilePicture;
+        }
+        $user_info=DB::table('skills')->insert($nameinfo);
+
+        if ($user_info == true) {
+          echo "1";
+        }else {
+          echo "0";
+        }
 
        }
 

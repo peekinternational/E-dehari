@@ -109,6 +109,7 @@ Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');
 Route::get('delete_user/{userId}', 'frontend\Admin@admin_delete_user');
 Route::get('admin_verify_account/{token}', 'frontend\Admin@change_status_admin');
+Route::post('admin_add_category', 'frontend\Admin@create_category');
 
 Route::get('send_test_email', function(){
  Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)

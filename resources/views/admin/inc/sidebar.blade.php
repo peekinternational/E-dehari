@@ -41,7 +41,7 @@
                  </a>
              </li>
              <li>
-                 <a href="maps.html">
+                 <a href="{{url('/admin/typography')}}">
                      <i class="fa fa-th-large"></i>
                      <p>Add Categories</p>
                  </a>

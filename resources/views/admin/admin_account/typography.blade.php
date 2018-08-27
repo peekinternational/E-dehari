@@ -10,76 +10,53 @@
                   <div class="col-md-12">
                       <div class="card">
                           <div class="header">
-                              <h4 class="title">Light Bootstrap Table Heading</h4>
-                              <p class="category">Created using Roboto Font Family</p>
+                              <h4 class="title">Add Categories</h4>
+                              <!-- <p class="category">Created using Roboto Font Family</p> -->
                           </div>
                           <div class="content">
+                            <div class="individual-form">
+    													<div id="w_error" class="alert alert-danger alert-dismissible" style="display: none;">
+    													  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    													  <span>Please Enter Category Name and Picture</span>
+    													</div>
+    													<div id="worker_success" class="alert alert-success alert-dismissible" style="display: none;">
+    														<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    														<span>New Category Created Successfully</span>
+    													</div>
+                            <form class="" action="" method="post">
+                              {{csrf_field()}}
+                            <div class="row">
+                                <div class="form-group col-md-4" style="padding-right: 0;">
+            								  		<label>Category Name</label>
+            											<!-- <input type="hidden" name="w_id" id="w_id" value=""> -->
+            								  		<div class="input-group">
+            								  			<span class="input-group-addon"><i class="fa fa-th-large"></i></span>
+            								    		<input type="text" name="skill_name" id="skill_name" class="form-control worker_input" placeholder="Category Name" value="">
+            								  		</div>
+            							  		</div>
+                                </div>
+                                <div class="row">
+                                <div class="form-group col-md-2">
+            								  		<label>Category Picture</label><br>
+            								  		<label class="btn btn-file" for="w_image">Upload Picture
+            								  			<input type="file" name="w_image" id="w_image">
+            								  		</label>
+            								  	</div>
+                                <!-- Image Loader -->
+            										<div id="loaderIcon" class="loaderIcon_franchise" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+            										</div>
+            										<!-- Image Loader Ends -->
+                                </div>
+                                <div class="row">
+                                <div class="form-group col-md-2 nxt-btn">
+              										<a  href="{{url('/admin/dashboard')}}" class="btn btn-primary" style="Background: #3c3c9d; border: #3c3c9d; color: white;"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
+              									</div>
+                                <div class="form-group col-md-2 nxt-btn" style="padding-left: 0;">
+              										<button type="submit" id="skill_btn" class="btn login-btn btn-block" style="Background: #FF6D0B; border: #FF6D0B; color: white;">Add New <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
+              									</div>
+                                </div>
+                              </form>
 
-                              <div class="typo-line">
-                                  <h1><p class="category">Header 1</p>Light Bootstrap Table Heading </h1>
-                              </div>
-
-                                  <div class="typo-line">
-                                  <h2><p class="category">Header 2</p>Light Bootstrap Table Heading</h2>
-                              </div>
-                              <div class="typo-line">
-                                  <h3><p class="category">Header 3</p>Light Bootstrap Table Heading</h3>
-                              </div>
-                              <div class="typo-line">
-                                  <h4><p class="category">Header 4</p>Light Bootstrap Table Heading</h4>
-                              </div>
-                              <div class="typo-line">
-                                  <h5><p class="category">Header 5</p>Light Bootstrap Table Heading</h5>
-                              </div>
-                               <div class="typo-line">
-                                  <h6><p class="category">Header 6</p>Light Bootstrap Table Heading</h6>
-                              </div>
-                              <div class="typo-line">
-                                  <p><span class="category">Paragraph</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-                              </div>
-                              <div class="typo-line">
-                                  <p class="category">Quote</p>
-                                  <blockquote>
-                                   <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
-                                   </p>
-                                   <small>
-                                   Steve Jobs, CEO Apple
-                                   </small>
-                                  </blockquote>
-                              </div>
-
-                              <div class="typo-line">
-                                  <p class="category">Muted Text</p>
-                                  <p class="text-muted">
-                                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.
-                                  </p>
-                              </div>
-                              <div class="typo-line">
-                                  <!--
-                                   there are also "text-info", "text-success", "text-warning", "text-danger" clases for the text
-                                   -->
-                                  <p class="category">Coloured Text</p>
-                                  <p class="text-primary">
-                                      Text Primary - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                                  </p>
-                                  <p class="text-info">
-                                      Text Info - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                                  </p>
-                                  <p class="text-success">
-                                      Text Success - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                                  </p>
-                                  <p class="text-warning">
-                                      Text Warning - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                                  </p>
-                                  <p class="text-danger">
-                                      Text Danger - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                                  </p>
-                              </div>
-
-                              <div class="typo-line">
-                                  <h2><p class="category">Small Tag</p>Header with small subtitle <br><small>".small" is a tag for the headers</small> </h2>
-                              </div>
 
 
                           </div>
@@ -91,4 +68,56 @@
       </div>
 </div>
 
+
+<script>
+$('#skill_btn').click(function (e) {
+	e.preventDefault();
+	// var form_value = $(this).serialize();
+  var _token = $("input[name='_token']").val();
+	var skill_name = $('#skill_name').val();
+	var skill_image = $('#w_image')[0].files[0];
+  // alert(skill_name);
+	if (skill_name == "" || skill_image == "undefined") {
+		$("#w_error").show();
+		setTimeout(function () {
+			$("#w_error").hide();
+		},3000);
+		return 0;
+	}
+	if (skill_image != "") {
+    $('#loaderIcon').show();
+  }
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	form = new FormData();
+  form.append('_token', _token);
+	form.append('skill_name', skill_name);
+	form.append('skill_image', skill_image);
+console.log(form);
+	$.ajax({
+		type: 'post',
+		data: form,
+		cache: false,
+		contentType: false,
+		processData: false,
+		url: "{{url('admin_add_category')}}",
+		success: function (response) {
+			console.log(response);
+			if (response == "1") {
+				$('#loaderIcon').hide();
+			$('.worker_input').val('');
+				$("#worker_success").show();
+				setTimeout(function () {
+		      $("#worker_success").hide();
+		    },3000);
+
+			}
+		}
+	});
+});
+</script>
 @endsection

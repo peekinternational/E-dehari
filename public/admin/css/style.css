@@ -7,8 +7,30 @@
 .input_group_add {
   float: right;
   padding-right: 30px;
-  margin-top: -30px;
+  margin-top: -40px;
 }
 .input_group_add .fa {
   font-size: 30px;
+}
+#w_image{
+	cursor: pointer;
+	opacity: 0;
+	display: none;
+  /* background: black; */
+}
+.btn-file{
+	background: gray !important;
+    padding: 9px 20px;
+    width: 100%;
+    border-radius: 0;
+    border: #FF6D0B !important;
+    color: white !important;
+}
+.form-group label{
+	font-weight: 400 !important;
+}
+.loaderIcon_franchise {
+  position: absolute;
+  top: 10%;
+  left: 30%;
 }
