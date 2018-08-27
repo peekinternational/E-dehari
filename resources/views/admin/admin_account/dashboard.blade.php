@@ -6,6 +6,28 @@
     <div class="main-panel">
       <div class="content">
    <div class="container-fluid">
+     <div class="row">
+       <div class="col-md-4">
+         <div class="users_info_display">
+           <!-- <label>Full Name</label> -->
+           <h3>Total Users</h3>
+           <strong>{{$user_get}}</strong>
+           <span class="input_group_add"><i class="fa fa-users"></i></span>
+         </div>
+         <!-- <h3>Total Users</h3>
+        {{$user_get}} -->
+       </div>
+       <div class="col-md-4">
+         <div class="users_info_display" style="background: gray !important;">
+           <!-- <label>Full Name</label> -->
+           <h3>Active Users</h3>
+           <strong>{{$active_user}}</strong>
+           <span class="input_group_add"><i class="fa fa-user"></i></span>
+         </div>
+         <!-- <h3>Total Users</h3>
+        {{$user_get}} -->
+       </div>
+     </div><br>
        <div class="row">
            <div class="col-md-4">
                <div class="card">

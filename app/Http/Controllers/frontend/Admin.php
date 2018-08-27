@@ -36,6 +36,15 @@ class Admin extends Controller
        return view('admin.admin_account.user',compact('user_get'));
      }
 
+     public function admin_dashboard_route()
+     {
+
+       $user_get=DhrUser::get()->count();
+       $active_user=DB::table('dhr_users')->where('active_status','1')->count();
+       // dd($active_user);
+       return view('admin.admin_account.dashboard',compact('user_get','active_user'));
+     }
+
      public function admin_edit_route(Request $request, $id)
      {
 

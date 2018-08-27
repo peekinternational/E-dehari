@@ -281,6 +281,10 @@ public function login(Request $request)
         $val = $request->session()->get('u_session');
 
         $user = DhrUser::find($val->userId);
+        // dd($user);
+        $user_status['active_status'] = '1';
+        $getuser=DB::table('dhr_users')->where('userId',$user->userId)->update($user_status);
+        // dd($getuser);
         if ($user->type == "individual") {
           return redirect('/accounts/individual');
         }elseif ($user->type == "shop") {
@@ -337,8 +341,11 @@ public function login(Request $request)
 }
 
 
-public function Logout()
+public function Logout(Request $request)
 {
+  $userinfo= $request->session()->get('u_session')->userId;
+  $user_status['active_status'] = '0';
+  $getuser=DB::table('dhr_users')->where('userId',$userinfo)->update($user_status);
   session()->flush();
   session()->forget('u_session');
   return redirect('/accounts/login');

@@ -1,0 +1,14 @@
+.users_info_display {
+  padding-left: 10px;
+  border: 1px solid #eae3e3;
+  background: #FF6D0B;
+  color: white;
+}
+.input_group_add {
+  float: right;
+  padding-right: 30px;
+  margin-top: -30px;
+}
+.input_group_add .fa {
+  font-size: 30px;
+}

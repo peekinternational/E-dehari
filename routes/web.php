@@ -90,10 +90,10 @@ Route::post('SrvUser_dashboard_img', 'frontend\ServiceUser@service_dashboard_ima
 
 Route::get('/admin/user', 'frontend\Admin@show_user');
 
-
-Route::get('/admin/dashboard', function () {
-    return view('admin.admin_account.dashboard');
-});
+Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
+// Route::get('/admin/dashboard', function () {
+//     return view('admin.admin_account.dashboard');
+// });
 
 Route::get('/admin/table', function () {
     return view('admin.admin_account.table');
