@@ -120,6 +120,7 @@ class Admin extends Controller
 
        else {
          // $nameinfo['f_userId']=$userinfo->userId;
+         $nameinfo['token'] = $request->input('_token');
          $nameinfo['type'] = $request->input('type');
          $nameinfo['created_at'] = $mytime;
          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

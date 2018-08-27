@@ -104,6 +104,7 @@ $('#wEdit_btn').click(function () {
 	var phone = $('#w_mobile').val();
 	var email = $('#email').val();
 	var type = $('#type').val();
+  	// alert(_token);
 	// alert(phone);
 	// if (f_name == "" || phone=="") {
 	// 	$("#w_error").show();
