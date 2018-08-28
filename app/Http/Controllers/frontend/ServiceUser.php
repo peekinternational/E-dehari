@@ -229,7 +229,8 @@ class ServiceUser extends Controller
      'phone' => 'required|unique:dhr_users,phone|min:11|max:15',
      'password' => 'required|min:6'
    ]);
-
+   $email['email'] = $request->input('email');
+   $toemail =$email['email'];
        $user = new DhrUser;
        $user->f_name = $request->input('f_name');
        $user->phone = $request->input('phone');
