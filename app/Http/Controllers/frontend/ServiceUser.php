@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\DhrUser;
 use App\Models\Worker;
 use App\Models\UserInfo;
+use Mail;
+use Carbon;
 use DB;
 class ServiceUser extends Controller
 {
