@@ -120,6 +120,11 @@ class Admin extends Controller
          $nameinfo['token'] = $request->_token;
          // dd($nameinfo['token']);
          $nameinfo['type'] = $request->input('type');
+         $ip= \Request::ip();
+         // dd($ip);
+         $data = \Location::get($ip);
+         dd($data->countryCode);
+         $nameinfo['country'] = $data->countryCode;
          $nameinfo['created_at'] = $mytime;
          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
       $charactersLength = strlen($characters);
