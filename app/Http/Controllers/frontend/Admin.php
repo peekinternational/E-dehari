@@ -123,7 +123,7 @@ class Admin extends Controller
          $ip= \Request::ip();
          // dd($ip);
          $data = \Location::get($ip);
-         dd($data->countryCode);
+         // dd($data->countryCode);
          $nameinfo['country'] = $data->countryCode;
          $nameinfo['created_at'] = $mytime;
          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
