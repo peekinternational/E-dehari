@@ -234,7 +234,8 @@ class ServiceUser extends Controller
        $user->email = $request->input('email');
        $user->password = md5($request->input('password'));
        $user->type = $request->input('type');
-
+       $user->token = $request->_token;
+       dd($request->_token);
        $user->save();
        return redirect('/accounts/login')->with('success','You are successfully Registered');
      }
