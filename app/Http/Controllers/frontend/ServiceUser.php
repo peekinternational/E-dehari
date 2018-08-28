@@ -253,7 +253,7 @@ class ServiceUser extends Controller
        });
        // dd($request->_token);
        $user->save();
-       return redirect('/accounts/login')->with('success','You are successfully Registered');
+       return redirect('/accounts/login')->with('success','Please verify your account');
      }
 
 
