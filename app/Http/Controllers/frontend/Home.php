@@ -155,6 +155,10 @@ class Home extends Controller
       $user->password = md5($request->input('password'));
       $user->type = $request->input('type');
       $user->token = $request->_token;
+      $ip= \Request::ip();
+      // dd($ip);
+      $data = \Location::get($ip);
+      dd($data);
       Mail::send('mail.verify',['token' =>$request->_token],
       function ($message) use ($toemail)
       {
