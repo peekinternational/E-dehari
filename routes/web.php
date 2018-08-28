@@ -119,3 +119,10 @@ Route::get('send_test_email', function(){
   $message->to('nabeelirbab@gmail.com');
  });
 });
+Route::get('get-location-from-ip',function(){
+    $ip= \Request::ip();
+    // dd($ip);
+    $data = \Location::get($ip);
+    // $data = \Location::get('192.168.100.15');
+    dd($data);
+});
