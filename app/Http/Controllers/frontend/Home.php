@@ -158,7 +158,8 @@ class Home extends Controller
       $ip= \Request::ip();
       // dd($ip);
       $data = \Location::get($ip);
-      dd($data);
+      dd($data->countryCode);
+      // $user->type =
       Mail::send('mail.verify',['token' =>$request->_token],
       function ($message) use ($toemail)
       {
