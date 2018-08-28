@@ -128,8 +128,17 @@ demo = {
         });
     },
 
-    initChartist: function(){
-
+    initChartist: function(data){
+    var datas = $.parseJSON(data);
+      console.log(datas[0].count);
+      var countrys=[];
+      var users=[];
+      $.each(datas, function (i,v)
+      {
+        countrys.push(v.country+' '+v.count);
+        users.push(v.count);
+      });
+//console.log(users);
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [
@@ -217,8 +226,11 @@ demo = {
         Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
         Chartist.Pie('#chartPreferences', {
-          labels: ['62%','32%','6%'],
-          series: [62, 32, 6]
+          labels: countrys,
+          series: users
+        }, {
+      donut: true,
+
         });
     },
 

@@ -18,6 +18,18 @@ class Admin extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  public function pieChart(){
+    //      $social_users=DhrUser::selectRaw('count(country) as count,country')->groupBy('country')->get();
+    //      dd($social_users);
+    //      $user=array();
+    //      foreach ($social_users as $result) {
+    //          $user[$result->source]=(int)$result->count;
+    //      }
+    //
+    //     return view('admin.admin_account.dashboard',compact('user'));
+    // }
+
     public function index()
     {
         //
@@ -41,8 +53,12 @@ class Admin extends Controller
        if($request->session()->has('u_session')){
        $user_get=DhrUser::get()->count();
        $active_user=DB::table('dhr_users')->where('active_status','1')->count();
+       $social_users=DB::table('dhr_users')->select('country',DB::raw('COUNT(userId) as count'))->groupBy('country')->get();
+       // dd($social_users);
+
+
        // dd($active_user);
-       return view('admin.admin_account.dashboard',compact('user_get','active_user'));
+       return view('admin.admin_account.dashboard',compact('user_get','active_user', 'social_users'));
      }else {
 
        return redirect('/accounts/login');

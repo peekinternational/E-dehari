@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
+
     <div class="main-panel">
       <div class="content">
    <div class="container-fluid">
@@ -7,6 +8,7 @@
      <div class="row">
        <div class="col-md-4">
          <div class="users_info_display">
+
            <!-- <label>Full Name</label> -->
            <h4>TOTAL USERS</h4>
            <strong>{{$user_get}}</strong>
@@ -247,7 +249,10 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        demo.initChartist();
+      var data =   '<?php echo json_encode($social_users); ?>';
+      // console.log(data);
+        demo.initChartist(data);
+
 
     });
 </script>

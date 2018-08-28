@@ -18,6 +18,11 @@ class Home extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    
+
+
     public function index_route(Request $request)
     {
         $user_skill_info=DB::table('skills')->get();
