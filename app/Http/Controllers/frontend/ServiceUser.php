@@ -235,7 +235,20 @@ class ServiceUser extends Controller
        $user->password = md5($request->input('password'));
        $user->type = $request->input('type');
        $user->token = $request->_token;
-       dd($request->_token);
+       $ip= \Request::ip();
+       // dd($ip);
+       $data = \Location::get($ip);
+       // dd($data->countryCode);
+       $user->country = $data->countryCode;
+       Mail::send('mail.verify',['token' =>$request->_token],
+       function ($message) use ($toemail)
+       {
+
+         $message->subject('E-dehari.com - Account Verifaction');
+         $message->from('nabeelirbab@gmail.com', 'E-dehari');
+         $message->to($toemail);
+       });
+       // dd($request->_token);
        $user->save();
        return redirect('/accounts/login')->with('success','You are successfully Registered');
      }
