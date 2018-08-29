@@ -32,7 +32,7 @@
            <!-- <label>Full Name</label> -->
            <h4>TOTAL SUBSCIBERS</h4>
            <strong>{{$user_get}}</strong>
-           <span class="input_group_add"><i class="fa fa-users"></i></span>
+           <span class="input_group_add"><i class="fa fa-envelope-open"></i></span>
          </div>
          <!-- <h3>Total Users</h3>
         {{$user_get}} -->
@@ -51,14 +51,22 @@
 
                        <div class="footer">
                            <div class="legend">
-                               <i class="fa fa-circle text-info"></i> Open
+                               <!-- <i class="fa fa-circle text-info"></i> Open
                                <i class="fa fa-circle text-danger"></i> Bounce
-                               <i class="fa fa-circle text-warning"></i> Unsubscribe
+                               <i class="fa fa-circle text-warning"></i> Unsubscribe -->
+                               <div class="">
+                                 <strong>{{$user_get}}</strong>
+                                 <p class="text-muted">Total Users</p>
+                               </div>
+                               <div class="act_usr" style="margin-left: 120px;">
+                                 <strong>{{$active_user}}</strong>
+                                 <p class="text-muted">Active Users</p>
+                               </div>
                            </div>
-                           <hr>
-                           <div class="stats">
+                           <!-- <hr> -->
+                           <!-- <div class="stats">
                                <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                           </div>
+                           </div> -->
                        </div>
                    </div>
                </div>

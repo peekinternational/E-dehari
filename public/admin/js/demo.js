@@ -131,7 +131,7 @@ demo = {
     initChartist: function(data,data1){
       // console.log(data1);
     var datas = $.parseJSON(data);
-      console.log(datas[0].count);
+      // console.log(datas[0].count);
       var countrys=[];
       var users=[];
       var calc=[];
@@ -146,7 +146,7 @@ demo = {
         countrys.push(v.country+' '+round+'%');
         // countrys = (v.count/sum1)*100;
         users.push(v.count);
-        console.log(contryss+"contryss");
+        // console.log(contryss+"contryss");
 
       });
 
