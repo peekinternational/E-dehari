@@ -92,15 +92,10 @@ Route::get('/admin/user', 'frontend\Admin@show_user');
 Route::get('/admin/categories', 'frontend\Admin@show_categories');
 Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
 Route::get('/admin/add_category', 'frontend\Admin@admin_add_category_route');
-
-Route::get('/admin/table', function () {
-    return view('admin.admin_account.table');
-});
+Route::get('/admin/table', 'frontend\Admin@admin_table_route');
+Route::get('/admin/notification', 'frontend\Admin@admin_notification_route');
 
 
-Route::get('/admin/notification', function () {
-    return view('admin.admin_account.notification');
-});
 Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
 Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');

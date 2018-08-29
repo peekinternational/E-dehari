@@ -54,6 +54,31 @@ class Admin extends Controller
      }
    }
 
+
+   
+     public function admin_table_route(Request $request)
+     {
+       if($request->session()->has('u_session')){
+       return view('admin.admin_account.table');
+     }else {
+
+       return redirect('/accounts/login');
+     }
+   }
+
+
+     public function admin_notification_route(Request $request)
+     {
+       if($request->session()->has('u_session')){
+       return view('admin.admin_account.notification');
+     }else {
+
+       return redirect('/accounts/login');
+     }
+   }
+
+
+
      public function admin_dashboard_route(Request $request)
      {
        if($request->session()->has('u_session')){
