@@ -128,17 +128,29 @@ demo = {
         });
     },
 
-    initChartist: function(data){
+    initChartist: function(data,data1){
+      // console.log(data1);
     var datas = $.parseJSON(data);
       console.log(datas[0].count);
       var countrys=[];
       var users=[];
+      var calc=[];
+      var sum1=data1;
+      var contryss=[];
+      var round=[];
       $.each(datas, function (i,v)
       {
-        countrys.push(v.country+' '+v.count);
+        calc.push(v.count);
+        contryss = v.count/sum1*100;
+        round =Math.round(contryss);
+        countrys.push(v.country+' '+round+'%');
+        // countrys = (v.count/sum1)*100;
         users.push(v.count);
+        console.log(contryss+"contryss");
+
       });
-//console.log(users);
+
+// console.log(calc);
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [

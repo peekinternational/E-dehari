@@ -250,8 +250,9 @@
     $(document).ready(function(){
 
       var data =   '<?php echo json_encode($social_users); ?>';
+      var data1 =   '<?php echo json_encode($social_users1); ?>';
       // console.log(data);
-        demo.initChartist(data);
+        demo.initChartist(data,data1);
 
 
     });

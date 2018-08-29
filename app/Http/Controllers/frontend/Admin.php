@@ -54,11 +54,13 @@ class Admin extends Controller
        $user_get=DhrUser::get()->count();
        $active_user=DB::table('dhr_users')->where('active_status','1')->count();
        $social_users=DB::table('dhr_users')->select('country',DB::raw('COUNT(userId) as count'))->groupBy('country')->get();
-       // dd($social_users);
+       // dd(count($social_users));
+       $social_users_data=DB::table('dhr_users')->get();
+       $social_users1=count($social_users_data);
 
 
-       // dd($active_user);
-       return view('admin.admin_account.dashboard',compact('user_get','active_user', 'social_users'));
+       // dd($social_users1);
+       return view('admin.admin_account.dashboard',compact('user_get','active_user', 'social_users','social_users1'));
      }else {
 
        return redirect('/accounts/login');
