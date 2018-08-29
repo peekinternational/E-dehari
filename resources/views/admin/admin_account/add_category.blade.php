@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="row">
                                 <div class="form-group col-md-2 nxt-btn">
-              										<a  href="{{url('/admin/dashboard')}}" class="btn btn-primary" style="Background: #3c3c9d; border: #3c3c9d; color: white;"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
+              										<a  href="{{url('/admin/categories')}}" class="btn btn-primary" style="Background: #3c3c9d; border: #3c3c9d; color: white;"><i class="fa fa-arrow-circle-o-left pull-left" aria-hidden="true"></i> Back </a>
               									</div>
                                 <div class="form-group col-md-2 nxt-btn" style="padding-left: 0;">
               										<button type="submit" id="skill_btn" class="btn login-btn btn-block" style="Background: #FF6D0B; border: #FF6D0B; color: white;">Add New <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
@@ -75,16 +75,16 @@ $('#skill_btn').click(function (e) {
 	// var form_value = $(this).serialize();
   var _token = $("input[name='_token']").val();
 	var skill_name = $('#skill_name').val();
-	var skill_image = $('#w_image')[0].files[0];
+	var image = $('#w_image')[0].files[0];
   // alert(skill_name);
-	if (skill_name == "" || skill_image == "undefined") {
+	if (skill_name == "") {
 		$("#w_error").show();
 		setTimeout(function () {
 			$("#w_error").hide();
 		},3000);
 		return 0;
 	}
-	if (skill_image != "") {
+	if (image != "") {
     $('#loaderIcon').show();
   }
 	$.ajaxSetup({
@@ -96,7 +96,7 @@ $('#skill_btn').click(function (e) {
 	form = new FormData();
   form.append('_token', _token);
 	form.append('skill_name', skill_name);
-	form.append('skill_image', skill_image);
+	form.append('image', image);
 console.log(form);
 	$.ajax({
 		type: 'post',
@@ -104,7 +104,7 @@ console.log(form);
 		cache: false,
 		contentType: false,
 		processData: false,
-		url: "{{url('admin_add_category')}}",
+		url: "{{url('edit_category')}}",
 		success: function (response) {
 			console.log(response);
 			if (response == "1") {

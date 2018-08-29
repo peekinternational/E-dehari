@@ -89,7 +89,12 @@
 								<div class="col-sm-4 col-xs-4">
 									<div class="col-item box-shadow">
 										<div class="photo">
-											<img src="{{('images/skill_images/'.$value->skill_image)}}" class="img-responsive" alt="a" />
+											<?php if (!empty($value->skill_image)): ?>
+												<img src="{{url('images/skill_images/'.$value->skill_image)}}" class="img-responsive" alt="a">
+												<?php else: ?>
+													<img src="{{url('/images/category.png')}}" class="eo-c-logo">
+											<?php endif; ?>
+											<!-- <img src="{{('images/skill_images/'.$value->skill_image)}}" class="img-responsive" alt="a" /> -->
 											<a href="{{url('/accounts/skill_search/'.$value->skill_name)}}"> <span class="service-heading">{{$value->skill_name}}</span></a>
 										</div>
 									</div>

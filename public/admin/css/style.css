@@ -34,3 +34,27 @@
   top: 10%;
   left: 30%;
 }
+#edit-Img{
+	cursor: pointer;
+    opacity: 0;
+    display: none;
+    /* color: white; */
+}
+.profile-img{
+  overflow: hidden;
+	height: 148px;
+	width: 215px;
+}
+.profile-img img{
+	width: 100%;
+}
+.profile-img .icon{
+    position: absolute;
+    top: 76%;
+    left: -89px;
+    width: 96%;
+    /* color: white; */
+}
+.label-success {
+  color: white !important;
+}

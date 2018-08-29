@@ -35,13 +35,13 @@
                  </a>
              </li>
              <li>
-                 <a href="{{url('/admin/typography')}}">
+                 <a href="{{url('/admin/add_category')}}">
                      <i class="fa fa-envelope-open"></i>
                      <p>Subscriber</p>
                  </a>
              </li>
              <li>
-                 <a href="{{url('/admin/typography')}}">
+                 <a href="{{url('/admin/categories')}}">
                      <i class="fa fa-th-large"></i>
                      <p>Add Categories</p>
                  </a>

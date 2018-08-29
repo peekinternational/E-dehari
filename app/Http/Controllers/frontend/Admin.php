@@ -19,17 +19,6 @@ class Admin extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //  public function pieChart(){
-    //      $social_users=DhrUser::selectRaw('count(country) as count,country')->groupBy('country')->get();
-    //      dd($social_users);
-    //      $user=array();
-    //      foreach ($social_users as $result) {
-    //          $user[$result->source]=(int)$result->count;
-    //      }
-    //
-    //     return view('admin.admin_account.dashboard',compact('user'));
-    // }
-
     public function index()
     {
         //
@@ -42,11 +31,28 @@ class Admin extends Controller
      */
 
 
-     public function show_user()
+     public function show_user(Request $request)
      {
+       if($request->session()->has('u_session')){
        $user_get=DhrUser::all();
        return view('admin.admin_account.user',compact('user_get'));
+     }else {
+
+       return redirect('/accounts/login');
      }
+     }
+
+
+     public function show_categories(Request $request)
+     {
+       if($request->session()->has('u_session')){
+       $user_get=DB::table('skills')->get();
+       return view('admin.admin_account.categories',compact('user_get'));
+     }else {
+
+       return redirect('/accounts/login');
+     }
+   }
 
      public function admin_dashboard_route(Request $request)
      {
@@ -67,6 +73,17 @@ class Admin extends Controller
      }
    }
 
+
+     public function admin_add_category_route(Request $request)
+     {
+       if($request->session()->has('u_session')){
+       return view('admin.admin_account.add_category');
+     }else {
+
+       return redirect('/accounts/login');
+     }
+   }
+
      public function admin_edit_route(Request $request, $id)
      {
 
@@ -75,6 +92,21 @@ class Admin extends Controller
          // dd($userinfo);
          $user_get=DB::table('dhr_users')->where('userId',$id)->first();
          return view('admin.admin_account.editUser',compact('user_get'));
+       }else {
+         return redirect('/accounts/login');
+       }
+
+     }
+
+
+     public function admin_editCategory_route(Request $request, $id)
+     {
+
+       if($request->session()->has('u_session')){
+         $userinfo= $request->session()->get('u_session')->userId;
+         // dd($userinfo);
+         $user_get=DB::table('skills')->where('skill_id',$id)->first();
+         return view('admin.admin_account.editCategory',compact('user_get'));
        }else {
          return redirect('/accounts/login');
        }
@@ -174,6 +206,61 @@ class Admin extends Controller
      }
 
 
+     public function admin_edit_category(Request $request)
+     {
+   //     $validator =  $this->validate($request,[
+   //   'skill_name' => 'required'
+   // ]);
+      // dd($request->all());
+         $userinfo= $request->session()->get('u_session');
+       $sid = $request->input('id');
+       $profilePicture="";
+       // dd($wid);
+       $nameinfo['skill_name'] = $request->input('skill_name');
+       $image = $request->file('image');
+       // dd($nameinfo['f_name']);
+       if ($image !="") {
+         $profilePicture = 'category-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+
+         $destinationPath = public_path('images/skill_images');
+         $image->move($destinationPath, $profilePicture);
+        // dd($profilePicture);
+         $nameinfo['skill_image']=$profilePicture;
+
+       }
+       if ($sid) {
+
+     $user_info=DB::table('skills')->where('skill_id',$sid)->update($nameinfo);
+       // $worker =  $user->update();
+       if ($user_info == true) {
+         if ($profilePicture !="") {
+           echo $profilePicture;
+         }else {
+           echo "1";
+         }
+
+       }else {
+         echo "0";
+       }
+
+       }
+
+       else {
+         // $nameinfo['type'] = $request->input('type');
+       $user_info=DB::table('skills')->insert($nameinfo);
+
+       if ($user_info == true) {
+         echo "1";
+       }else {
+         echo "0";
+       }
+       }
+
+       // dd($worker);
+
+     }
+
+
      public function change_status_admin(Request $request, $token)
      {
        $token =trim($request->segment(2));
@@ -195,17 +282,33 @@ class Admin extends Controller
 
      public function admin_delete_user(Request $request, $id)
      {
+        if($request->session()->has('u_session')){
          // dd($id);
          $user_get=DB::table('dhr_users')->where('userId',$id)->delete();
         // dd($user_get);
         echo $user_get;
+      }else {
 
+          return redirect('/accounts/login');
+        }
+       }
+     public function admin_delete_category(Request $request, $id)
+     {
+         // dd($id);
+         if($request->session()->has('u_session')){
+         $user_get=DB::table('skills')->where('skill_id',$id)->delete();
+        // dd($user_get);
+        echo $user_get;
+      }else {
+
+          return redirect('/accounts/login');
+        }
        }
 
 
        public function create_category(Request $request)
        {
-            // dd($request->all());
+            dd($request->all());
            $nameinfo['skill_name']=$request->input('skill_name');
            // dd($nameinfo['skill_name']);
           $image = $request->file('skill_image');

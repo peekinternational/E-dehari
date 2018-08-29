@@ -89,18 +89,15 @@ Route::post('SrvUser_dashboard_img', 'frontend\ServiceUser@service_dashboard_ima
 // Admin
 
 Route::get('/admin/user', 'frontend\Admin@show_user');
-
+Route::get('/admin/categories', 'frontend\Admin@show_categories');
 Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
-// Route::get('/admin/dashboard', function () {
-//     return view('admin.admin_account.dashboard');
-// });
+Route::get('/admin/add_category', 'frontend\Admin@admin_add_category_route');
 
 Route::get('/admin/table', function () {
     return view('admin.admin_account.table');
 });
-Route::get('/admin/typography', function () {
-    return view('admin.admin_account.typography');
-});
+
+
 Route::get('/admin/notification', function () {
     return view('admin.admin_account.notification');
 });
@@ -109,7 +106,10 @@ Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');
 Route::get('delete_user/{userId}', 'frontend\Admin@admin_delete_user');
 Route::get('admin_verify_account/{token}', 'frontend\Admin@change_status_admin');
-Route::post('admin_add_category', 'frontend\Admin@create_category');
+// Route::post('admin_add_category', 'frontend\Admin@create_category');
+Route::get('/admin/editCategory/{w_id}', 'frontend\Admin@admin_editCategory_route');
+Route::post('edit_category', 'frontend\Admin@admin_edit_category');
+Route::get('delete_category/{s_id}', 'frontend\Admin@admin_delete_category');
 
 Route::get('send_test_email', function(){
  Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
@@ -119,11 +119,3 @@ Route::get('send_test_email', function(){
   $message->to('nabeelirbab@gmail.com');
  });
 });
-// Route::get('get-location-from-ip',function(){
-//     $ip= \Request::ip();
-//     // dd($ip);
-//     $data = \Location::get($ip);
-//     // $data = \Location::get('192.168.100.15');
-//     dd($data);
-// });
-// Route::get('google-piechart',array('as'=>'chart.piechart','uses'=>'frontend\Home@pieChart'));
