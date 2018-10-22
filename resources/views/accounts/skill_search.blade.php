@@ -27,7 +27,7 @@
 			@foreach ($userdata as  $value)
 			<?php $image ='';
 				if ($value->image ) {
-					$image = url('img/individual_profile/'.$value->image);
+					$image = url('img/Individual_Profile/'.$value->image);
 				}else {
 					$image = url('images/worker.jpg');
 				}
