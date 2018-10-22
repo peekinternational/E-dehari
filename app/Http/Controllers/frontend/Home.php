@@ -20,7 +20,7 @@ class Home extends Controller
      */
 
 
-    
+
 
 
     public function index_route(Request $request)
@@ -61,7 +61,7 @@ class Home extends Controller
 
     }
 
-     public function PasswordChange(Request $request)
+  public function PasswordChange(Request $request)
     {
       $old_password = md5($request->get('old_password'));
       $new_password = $request->get('new_password');
